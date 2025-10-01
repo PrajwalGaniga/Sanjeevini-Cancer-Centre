@@ -151,6 +151,30 @@
             color: white;
         }
 
+        /* Improved Offcanvas with Glass Effect */
+        .offcanvas {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .offcanvas-header {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .offcanvas-body .nav-link {
+            padding: 12px 15px;
+            margin: 5px 0;
+            border-radius: 5px;
+            display: block;
+            width: 100%;
+        }
+        
+        .offcanvas-body .nav-link:hover {
+            background-color: rgba(0, 123, 255, 0.1);
+        }
+
         .hero {
             background: linear-gradient(rgba(0, 123, 255, 0.8), rgba(0, 91, 187, 0.8)), url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
             background-size: cover;
@@ -396,14 +420,24 @@
             color: #adb5bd;
         }
         
+        /* Improved Responsive Design */
         @media (max-width: 991.98px) {
             .offcanvas-body .nav-link {
                 padding: 12px 15px;
                 margin: 5px 0;
                 border-radius: 5px;
+                display: block;
+                width: 100%;
             }
-             .offcanvas-body .nav-link:hover {
-                background-color: var(--light);
+            
+            .offcanvas-body .nav-link:hover {
+                background-color: rgba(0, 123, 255, 0.1);
+            }
+            
+            .language-btn-container {
+                padding: 15px;
+                border-top: 1px solid rgba(0, 0, 0, 0.1);
+                margin-top: 15px;
             }
         }
 
@@ -412,12 +446,74 @@
             .hero p { font-size: 1rem; }
             .section { padding: 40px 0; }
             .doctor-img { width: 150px; height: 150px;}
+            
+            .hero {
+                padding: 120px 0 80px;
+            }
+            
+            .btn-primary, .btn-outline-light {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+            
+            .doctor-profile {
+                padding: 30px 20px;
+            }
+            
+            .philosophy-box {
+                padding: 30px 20px;
+            }
+            
+            .philosophy-text {
+                font-size: 1.1rem;
+            }
+            
+            .qualification-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .qualification-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
+            }
+            
+            .expertise-item {
+                padding: 20px 15px;
+            }
+            
+            .expertise-icon {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 { font-size: 1.8rem; }
+            .hero p { font-size: 0.95rem; }
+            
+            .btn-primary, .btn-outline-light {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .hero .btn {
+                margin-right: 0 !important;
+            }
+            
+            .stats-number {
+                font-size: 1.5rem;
+            }
+            
+            .footer-links {
+                margin-bottom: 30px;
+            }
         }
 
     </style>
 </head>
 <body>
-    
+   
 
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
@@ -442,11 +538,10 @@
                         <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
                         <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                     </ul>
-                    <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center mt-3 mt-lg-0 ms-lg-3">
-                        <button class="language-btn mb-3 mb-lg-0 me-lg-3" id="languageToggle">
+                    <div class="d-flex flex-column align-items-start mt-3 mt-lg-0 ms-lg-3 language-btn-container">
+                        <button class="language-btn" id="languageToggle">
                             <i class="fas fa-language me-1"></i> ಕನ್ನಡ
                         </button>
-                        
                     </div>
                 </div>
             </div>
