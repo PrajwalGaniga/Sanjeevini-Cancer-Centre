@@ -1,0 +1,789 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Sanjeevini Cancer Centre</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary: #007bff;
+            --primary-dark: #0056b3;
+            --secondary: #6c757d;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --accent: #17a2b8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background-color: #fff;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary) !important;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark) !important;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary) !important;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after, .nav-link.active:after {
+            width: 100%;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 123, 255, 0.8), rgba(0, 91, 187, 0.8)), url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 12px 30px;
+            font-weight: 500;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary);
+            border-color: var(--primary);
+            padding: 12px 30px;
+            font-weight: 500;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .blog-card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .blog-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .blog-img {
+            height: 200px;
+            object-fit: cover;
+            width: 100%;
+        }
+        
+        .blog-category {
+            display: inline-block;
+            background-color: var(--primary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            margin-bottom: 15px;
+        }
+        
+        .symptom-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: var(--light);
+            transition: all 0.3s ease;
+        }
+        
+        .symptom-item:hover {
+            background-color: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .symptom-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            border-radius: 50%;
+            line-height: 40px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-right: 15px;
+            text-align: center;
+            flex-shrink: 0;
+        }
+        
+        .blog-sidebar {
+            background-color: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            position: sticky;
+            top: 100px;
+        }
+        
+        .sidebar-title {
+            position: relative;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+        }
+        
+        .sidebar-title:after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: 0;
+            left: 0;
+        }
+        
+        .sidebar-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .sidebar-list li {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .sidebar-list li:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        
+        .sidebar-list a {
+            color: var(--dark);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: block;
+        }
+        
+        .sidebar-list a:hover {
+            color: var(--primary);
+            padding-left: 5px;
+        }
+        
+        .blog-meta {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+        
+        .blog-meta i {
+            margin-right: 5px;
+        }
+        
+        .blog-meta span {
+            margin-right: 15px;
+        }
+        
+        .takeaway-box {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 30px;
+            border-radius: 10px;
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .takeaway-box:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            opacity: 0.1;
+        }
+        
+        .takeaway-content {
+            position: relative;
+            z-index: 1;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-links h5 {
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .footer-links h5:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 0;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+            color: #adb5bd;
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-hand-holding-heart me-2"></i>Sanjeevini Cancer Centre
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="patient-care.html">Patient Care</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-primary btn-sm" href="contact.html#appointment">Book Appointment</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h1 class="animate__animated animate__fadeInDown">Patient Education Blog</h1>
+                    <p class="animate__animated animate__fadeIn animate__delay-1s">Stay informed about cancer prevention, early detection, and treatment options with our educational resources.</p>
+                    <div class="mt-4 animate__animated animate__fadeInUp animate__delay-2s">
+                        <a href="#featured-article" class="btn btn-light btn-lg me-3">Read Featured Article</a>
+                        <a href="contact.html#appointment" class="btn btn-outline-light btn-lg">Book Consultation</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Article Section -->
+    <section id="featured-article" class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Early Warning Signs of Cancer You Shouldn't Ignore</h2>
+            
+            <div class="row">
+                <div class="col-lg-8" data-aos="fade-right">
+                    <div class="blog-meta">
+                        <span><i class="far fa-calendar"></i> October 15, 2024</span>
+                        <span><i class="far fa-user"></i> Dr. Rachan Shetty KS</span>
+                        <span><i class="far fa-clock"></i> 5 min read</span>
+                    </div>
+                    
+                    <p class="mb-4">Cancer is one of the leading health concerns worldwide, but the good news is that early detection can save lives. Many cancers, when diagnosed in their initial stages, are highly treatable. At Sanjeevini Cancer Centre, Mangalore, we encourage people to stay informed about the early warning signs of cancer and seek medical advice without delay.</p>
+                    
+                    <p class="mb-5">Here are some of the most common symptoms you should never ignore:</p>
+                    
+                    <div class="mb-5">
+                        <div class="symptom-item" data-aos="fade-up" data-aos-delay="100">
+                            <div class="symptom-number">1</div>
+                            <div>
+                                <h4>Unexplained Weight Loss</h4>
+                                <p class="mb-0">Losing weight without trying, especially more than 5 kg in a short period, could be a warning sign of cancers such as stomach, pancreas, or lung cancer.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="symptom-item" data-aos="fade-up" data-aos-delay="200">
+                            <div class="symptom-number">2</div>
+                            <div>
+                                <h4>Persistent Fatigue</h4>
+                                <p class="mb-0">Constant tiredness that doesn't improve with rest can sometimes be linked to leukemia or colon cancer.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="symptom-item" data-aos="fade-up" data-aos-delay="300">
+                            <div class="symptom-number">3</div>
+                            <div>
+                                <h4>Lumps or Thickening in the Body</h4>
+                                <p class="mb-0">A new lump in the breast, neck, underarm, or other areas should always be checked by a doctor. While many lumps are harmless, some can indicate cancer.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="symptom-item" data-aos="fade-up" data-aos-delay="400">
+                            <div class="symptom-number">4</div>
+                            <div>
+                                <h4>Changes in Skin</h4>
+                                <p class="mb-0">Look out for unusual changes like new moles, changes in existing moles, or non-healing sores. These may signal skin cancer or other underlying issues.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="symptom-item" data-aos="fade-up" data-aos-delay="500">
+                            <div class="symptom-number">5</div>
+                            <div>
+                                <h4>Persistent Cough or Hoarseness</h4>
+                                <p class="mb-0">A long-lasting cough, difficulty breathing, or hoarseness could be linked to lung cancer or throat cancer, especially if you are a smoker.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="symptom-item" data-aos="fade-up" data-aos-delay="600">
+                            <div class="symptom-number">6</div>
+                            <div>
+                                <h4>Abnormal Bleeding</h4>
+                                <p class="mb-0">Unexplained bleeding — such as blood in urine, stool, coughing up blood, or unusual vaginal bleeding — should always be investigated.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="symptom-item" data-aos="fade-up" data-aos-delay="700">
+                            <div class="symptom-number">7</div>
+                            <div>
+                                <h4>Difficulty Swallowing</h4>
+                                <p class="mb-0">Trouble swallowing or a persistent feeling of food being "stuck" in the throat can be linked to esophageal or stomach cancer.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="symptom-item" data-aos="fade-up" data-aos-delay="800">
+                            <div class="symptom-number">8</div>
+                            <div>
+                                <h4>Chronic Pain</h4>
+                                <p class="mb-0">Unexplained, long-lasting pain (back pain, headaches, bone pain) may sometimes be associated with certain cancers and should not be ignored.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <h3 class="mb-3" data-aos="fade-up">When to See a Doctor?</h3>
+                    <p class="mb-4" data-aos="fade-up">If you experience any of the above symptoms for more than a few weeks, it's important to consult a qualified oncologist. Not all these symptoms mean cancer, but early medical evaluation ensures timely diagnosis and peace of mind.</p>
+                    
+                    <div class="takeaway-box" data-aos="zoom-in">
+                        <div class="takeaway-content">
+                            <h3 class="mb-3">Takeaway</h3>
+                            <p class="mb-4">Awareness and early action are the most powerful tools against cancer. If you or your loved ones notice any of these warning signs, don't delay — schedule a consultation at Sanjeevini Cancer Centre today.</p>
+                            <div class="d-flex align-items-center">
+                                <i class="fas fa-map-marker-alt fa-2x me-3"></i>
+                                <div>
+                                    <h5 class="mb-1">Visit us in Mangalore</h5>
+                                    <p class="mb-0">Your health is our priority. Early detection saves lives.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div data-aos="fade-up">
+                        <h3 class="mb-3">At Sanjeevini Cancer Centre, Mangalore</h3>
+                        <p class="mb-4">Dr. Rachan Shetty KS and his team specialize in:</p>
+                        <ul>
+                            <li class="mb-2">Cancer screening & prevention</li>
+                            <li class="mb-2">Chemotherapy, immunotherapy & targeted therapy</li>
+                            <li class="mb-2">Comprehensive patient care and support</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-lg-4" data-aos="fade-left">
+                    <div class="blog-sidebar">
+                        <h4 class="sidebar-title">Other Blog Topics</h4>
+                        <ul class="sidebar-list">
+                            <li>
+                                <a href="#">
+                                    <h5>Understanding Immunotherapy in Cancer Treatment</h5>
+                                    <p class="mb-0 text-muted small">Learn how immunotherapy works and who can benefit from this advanced treatment.</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <h5>Nutrition During Cancer Treatment</h5>
+                                    <p class="mb-0 text-muted small">Expert tips on maintaining proper nutrition to support your body during treatment.</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <h5>Cancer Screening Guidelines by Age</h5>
+                                    <p class="mb-0 text-muted small">Find out which cancer screenings are recommended for your age group.</p>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    <h5>Coping with Cancer Diagnosis</h5>
+                                    <p class="mb-0 text-muted small">Psychological strategies and support resources for patients and families.</p>
+                                </a>
+                            </li>
+                        </ul>
+                        
+                        <div class="mt-5">
+                            <h4 class="sidebar-title">Categories</h4>
+                            <ul class="sidebar-list">
+                                <li><a href="#">Cancer Prevention</a></li>
+                                <li><a href="#">Early Detection</a></li>
+                                <li><a href="#">Treatment Options</a></li>
+                                <li><a href="#">Patient Support</a></li>
+                                <li><a href="#">Survivorship</a></li>
+                            </ul>
+                        </div>
+                        
+                        <div class="mt-5">
+                            <h4 class="sidebar-title">Need Help?</h4>
+                            <p>If you have concerns about any symptoms or need to schedule a screening, don't hesitate to reach out.</p>
+                            <a href="contact.html#appointment" class="btn btn-primary w-100">Book Consultation</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- More Blog Posts Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">More Educational Articles</h2>
+            
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Immunotherapy" class="blog-img">
+                        <div class="card-body p-4">
+                            <span class="blog-category">Treatment</span>
+                            <h4 class="card-title">Understanding Immunotherapy in Cancer Treatment</h4>
+                            <p class="card-text">Immunotherapy helps the body's immune system fight cancer more effectively. It is one of the latest advances in oncology.</p>
+                            <a href="#" class="btn btn-outline-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Nutrition" class="blog-img">
+                        <div class="card-body p-4">
+                            <span class="blog-category">Nutrition</span>
+                            <h4 class="card-title">Nutritional Guidance During Cancer Treatment</h4>
+                            <p class="card-text">Proper nutrition plays a crucial role in supporting your body through cancer treatment.</p>
+                            <a href="#" class="btn btn-outline-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="blog-card">
+                        <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Screening" class="blog-img">
+                        <div class="card-body p-4">
+                            <span class="blog-category">Prevention</span>
+                            <h4 class="card-title">Cancer Screening Guidelines by Age</h4>
+                            <p class="card-text">Regular cancer screening is strongly recommended for early detection, especially for common cancers.</p>
+                            <a href="#" class="btn btn-outline-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section" style="background-color: var(--primary); color: white;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8" data-aos="fade-right">
+                    <h2 class="mb-3">Stay Informed About Your Health</h2>
+                    <p class="mb-0">Knowledge is power when it comes to cancer prevention and early detection. Subscribe to our blog for regular updates.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end" data-aos="fade-left">
+                    <a href="contact.html" class="btn btn-light btn-lg">Subscribe to Updates</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h4 class="mb-3"><i class="fas fa-hand-holding-heart me-2"></i>Sanjeevini Cancer Centre</h4>
+                    <p>Compassionate Cancer Care, Guided by Expertise. We believe in providing personalized, evidence-based, and compassionate cancer care.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="patient-care.html">Patient Care</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Our Services</h5>
+                        <ul>
+                            <li><a href="services.html">Cancer Screening</a></li>
+                            <li><a href="services.html">Chemotherapy</a></li>
+                            <li><a href="services.html">Immunotherapy</a></li>
+                            <li><a href="services.html">Targeted Therapy</a></li>
+                            <li><a href="services.html">Palliative Care</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <div class="footer-links">
+                        <h5>Contact Us</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Sanjeevini Cancer Centre, Mangalore</li>
+                            <li class="mb-2"><i class="fas fa-phone me-2"></i> (Insert phone number)</li>
+                            <li class="mb-2"><i class="fas fa-envelope me-2"></i> (Insert email)</li>
+                            <li class="mb-2"><i class="fas fa-globe me-2"></i> sanjeevinicancercentre.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Sanjeevini Cancer Centre. All rights reserved.</p>
+                <p class="small">Website Designed by: Space for Website</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').classList.add('scrolled');
+            } else {
+                document.querySelector('.navbar').classList.remove('scrolled');
+            }
+        });
+        
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            fadeInObserver.observe(element);
+        });
+    </script>
+</body>
+</html>

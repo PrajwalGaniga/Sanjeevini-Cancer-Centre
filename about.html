@@ -1,0 +1,917 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Dr. Rachan Shetty KS - Sanjeevini Cancer Centre</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary: #007bff;
+            --primary-dark: #0056b3;
+            --secondary: #6c757d;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --accent: #17a2b8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background-color: #fff;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary) !important;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark) !important;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary) !important;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after, .nav-link.active:after {
+            width: 100%;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 123, 255, 0.8), rgba(0, 91, 187, 0.8)), url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 12px 30px;
+            font-weight: 500;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary);
+            border-color: var(--primary);
+            padding: 12px 30px;
+            font-weight: 500;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .doctor-profile {
+            text-align: center;
+            padding: 40px 30px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .doctor-profile:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--primary), var(--accent));
+        }
+        
+        .doctor-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 30px;
+            border: 5px solid var(--light);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .qualification-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 15px;
+            border-radius: 8px;
+            background-color: var(--light);
+            transition: all 0.3s ease;
+        }
+        
+        .qualification-item:hover {
+            background-color: #e9ecef;
+            transform: translateX(5px);
+        }
+        
+        .qualification-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-right: 15px;
+            min-width: 50px;
+            text-align: center;
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background-color: var(--primary);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            right: -10px;
+            background-color: white;
+            border: 4px solid var(--primary);
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 30px;
+            border: medium solid white;
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent white;
+        }
+        
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 30px;
+            border: medium solid white;
+            border-width: 10px 10px 10px 0;
+            border-color: transparent white transparent transparent;
+        }
+        
+        .right::after {
+            left: -10px;
+        }
+        
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 6px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .philosophy-box {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .philosophy-box:before {
+            content: '"';
+            font-size: 10rem;
+            color: rgba(255, 255, 255, 0.1);
+            position: absolute;
+            top: -30px;
+            left: 20px;
+            font-family: Georgia, serif;
+        }
+        
+        .philosophy-text {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .expertise-item {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            height: 100%;
+        }
+        
+        .expertise-item:hover {
+            background-color: var(--light);
+            transform: translateY(-5px);
+        }
+        
+        .expertise-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .stats-box {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .stats-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stats-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-links h5 {
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .footer-links h5:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 0;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+            color: #adb5bd;
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+            
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::before {
+                left: 60px;
+                border: medium solid white;
+                border-width: 10px 10px 10px 0;
+                border-color: transparent white transparent transparent;
+            }
+            
+            .left::after, .right::after {
+                left: 21px;
+            }
+            
+            .right {
+                left: 0%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-hand-holding-heart me-2"></i>Sanjeevini Cancer Centre
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="patient-care.html">Patient Care</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-primary btn-sm" href="contact.html#appointment">Book Appointment</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h1 class="animate__animated animate__fadeInDown">About Dr. Rachan Shetty KS</h1>
+                    <p class="animate__animated animate__fadeIn animate__delay-1s">Best Medical Oncologist in Mangalore</p>
+                    <div class="mt-4 animate__animated animate__fadeInUp animate__delay-2s">
+                        <a href="#qualifications" class="btn btn-light btn-lg me-3">View Qualifications</a>
+                        <a href="contact.html#appointment" class="btn btn-outline-light btn-lg">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Doctor Profile Section -->
+    <section class="section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-5 mb-4" data-aos="fade-right">
+                    <div class="doctor-profile">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Dr. Rachan Shetty KS" class="doctor-img">
+                        <h3>Dr. Rachan Shetty KS</h3>
+                        <p class="text-muted mb-3">Medical Oncologist</p>
+                        <p class="mb-4">A dedicated Medical Oncologist committed to delivering world-class cancer care with compassion and precision.</p>
+                        <div class="row text-center">
+                            <div class="col-6">
+                                <div class="stats-box">
+                                    <div class="stats-number">15+</div>
+                                    <p>Years Experience</p>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="stats-box">
+                                    <div class="stats-number">1000+</div>
+                                    <p>Patients Treated</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-7" data-aos="fade-left">
+                    <h2 class="mb-4">Meet Your Oncologist</h2>
+                    <p class="mb-4">Dr. Rachan Shetty KS is a highly qualified Medical Oncologist with extensive experience in diagnosing and treating different types of cancer. His expertise lies in chemotherapy, immunotherapy, targeted therapy, and personalized cancer treatment plans.</p>
+                    <p class="mb-4">He believes that every patient deserves world-class care with a human touch, and his approach focuses on combining the latest scientific advances with compassionate patient care.</p>
+                    <p class="mb-4">If you are looking for a cancer specialist in Mangalore, Dr. Rachan Shetty KS offers trusted guidance and treatment throughout your cancer journey.</p>
+                    
+                    <div class="philosophy-box mt-5" data-aos="zoom-in">
+                        <p class="philosophy-text">"Every patient deserves not just treatment, but care that restores hope and dignity."</p>
+                        <p class="mb-0">- Dr. Rachan Shetty KS</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Qualifications Section -->
+    <section id="qualifications" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Qualifications & Credentials</h2>
+            <div class="row">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <div class="qualification-item">
+                        <div class="qualification-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div>
+                            <h5>MBBS</h5>
+                            <p class="mb-0">Bachelor of Medicine, Bachelor of Surgery</p>
+                        </div>
+                    </div>
+                    <div class="qualification-item">
+                        <div class="qualification-icon">
+                            <i class="fas fa-user-md"></i>
+                        </div>
+                        <div>
+                            <h5>MD (General Medicine)</h5>
+                            <p class="mb-0">Doctor of Medicine in General Medicine</p>
+                        </div>
+                    </div>
+                    <div class="qualification-item">
+                        <div class="qualification-icon">
+                            <i class="fas fa-stethoscope"></i>
+                        </div>
+                        <div>
+                            <h5>DM (Medical Oncology)</h5>
+                            <p class="mb-0">Doctorate of Medicine in Medical Oncology</p>
+                        </div>
+                    </div>
+                    <div class="qualification-item">
+                        <div class="qualification-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <div>
+                            <h5>MRCP</h5>
+                            <p class="mb-0">Member of the Royal College of Physicians</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="card h-100">
+                        <div class="card-body p-4">
+                            <h4 class="card-title mb-4">Professional Affiliations</h4>
+                            <ul class="list-unstyled">
+                                <li class="mb-3">
+                                    <i class="fas fa-check text-primary me-2"></i> Indian Society of Medical & Paediatric Oncology
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-check text-primary me-2"></i> European Society for Medical Oncology
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-check text-primary me-2"></i> American Society of Clinical Oncology
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-check text-primary me-2"></i> Association of Physicians of India
+                                </li>
+                                <li class="mb-3">
+                                    <i class="fas fa-check text-primary me-2"></i> Indian Medical Association
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Expertise Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Areas of Expertise</h2>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="expertise-item">
+                        <i class="fas fa-pills expertise-icon"></i>
+                        <h4>Chemotherapy</h4>
+                        <p>Advanced chemotherapy protocols to treat different types of cancers with minimal side effects.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="expertise-item">
+                        <i class="fas fa-shield-alt expertise-icon"></i>
+                        <h4>Immunotherapy</h4>
+                        <p>Cutting-edge immunotherapy treatments that help the body's immune system fight cancer.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="expertise-item">
+                        <i class="fas fa-bullseye expertise-icon"></i>
+                        <h4>Targeted Therapy</h4>
+                        <p>Precision medicine approaches that target specific cancer cells without harming healthy cells.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="expertise-item">
+                        <i class="fas fa-user-cog expertise-icon"></i>
+                        <h4>Personalized Treatment</h4>
+                        <p>Tailored cancer treatment plans based on individual patient needs and genetic profiles.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="expertise-item">
+                        <i class="fas fa-search expertise-icon"></i>
+                        <h4>Cancer Screening</h4>
+                        <p>Comprehensive screening programs for early detection of various types of cancer.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="expertise-item">
+                        <i class="fas fa-hand-holding-heart expertise-icon"></i>
+                        <h4>Palliative Care</h4>
+                        <p>Supportive care focused on improving quality of life for patients and their families.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Professional Journey -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Professional Journey</h2>
+            <div class="timeline">
+                <div class="timeline-item left" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <h4>Medical Education</h4>
+                        <p class="text-muted">2000-2006</p>
+                        <p>Completed MBBS from prestigious medical institution, laying the foundation for medical career.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <h4>MD in General Medicine</h4>
+                        <p class="text-muted">2007-2010</p>
+                        <p>Specialized in General Medicine, developing comprehensive understanding of internal medicine.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <h4>DM in Medical Oncology</h4>
+                        <p class="text-muted">2011-2014</p>
+                        <p>Advanced specialization in Medical Oncology, focusing on cancer diagnosis and treatment.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <h4>MRCP Certification</h4>
+                        <p class="text-muted">2015</p>
+                        <p>Achieved MRCP certification, demonstrating excellence in medical practice and knowledge.</p>
+                    </div>
+                </div>
+                <div class="timeline-item left" data-aos="fade-right">
+                    <div class="timeline-content">
+                        <h4>Senior Oncologist</h4>
+                        <p class="text-muted">2015-2019</p>
+                        <p>Served as Senior Medical Oncologist at leading cancer hospital, treating complex cases.</p>
+                    </div>
+                </div>
+                <div class="timeline-item right" data-aos="fade-left">
+                    <div class="timeline-content">
+                        <h4>Sanjeevini Cancer Centre</h4>
+                        <p class="text-muted">2020-Present</p>
+                        <p>Founded Sanjeevini Cancer Centre to provide compassionate, personalized cancer care in Mangalore.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section" style="background-color: var(--primary); color: white;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8" data-aos="fade-right">
+                    <h2 class="mb-3">Ready to Take the Next Step?</h2>
+                    <p class="mb-0">Schedule a consultation with Dr. Rachan Shetty KS for personalized cancer care and treatment guidance.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end" data-aos="fade-left">
+                    <a href="contact.html#appointment" class="btn btn-light btn-lg">Book Consultation</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h4 class="mb-3"><i class="fas fa-hand-holding-heart me-2"></i>Sanjeevini Cancer Centre</h4>
+                    <p>Compassionate Cancer Care, Guided by Expertise. We believe in providing personalized, evidence-based, and compassionate cancer care.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="patient-care.html">Patient Care</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Our Services</h5>
+                        <ul>
+                            <li><a href="services.html">Cancer Screening</a></li>
+                            <li><a href="services.html">Chemotherapy</a></li>
+                            <li><a href="services.html">Immunotherapy</a></li>
+                            <li><a href="services.html">Targeted Therapy</a></li>
+                            <li><a href="services.html">Palliative Care</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <div class="footer-links">
+                        <h5>Contact Us</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Sanjeevini Cancer Centre, Mangalore</li>
+                            <li class="mb-2"><i class="fas fa-phone me-2"></i> (Insert phone number)</li>
+                            <li class="mb-2"><i class="fas fa-envelope me-2"></i> (Insert email)</li>
+                            <li class="mb-2"><i class="fas fa-globe me-2"></i> sanjeevinicancercentre.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Sanjeevini Cancer Centre. All rights reserved.</p>
+                <p class="small">Website Designed by: Space for Website</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').classList.add('scrolled');
+            } else {
+                document.querySelector('.navbar').classList.remove('scrolled');
+            }
+        });
+        
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            fadeInObserver.observe(element);
+        });
+        
+        // Simple animation for stats counter
+        const statsElements = document.querySelectorAll('.stats-number');
+        
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.textContent);
+                    let current = 0;
+                    const increment = target / 50;
+                    
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            entry.target.textContent = target + (entry.target.textContent.includes('+') ? '+' : '');
+                            clearInterval(timer);
+                        } else {
+                            entry.target.textContent = Math.floor(current) + (entry.target.textContent.includes('+') ? '+' : '');
+                        }
+                    }, 30);
+                    
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        statsElements.forEach(element => {
+            statsObserver.observe(element);
+        });
+    </script>
+</body>
+</html>

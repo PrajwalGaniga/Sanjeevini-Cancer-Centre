@@ -1,0 +1,846 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanjeevini Cancer Centre - Best Cancer Care in Mangalore</title>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Animate CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- AOS CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary: #007bff;
+            --primary-dark: #0056b3;
+            --secondary: #6c757d;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --accent: #17a2b8;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            overflow-x: hidden;
+            background-color: #fff;
+        }
+        
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .navbar {
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 15px 0;
+            transition: all 0.3s ease;
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 255, 255, 0.98);
+        }
+        
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.8rem;
+            color: var(--primary) !important;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--dark) !important;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            color: var(--primary) !important;
+        }
+        
+        .nav-link:after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover:after, .nav-link.active:after {
+            width: 100%;
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(0, 123, 255, 0.8), rgba(0, 91, 187, 0.8)), url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: white;
+            padding: 150px 0 100px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+        
+        .btn-primary {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            padding: 12px 30px;
+            font-weight: 500;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--primary-dark);
+            border-color: var(--primary-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary);
+            border-color: var(--primary);
+            padding: 12px 30px;
+            font-weight: 500;
+            border-radius: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary);
+            border-color: var(--primary);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background-color: var(--primary);
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            height: 100%;
+            overflow: hidden;
+        }
+        
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+        }
+        
+        .feature-box {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-box:hover {
+            background-color: var(--light);
+            transform: translateY(-5px);
+        }
+        
+        .doctor-card {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .doctor-card:hover {
+            background-color: var(--light);
+            transform: translateY(-5px);
+        }
+        
+        .doctor-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 20px;
+            border: 5px solid var(--light);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .testimonial-card {
+            padding: 30px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            margin: 15px;
+            position: relative;
+        }
+        
+        .testimonial-card:before {
+            content: '"';
+            font-size: 5rem;
+            color: var(--primary);
+            opacity: 0.2;
+            position: absolute;
+            top: 10px;
+            left: 20px;
+            font-family: Georgia, serif;
+        }
+        
+        .testimonial-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+        
+        .stats-box {
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            background-color: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+        
+        .stats-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .stats-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .appointment-form {
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-control {
+            padding: 12px 15px;
+            border-radius: 5px;
+            border: 1px solid #e1e1e1;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+        
+        .form-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+        }
+        
+        footer {
+            background-color: var(--dark);
+            color: white;
+            padding: 60px 0 20px;
+        }
+        
+        .footer-links h5 {
+            color: white;
+            margin-bottom: 20px;
+            position: relative;
+        }
+        
+        .footer-links h5:after {
+            content: '';
+            position: absolute;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary);
+            bottom: -10px;
+            left: 0;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #adb5bd;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            padding-left: 5px;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            margin-right: 10px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icons a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+            text-align: center;
+            color: #adb5bd;
+        }
+        
+        /* Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .section {
+                padding: 60px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-hand-holding-heart me-2"></i>Sanjeevini Cancer Centre
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link active" href="index.html">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                    <li class="nav-item"><a class="nav-link" href="patient-care.html">Patient Care</a></li>
+                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    <li class="nav-item ms-2">
+                        <a class="btn btn-primary btn-sm" href="contact.html#appointment">Book Appointment</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-10">
+                    <h1 class="animate__animated animate__fadeInDown">Compassionate Cancer Care, Guided by Expertise</h1>
+                    <p class="animate__animated animate__fadeIn animate__delay-1s">At Sanjeevini Cancer Centre, we believe in providing personalized, evidence-based, and compassionate cancer care. Led by Dr. Rachan Shetty KS, Medical Oncologist, our mission is to offer advanced treatments while supporting patients and their families every step of the way.</p>
+                    <div class="mt-4 animate__animated animate__fadeInUp animate__delay-2s">
+                        <a href="about.html" class="btn btn-light btn-lg me-3">Learn More</a>
+                        <a href="contact.html#appointment" class="btn btn-outline-light btn-lg">Book Appointment</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Why Choose Sanjeevini Cancer Centre?</h2>
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-box">
+                        <i class="fas fa-user-md card-icon"></i>
+                        <h4>Experienced Medical Oncologist</h4>
+                        <p>Led by Dr. Rachan Shetty KS, a dedicated Medical Oncologist with extensive training and experience.</p>
+                        <a href="about.html" class="btn btn-outline-primary btn-sm mt-2">Know More</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-box">
+                        <i class="fas fa-heart card-icon"></i>
+                        <h4>Patient-Centered Care</h4>
+                        <p>We focus on holistic care that addresses not just the disease but the person as a whole.</p>
+                        <a href="patient-care.html" class="btn btn-outline-primary btn-sm mt-2">Know More</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-box">
+                        <i class="fas fa-microscope card-icon"></i>
+                        <h4>Advanced Diagnostics & Treatment</h4>
+                        <p>State-of-the-art technology for accurate diagnosis and effective treatment plans.</p>
+                        <a href="services.html" class="btn btn-outline-primary btn-sm mt-2">Know More</a>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="feature-box">
+                        <i class="fas fa-hands-helping card-icon"></i>
+                        <h4>Supportive Environment</h4>
+                        <p>Compassionate care that supports patients and families through the cancer journey.</p>
+                        <a href="patient-care.html" class="btn btn-outline-primary btn-sm mt-2">Know More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6 mb-4" data-aos="fade-right">
+                    <h2 class="mb-4">About Dr. Rachan Shetty KS</h2>
+                    <p class="mb-4">Dr. Rachan Shetty KS is a dedicated Medical Oncologist committed to delivering world-class cancer care with compassion and precision. With extensive training and experience in diagnosing and treating various cancers, Dr. Shetty combines cutting-edge oncology practices with personalized treatment plans tailored to each patient's unique needs.</p>
+                    <p class="mb-4">His philosophy: "Every patient deserves not just treatment, but care that restores hope and dignity."</p>
+                    <div class="row mt-4">
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> MBBS, MD (Gen Med)</li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> DM (Medical Oncology)</li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> MRCP</li>
+                            </ul>
+                        </div>
+                        <div class="col-md-6">
+                            <ul class="list-unstyled">
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Chemotherapy</li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Immunotherapy</li>
+                                <li class="mb-2"><i class="fas fa-check text-primary me-2"></i> Targeted Therapy</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <a href="about.html" class="btn btn-primary mt-3">View Full Profile</a>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="doctor-card">
+                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Dr. Rachan Shetty KS" class="doctor-img">
+                        <h4>Dr. Rachan Shetty KS</h4>
+                        <p class="text-muted">Medical Oncologist</p>
+                        <p>Best Medical Oncologist in Mangalore with expertise in chemotherapy, immunotherapy, targeted therapy, and personalized cancer treatment plans.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Our Services</h2>
+            <div class="row">
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-search card-icon"></i>
+                            <h4 class="card-title">Cancer Screening & Prevention</h4>
+                            <p class="card-text">Early detection programs for breast cancer, cervical cancer, colon cancer, and more for better outcomes.</p>
+                            <a href="services.html" class="btn btn-outline-primary">More Services</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-pills card-icon"></i>
+                            <h4 class="card-title">Medical Oncology</h4>
+                            <p class="card-text">Chemotherapy, targeted therapy, and immunotherapy using the latest protocols and medications.</p>
+                            <a href="services.html" class="btn btn-outline-primary">More Services</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-user-cog card-icon"></i>
+                            <h4 class="card-title">Personalized Treatment Plans</h4>
+                            <p class="card-text">Tailored according to patient needs and cancer type for optimal results and quality of life.</p>
+                            <a href="services.html" class="btn btn-outline-primary">More Services</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-hand-holding-heart card-icon"></i>
+                            <h4 class="card-title">Supportive & Palliative Care</h4>
+                            <p class="card-text">Pain management and quality-of-life support for patients and families throughout the journey.</p>
+                            <a href="services.html" class="btn btn-outline-primary">More Services</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="500">
+                    <div class="card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-heartbeat card-icon"></i>
+                            <h4 class="card-title">Follow-up & Survivorship Programs</h4>
+                            <p class="card-text">Long-term care and recovery guidance to ensure continued health and wellbeing after treatment.</p>
+                            <a href="services.html" class="btn btn-outline-primary">More Services</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="600">
+                    <div class="card h-100">
+                        <div class="card-body text-center p-4">
+                            <i class="fas fa-comments card-icon"></i>
+                            <h4 class="card-title">Counseling & Emotional Support</h4>
+                            <p class="card-text">Professional counseling services for patients and families to cope with the emotional challenges.</p>
+                            <a href="services.html" class="btn btn-outline-primary">More Services</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="section" style="background: linear-gradient(rgba(0, 123, 255, 0.9), rgba(0, 91, 187, 0.9)); color: white;">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stats-box">
+                        <div class="stats-number">1000+</div>
+                        <p>Patients Treated</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stats-box">
+                        <div class="stats-number">15+</div>
+                        <p>Years of Experience</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stats-box">
+                        <div class="stats-number">98%</div>
+                        <p>Patient Satisfaction</p>
+                    </div>
+                </div>
+                <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stats-box">
+                        <div class="stats-number">24/7</div>
+                        <p>Support Available</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Preview Section -->
+    <section class="section">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Frequently Asked Questions</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="accordion" id="faqAccordion">
+                        <div class="accordion-item" data-aos="fade-up" data-aos-delay="100">
+                            <h2 class="accordion-header" id="headingOne">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    What are the early signs of cancer?
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Early signs vary depending on the type of cancer but may include unexplained weight loss, lumps, persistent cough, prolonged fever, fatigue, or abnormal bleeding. If you notice these symptoms, consult a cancer specialist in Mangalore immediately.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item" data-aos="fade-up" data-aos-delay="200">
+                            <h2 class="accordion-header" id="headingTwo">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    How is cancer diagnosed?
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    Diagnosis involves a combination of tests such as blood work, imaging (CT, MRI, PET scans), and biopsy. At Sanjeevini Cancer Centre, we provide access to advanced diagnostic facilities for accurate detection.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item" data-aos="fade-up" data-aos-delay="300">
+                            <h2 class="accordion-header" id="headingThree">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    What treatment options are available?
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                                <div class="accordion-body">
+                                    We offer chemotherapy, immunotherapy, targeted therapy, cancer screening, palliative care, and survivorship programs. Treatments are tailored to each patient's specific condition.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center mt-4" data-aos="fade-up" data-aos-delay="400">
+                        <a href="faq.html" class="btn btn-primary">View All FAQs</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Preview Section -->
+    <section class="section bg-light">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Latest from Our Blog</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Early Warning Signs of Cancer You Shouldn't Ignore</h5>
+                            <p class="card-text">Cancer is one of the leading health concerns worldwide, but the good news is that early detection can save lives. Learn about the symptoms you should never ignore.</p>
+                            <a href="blog.html" class="btn btn-outline-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Understanding Immunotherapy in Cancer Treatment</h5>
+                            <p class="card-text">Immunotherapy helps the body's immune system fight cancer more effectively. Discover how this cutting-edge treatment works and who can benefit from it.</p>
+                            <a href="blog.html" class="btn btn-outline-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Nutritional Guidance During Cancer Treatment</h5>
+                            <p class="card-text">Proper nutrition plays a crucial role in supporting your body through cancer treatment. Get expert tips on maintaining a healthy diet during this challenging time.</p>
+                            <a href="blog.html" class="btn btn-outline-primary">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt-3" data-aos="fade-up" data-aos-delay="400">
+                <a href="blog.html" class="btn btn-primary">View All Blog Posts</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section" style="background-color: var(--primary); color: white;">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-8" data-aos="fade-right">
+                    <h2 class="mb-3">Your Health is Our Priority</h2>
+                    <p class="mb-0">Reach out to us and take the first step toward expert cancer care. We're here to guide you with care, hope, and expertise.</p>
+                </div>
+                <div class="col-lg-4 text-lg-end" data-aos="fade-left">
+                    <a href="contact.html#appointment" class="btn btn-light btn-lg">Book an Appointment Today</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h4 class="mb-3"><i class="fas fa-hand-holding-heart me-2"></i>Sanjeevini Cancer Centre</h4>
+                    <p>Compassionate Cancer Care, Guided by Expertise. We believe in providing personalized, evidence-based, and compassionate cancer care.</p>
+                    <div class="social-icons mt-4">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Quick Links</h5>
+                        <ul>
+                            <li><a href="index.html">Home</a></li>
+                            <li><a href="about.html">About</a></li>
+                            <li><a href="services.html">Services</a></li>
+                            <li><a href="patient-care.html">Patient Care</a></li>
+                            <li><a href="contact.html">Contact</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <div class="footer-links">
+                        <h5>Our Services</h5>
+                        <ul>
+                            <li><a href="services.html">Cancer Screening</a></li>
+                            <li><a href="services.html">Chemotherapy</a></li>
+                            <li><a href="services.html">Immunotherapy</a></li>
+                            <li><a href="services.html">Targeted Therapy</a></li>
+                            <li><a href="services.html">Palliative Care</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 mb-4">
+                    <div class="footer-links">
+                        <h5>Contact Us</h5>
+                        <ul class="list-unstyled">
+                            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Sanjeevini Cancer Centre, Mangalore</li>
+                            <li class="mb-2"><i class="fas fa-phone me-2"></i> (Insert phone number)</li>
+                            <li class="mb-2"><i class="fas fa-envelope me-2"></i> (Insert email)</li>
+                            <li class="mb-2"><i class="fas fa-globe me-2"></i> sanjeevinicancercentre.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Sanjeevini Cancer Centre. All rights reserved.</p>
+                <p class="small">Website Designed by: Space for Website</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- AOS JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <!-- Custom JS -->
+    <script>
+        // Initialize AOS
+        AOS.init({
+            duration: 1000,
+            once: true,
+            offset: 100
+        });
+        
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').classList.add('scrolled');
+            } else {
+                document.querySelector('.navbar').classList.remove('scrolled');
+            }
+        });
+        
+        // Fade in animation on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            fadeInObserver.observe(element);
+        });
+        
+        // Simple animation for stats counter
+        const statsElements = document.querySelectorAll('.stats-number');
+        
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const target = parseInt(entry.target.textContent);
+                    let current = 0;
+                    const increment = target / 50;
+                    
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            entry.target.textContent = target + (entry.target.textContent.includes('+') ? '+' : '');
+                            clearInterval(timer);
+                        } else {
+                            entry.target.textContent = Math.floor(current) + (entry.target.textContent.includes('+') ? '+' : '');
+                        }
+                    }, 30);
+                    
+                    statsObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        statsElements.forEach(element => {
+            statsObserver.observe(element);
+        });
+    </script>
+</body>
+</html>
