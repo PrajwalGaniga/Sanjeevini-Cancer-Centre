@@ -21,10 +21,14 @@
         :root {
             --primary: #007bff;
             --primary-dark: #0056b3;
+            --primary-light: #4da8ff;
             --secondary: #6c757d;
             --light: #f8f9fa;
             --dark: #343a40;
             --accent: #17a2b8;
+            --gradient-1: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            --gradient-2: linear-gradient(135deg, #17a2b8 0%, #007bff 100%);
+            --gradient-3: linear-gradient(135deg, #6c757d 0%, #343a40 100%);
         }
         
         * {
@@ -47,6 +51,51 @@
             color: var(--dark);
         }
         
+        /* Page Loader */
+        #page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loader-content {
+            text-align: center;
+            color: white;
+        }
+        
+        .loader-logo {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        
+        .loader-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+        
         .navbar {
             background-color: rgba(255, 255, 255, 0.95);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
@@ -61,7 +110,7 @@
         
         .navbar-brand {
             font-weight: 700;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--primary) !important;
         }
         
@@ -142,30 +191,30 @@
         }
         
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             max-width: 800px;
             margin: 0 auto 30px;
         }
         
         .btn-primary {
-            background-color: var(--primary);
-            border-color: var(--primary);
+            background: var(--gradient-1);
+            border: none;
             padding: 12px 30px;
             font-weight: 500;
             border-radius: 30px;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
         }
         
         .btn-primary:hover {
-            background-color: var(--primary-dark);
-            border-color: var(--primary-dark);
+            background: var(--gradient-2);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
@@ -187,7 +236,7 @@
         }
         
         .section {
-            padding: 80px 0;
+            padding: 60px 0;
         }
         
         .section-title {
@@ -201,7 +250,7 @@
             position: absolute;
             width: 80px;
             height: 3px;
-            background-color: var(--primary);
+            background: var(--gradient-1);
             bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
@@ -209,11 +258,13 @@
         
         .card {
             border: none;
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
             height: 100%;
             overflow: hidden;
+            background: white;
+            border: 1px solid rgba(0, 123, 255, 0.1);
         }
         
         .card:hover {
@@ -222,33 +273,43 @@
         }
         
         .card-icon {
-            font-size: 3rem;
-            color: var(--primary);
+            font-size: 2.5rem;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 20px;
         }
         
         .feature-box {
             text-align: center;
             padding: 30px 20px;
-            border-radius: 10px;
+            border-radius: 15px;
             transition: all 0.3s ease;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 123, 255, 0.1);
         }
         
         .feature-box:hover {
-            background-color: var(--light);
+            background: var(--light);
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
         .doctor-card {
             text-align: center;
             padding: 30px 20px;
-            border-radius: 10px;
+            border-radius: 15px;
             transition: all 0.3s ease;
+            background: white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 123, 255, 0.1);
         }
         
         .doctor-card:hover {
-            background-color: var(--light);
+            background: var(--light);
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
         .doctor-img {
@@ -263,11 +324,12 @@
         
         .testimonial-card {
             padding: 30px;
-            border-radius: 10px;
+            border-radius: 15px;
             background-color: white;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             margin: 15px;
             position: relative;
+            border: 1px solid rgba(0, 123, 255, 0.1);
         }
         
         .testimonial-card:before {
@@ -292,10 +354,11 @@
         .stats-box {
             text-align: center;
             padding: 30px 20px;
-            border-radius: 10px;
+            border-radius: 15px;
             background-color: white;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
+            border: 1px solid rgba(0, 123, 255, 0.1);
         }
         
         .stats-box:hover {
@@ -304,15 +367,17 @@
         }
         
         .stats-number {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            color: var(--primary);
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
         }
         
         /* Fixed Stats Section Text Visibility */
         .stats-section {
-            background: linear-gradient(rgba(0, 123, 255, 0.9), rgba(0, 91, 187, 0.9));
+            background: var(--gradient-1);
             color: white;
         }
         
@@ -324,6 +389,7 @@
         
         .stats-section .stats-number {
             color: white;
+            -webkit-text-fill-color: white;
         }
         
         .stats-section .stats-box p {
@@ -335,8 +401,9 @@
         .appointment-form {
             background-color: white;
             padding: 40px;
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 123, 255, 0.1);
         }
         
         .form-control {
@@ -353,7 +420,7 @@
         }
         
         footer {
-            background-color: var(--dark);
+            background: var(--gradient-3);
             color: white;
             padding: 60px 0 20px;
         }
@@ -369,7 +436,7 @@
             position: absolute;
             width: 40px;
             height: 2px;
-            background-color: var(--primary);
+            background: var(--gradient-1);
             bottom: -10px;
             left: 0;
         }
@@ -408,7 +475,7 @@
         }
         
         .social-icons a:hover {
-            background-color: var(--primary);
+            background: var(--gradient-1);
             transform: translateY(-3px);
         }
         
@@ -435,7 +502,7 @@
         /* Responsive */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2.5rem;
+                font-size: 2rem;
             }
             
             .hero p {
@@ -443,7 +510,11 @@
             }
             
             .section {
-                padding: 60px 0;
+                padding: 40px 0;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
             }
             
             .stats-box {
@@ -455,7 +526,43 @@
             }
             
             .navbar-brand {
-                font-size: 1.5rem;
+                font-size: 1.3rem;
+            }
+            
+            .card-icon {
+                font-size: 2rem;
+            }
+            
+            .stats-number {
+                font-size: 2rem;
+            }
+            
+            .hero {
+                padding: 120px 0 80px;
+            }
+            
+            .btn, .btn-lg {
+                padding: 10px 20px;
+                font-size: 0.9rem;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .doctor-img {
+                width: 120px;
+                height: 120px;
+            }
+            
+            .appointment-form {
+                padding: 20px;
             }
         }
         
@@ -467,6 +574,17 @@
     </style>
 </head>
 <body>
+    <!-- Page Loader -->
+    <div id="page-loader">
+        <div class="loader-content">
+            <div class="loader-logo">
+                <i class="fas fa-hand-holding-heart me-2"></i>Sanjeevini Cancer Centre
+            </div>
+            <div class="loader-spinner"></div>
+            <div class="loader-text">Loading Compassionate Care...</div>
+        </div>
+    </div>
+
     <!-- Header & Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
@@ -638,7 +756,7 @@
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
                     <div class="doctor-card">
-                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Dr. Rachan Shetty KS" class="doctor-img">
+                        <img src="Dr Rachan Shetty KS.jpg" alt="Dr. Rachan Shetty KS" class="doctor-img">
                         <h4>Dr. Rachan Shetty KS</h4>
                         <p class="text-muted" data-lang="en">Medical Oncologist</p>
                         <p class="text-muted d-none" data-lang="kn">ವೈದ್ಯಕೀಯ ಒಂಕೋಲಜಿಸ್ಟ್</p>
@@ -885,7 +1003,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="section" style="background-color: var(--primary); color: white;">
+    <section class="section" style="background: var(--gradient-1); color: white;">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8" data-aos="fade-right">
@@ -971,6 +1089,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <!-- Custom JS -->
     <script>
+        // Page loader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loader = document.getElementById('page-loader');
+                loader.style.opacity = '0';
+                setTimeout(function() {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 3000); // 3 second loader
+        });
+        
         // Initialize AOS
         AOS.init({
             duration: 1000,
