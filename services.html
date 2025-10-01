@@ -21,10 +21,14 @@
         :root {
             --primary: #007bff;
             --primary-dark: #0056b3;
+            --primary-light: #4da8ff;
             --secondary: #6c757d;
             --light: #f8f9fa;
             --dark: #343a40;
             --accent: #17a2b8;
+            --gradient-1: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            --gradient-2: linear-gradient(135deg, #17a2b8 0%, #007bff 100%);
+            --gradient-3: linear-gradient(135deg, #6c757d 0%, #343a40 100%);
         }
         
         * {
@@ -33,11 +37,14 @@
             box-sizing: border-box;
         }
         
+        html, body {
+            overflow-x: hidden;
+        }
+        
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: #333;
-            overflow-x: hidden;
             background-color: #fff;
         }
         
@@ -45,6 +52,49 @@
             font-family: 'Playfair Display', serif;
             font-weight: 600;
             color: var(--dark);
+        }
+        
+        /* Page Loader */
+        #page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loader-content {
+            text-align: center;
+            color: white;
+        }
+        
+        .loader-logo {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+        
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto 20px;
+        }
+        
+        @keyframes spin { to { transform: rotate(360deg); } }
+        
+        .loader-text {
+            font-size: 1.2rem;
+            font-weight: 500;
         }
         
         .navbar {
@@ -61,7 +111,7 @@
         
         .navbar-brand {
             font-weight: 700;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--primary) !important;
         }
         
@@ -109,54 +159,28 @@
             color: white;
         }
         
-        /* Mobile Navbar Glass Effect */
-        @media (max-width: 991.98px) {
-            .navbar-collapse {
-                position: fixed;
-                top: 0;
-                right: 0;
-                width: 75%;
-                height: 100vh;
-                padding: 2rem;
-                background: rgba(255, 255, 255, 0.85);
-                backdrop-filter: blur(10px);
-                -webkit-backdrop-filter: blur(10px);
-                z-index: 1050;
-                transform: translateX(100%);
-                transition: transform 0.3s ease;
-                overflow-y: auto;
-            }
-            
-            .navbar-collapse.show {
-                transform: translateX(0);
-            }
-            
-            .navbar-toggler {
-                z-index: 1060;
-            }
-            
-            .navbar-nav {
-                margin-top: 2rem;
-            }
-            
-            .nav-item {
-                margin-bottom: 1rem;
-            }
-            
-            .nav-link {
-                padding: 10px 15px;
-                border-radius: 5px;
-                margin: 5px 0;
-            }
-            
-            .nav-link:hover {
-                background-color: rgba(0, 123, 255, 0.1);
-            }
-            
-            .language-btn-container {
-                margin-top: 1rem;
-                padding: 0 15px;
-            }
+        /* Improved Offcanvas with Glass Effect */
+        .offcanvas {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-left: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .offcanvas-header {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        }
+        
+        .offcanvas-body .nav-link {
+            padding: 12px 15px;
+            margin: 5px 0;
+            border-radius: 5px;
+            display: block;
+            width: 100%;
+        }
+        
+        .offcanvas-body .nav-link:hover {
+            background-color: rgba(0, 123, 255, 0.1);
         }
         
         .hero {
@@ -171,53 +195,42 @@
         }
         
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
         
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             max-width: 800px;
             margin: 0 auto 30px;
         }
         
         .btn-primary {
-            background-color: var(--primary);
-            border-color: var(--primary);
+            background: var(--gradient-1);
+            border: none;
             padding: 12px 30px;
             font-weight: 500;
             border-radius: 30px;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
         }
         
         .btn-primary:hover {
-            background-color: var(--primary-dark);
-            border-color: var(--primary-dark);
+            background: var(--gradient-2);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
-        .btn-outline-primary {
-            color: var(--primary);
-            border-color: var(--primary);
+        .btn-outline-light {
             padding: 12px 30px;
             font-weight: 500;
             border-radius: 30px;
             transition: all 0.3s ease;
         }
         
-        .btn-outline-primary:hover {
-            background-color: var(--primary);
-            border-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .section {
-            padding: 80px 0;
-        }
+        .section { padding: 60px 0; }
         
         .section-title {
             text-align: center;
@@ -230,7 +243,7 @@
             position: absolute;
             width: 80px;
             height: 3px;
-            background-color: var(--primary);
+            background: var(--gradient-1);
             bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
@@ -238,12 +251,14 @@
         
         .service-card {
             border: none;
-            border-radius: 10px;
+            border-radius: 15px;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
             height: 100%;
             overflow: hidden;
             position: relative;
+            background: white;
+            border: 1px solid rgba(0, 123, 255, 0.1);
         }
         
         .service-card:hover {
@@ -257,7 +272,7 @@
         }
         
         .service-icon {
-            font-size: 3.5rem;
+            font-size: 3rem;
             color: var(--primary);
             margin-bottom: 20px;
             transition: all 0.3s ease;
@@ -299,24 +314,26 @@
         .process-step {
             text-align: center;
             padding: 30px 20px;
-            border-radius: 10px;
+            border-radius: 15px;
             transition: all 0.3s ease;
             background-color: white;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             position: relative;
             height: 100%;
+            border: 1px solid rgba(0, 123, 255, 0.1);
         }
         
         .process-step:hover {
             background-color: var(--light);
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
         .step-number {
             display: inline-block;
             width: 50px;
             height: 50px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: var(--gradient-1);
             color: white;
             border-radius: 50%;
             line-height: 50px;
@@ -328,10 +345,11 @@
         .stats-box {
             text-align: center;
             padding: 30px 20px;
-            border-radius: 10px;
+            border-radius: 15px;
             background-color: white;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
+            border: 1px solid rgba(0, 123, 255, 0.1);
         }
         
         .stats-box:hover {
@@ -340,17 +358,42 @@
         }
         
         .stats-number {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 700;
-            color: var(--primary);
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
+        }
+        
+        .stats-section {
+            background: var(--gradient-1);
+            color: white;
+        }
+        
+        .stats-section .stats-box {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .stats-section .stats-number {
+            color: white;
+            -webkit-text-fill-color: white;
+        }
+        
+        .stats-section .stats-box p {
+            color: white !important;
+            font-weight: 500;
+            margin-bottom: 0;
         }
         
         .comparison-table {
             background-color: white;
-            border-radius: 10px;
+            border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            border: 1px solid rgba(0, 123, 255, 0.1);
         }
         
         .table th {
@@ -388,7 +431,7 @@
         }
         
         footer {
-            background-color: var(--dark);
+            background: var(--gradient-3);
             color: white;
             padding: 60px 0 20px;
         }
@@ -404,7 +447,7 @@
             position: absolute;
             width: 40px;
             height: 2px;
-            background-color: var(--primary);
+            background: var(--gradient-1);
             bottom: -10px;
             left: 0;
         }
@@ -443,7 +486,7 @@
         }
         
         .social-icons a:hover {
-            background-color: var(--primary);
+            background: var(--gradient-1);
             transform: translateY(-3px);
         }
         
@@ -455,30 +498,36 @@
             color: #adb5bd;
         }
         
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
+        /* Improved Responsive Design - Matching index.html */
+        @media (max-width: 991.98px) {
+            .offcanvas-body .nav-link {
+                padding: 12px 15px;
+                margin: 5px 0;
+                border-radius: 5px;
+            }
+            
+            .offcanvas-body .nav-link:hover {
+                background-color: var(--light);
+            }
         }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Responsive */
+
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .section { padding: 40px 0; }
+            .section-title { font-size: 1.8rem; }
+            .service-icon { font-size: 2.5rem; }
+            .service-number { font-size: 3rem; }
+            .navbar-brand { font-size: 1.3rem; }
+            .stats-number { font-size: 2rem; }
+            
+            .hero {
+                padding: 120px 0 80px;
             }
             
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .section {
-                padding: 60px 0;
+            .btn-primary, .btn-outline-light {
+                padding: 10px 20px;
+                font-size: 0.9rem;
             }
             
             .service-feature {
@@ -491,33 +540,64 @@
                 margin-bottom: 15px;
             }
         }
+        
+        @media (max-width: 576px) {
+            .hero h1 { font-size: 1.8rem; }
+            .section-title { font-size: 1.6rem; }
+            
+            .btn-primary, .btn-outline-light {
+                display: block;
+                width: 100%;
+                margin-bottom: 10px;
+            }
+            
+            .hero .btn {
+                margin-right: 0 !important;
+            }
+            
+            .footer-links {
+                margin-bottom: 30px;
+            }
+            
+            .service-number {
+                font-size: 2.5rem;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Page Loader -->
+    
+
     <!-- Header & Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <i class="fas fa-hand-holding-heart me-2"></i>Sanjeevini Cancer Centre
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="patient-care.html">Patient Care</a></li>
-                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                   
-                </ul>
-                <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center mt-3 mt-lg-0 ms-lg-3 language-btn-container">
-                    <button class="language-btn mb-3 mb-lg-0 me-lg-3" id="languageToggle">
-                        <i class="fas fa-language me-1"></i> ಕನ್ನಡ
-                    </button>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Sanjeevini</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="services.html">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="patient-care.html">Patient Care</a></li>
+                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                    <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center mt-3 mt-lg-0 ms-lg-3">
+                        <button class="language-btn mb-3 mb-lg-0 me-lg-3" id="languageToggle">
+                            <i class="fas fa-language me-1"></i> ಕನ್ನಡ
+                        </button>
+                    </div>
                 </div>
             </div>
         </div>
@@ -818,7 +898,7 @@
     </section>
 
     <!-- Stats Section -->
-    <section class="section" style="background: linear-gradient(rgba(0, 123, 255, 0.9), rgba(0, 91, 187, 0.9)); color: white;">
+    <section class="section stats-section">
         <div class="container">
             <div class="row text-center">
                 <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="100">
@@ -920,7 +1000,7 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="section" style="background-color: var(--primary); color: white;">
+    <section class="section" style="background: var(--gradient-1); color: white;">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8" data-aos="fade-right">
@@ -929,7 +1009,7 @@
                     <p class="mb-0" data-lang="en">Take the first step toward comprehensive cancer care. Our team is ready to provide the expert treatment and compassionate support you deserve.</p>
                     <p class="mb-0 d-none" data-lang="kn">ಸಮಗ್ರ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣೆಯ ಕಡೆಗೆ ಮೊದಲ ಹೆಜ್ಜೆ ಇಡಿ. ನಿಮಗೆ ಅರ್ಹವಾದ ತಜ್ಞ ಚಿಕಿತ್ಸೆ ಮತ್ತು ಕರುಣಾಮಯಿ ಬೆಂಬಲವನ್ನು ಒದಗಿಸಲು ನಮ್ಮ ತಂಡವು ಸಿದ್ಧವಾಗಿದೆ.</p>
                 </div>
-                <div class="col-lg-4 text-lg-end" data-aos="fade-left">
+                <div class="col-lg-4 text-lg-end mt-3 mt-lg-0" data-aos="fade-left">
                     <a href="contact.html#appointment" class="btn btn-light btn-lg" data-lang="en">Book Appointment Today</a>
                     <a href="contact.html#appointment" class="btn btn-light btn-lg d-none" data-lang="kn">ಇಂದೇ ನೇಮಕಾತಿ ಬುಕ್ ಮಾಡಿ</a>
                 </div>
@@ -1004,6 +1084,9 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <!-- Custom JS -->
     <script>
+        // Page loader
+        
+        
         // Initialize AOS
         AOS.init({
             duration: 1000,
@@ -1018,21 +1101,6 @@
             } else {
                 document.querySelector('.navbar').classList.remove('scrolled');
             }
-        });
-        
-        // Fade in animation on scroll
-        const fadeElements = document.querySelectorAll('.fade-in');
-        
-        const fadeInObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.1 });
-        
-        fadeElements.forEach(element => {
-            fadeInObserver.observe(element);
         });
         
         // Language switching functionality
@@ -1065,27 +1133,32 @@
             switchLanguage(currentLanguage === 'en' ? 'kn' : 'en');
         });
         
-        // Simple animation for stats counter
+        // Stats counter animation
         const statsElements = document.querySelectorAll('.stats-number');
         
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const target = parseInt(entry.target.textContent);
+                    const el = entry.target;
+                    const targetText = el.textContent;
+                    const target = parseInt(targetText.replace(/\D/g, ''));
+                    const suffix = targetText.replace(/\d/g, '');
                     let current = 0;
-                    const increment = target / 50;
                     
-                    const timer = setInterval(() => {
+                    const updateCount = () => {
+                        const increment = Math.ceil(target / 100);
                         current += increment;
-                        if (current >= target) {
-                            entry.target.textContent = target + (entry.target.textContent.includes('+') ? '+' : '');
-                            clearInterval(timer);
+                        
+                        if (current < target) {
+                            el.textContent = current + suffix;
+                            requestAnimationFrame(updateCount);
                         } else {
-                            entry.target.textContent = Math.floor(current) + (entry.target.textContent.includes('+') ? '+' : '');
+                            el.textContent = target + suffix;
                         }
-                    }, 30);
+                    };
                     
-                    statsObserver.unobserve(entry.target);
+                    requestAnimationFrame(updateCount);
+                    statsObserver.unobserve(el);
                 }
             });
         }, { threshold: 0.5 });

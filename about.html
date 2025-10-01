@@ -503,16 +503,7 @@
     </style>
 </head>
 <body>
-    <div id="page-loader">
-        <div class="loader-content">
-            <div class="loader-logo">
-                <i class="fas fa-hand-holding-heart me-2"></i>Sanjeevini
-            </div>
-            <div class="loader-spinner"></div>
-            <div class="loader-text">Loading Compassionate Care...</div>
-        </div>
-    </div>
-
+    
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
@@ -831,15 +822,7 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
         // Page loader
-        window.addEventListener('load', function() {
-            setTimeout(function() {
-                const loader = document.getElementById('page-loader');
-                loader.style.opacity = '0';
-                setTimeout(function() {
-                    loader.style.display = 'none';
-                }, 500);
-            }, 1500); // Restored loader time to match index.html
-        });
+    
         
         // Initialize AOS
         AOS.init({
