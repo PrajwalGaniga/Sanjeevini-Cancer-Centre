@@ -92,6 +92,73 @@
             width: 100%;
         }
         
+        /* Language Switcher */
+        .language-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .language-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Mobile Navbar Glass Effect */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 75%;
+                height: 100vh;
+                padding: 2rem;
+                background: rgba(255, 255, 255, 0.85);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                z-index: 1050;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                overflow-y: auto;
+            }
+            
+            .navbar-collapse.show {
+                transform: translateX(0);
+            }
+            
+            .navbar-toggler {
+                z-index: 1060;
+            }
+            
+            .navbar-nav {
+                margin-top: 2rem;
+            }
+            
+            .nav-item {
+                margin-bottom: 1rem;
+            }
+            
+            .nav-link {
+                padding: 10px 15px;
+                border-radius: 5px;
+                margin: 5px 0;
+            }
+            
+            .nav-link:hover {
+                background-color: rgba(0, 123, 255, 0.1);
+            }
+            
+            .language-btn-container {
+                margin-top: 1rem;
+                padding: 0 15px;
+            }
+        }
+        
         .hero {
             background: linear-gradient(rgba(0, 123, 255, 0.8), rgba(0, 91, 187, 0.8)), url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
             background-size: cover;
@@ -391,6 +458,16 @@
             .section {
                 padding: 60px 0;
             }
+            
+            .support-feature {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .feature-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
         }
     </style>
 </head>
@@ -413,10 +490,13 @@
                     <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    <li class="nav-item ms-2">
-                        <a class="btn btn-primary btn-sm" href="contact.html#appointment">Book Appointment</a>
-                    </li>
+                    
                 </ul>
+                <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center mt-3 mt-lg-0 ms-lg-3 language-btn-container">
+                    <button class="language-btn mb-3 mb-lg-0 me-lg-3" id="languageToggle">
+                        <i class="fas fa-language me-1"></i> ಕನ್ನಡ
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
@@ -426,11 +506,15 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
-                    <h1 class="animate__animated animate__fadeInDown">Patient Care & Support</h1>
-                    <p class="animate__animated animate__fadeIn animate__delay-1s">Healing Body, Mind, and Spirit Through Comprehensive Support</p>
+                    <h1 class="animate__animated animate__fadeInDown" data-lang="en">Patient Care & Support</h1>
+                    <h1 class="animate__animated animate__fadeInDown d-none" data-lang="kn">ರೋಗಿ ಸಂರಕ್ಷಣೆ ಮತ್ತು ಬೆಂಬಲ</h1>
+                    <p class="animate__animated animate__fadeIn animate__delay-1s" data-lang="en">Healing Body, Mind, and Spirit Through Comprehensive Support</p>
+                    <p class="animate__animated animate__fadeIn animate__delay-1s d-none" data-lang="kn">ಸಮಗ್ರ ಬೆಂಬಲದ ಮೂಲಕ ದೇಹ, ಮನಸ್ಸು ಮತ್ತು ಆತ್ಮವನ್ನು ಗುಣಪಡಿಸುವುದು</p>
                     <div class="mt-4 animate__animated animate__fadeInUp animate__delay-2s">
-                        <a href="#support-services" class="btn btn-light btn-lg me-3">Our Support Services</a>
-                        <a href="contact.html#appointment" class="btn btn-outline-light btn-lg">Get Support</a>
+                        <a href="#support-services" class="btn btn-light btn-lg me-3" data-lang="en">Our Support Services</a>
+                        <a href="#support-services" class="btn btn-light btn-lg me-3 d-none" data-lang="kn">ನಮ್ಮ ಬೆಂಬಲ ಸೇವೆಗಳು</a>
+                        <a href="contact.html#appointment" class="btn btn-outline-light btn-lg" data-lang="en">Get Support</a>
+                        <a href="contact.html#appointment" class="btn btn-outline-light btn-lg d-none" data-lang="kn">ಬೆಂಬಲ ಪಡೆಯಿರಿ</a>
                     </div>
                 </div>
             </div>
@@ -443,9 +527,12 @@
             <div class="holistic-approach" data-aos="fade-up">
                 <div class="row">
                     <div class="col-lg-8 mx-auto text-center">
-                        <h2 class="mb-4">Healing Body, Mind, and Spirit</h2>
-                        <p class="mb-4">At Sanjeevini Cancer Centre, we understand that cancer affects more than just the body — it impacts emotions, families, and futures. That's why we emphasize holistic care.</p>
-                        <p class="mb-0">We are here to walk with you through every stage of your treatment journey.</p>
+                        <h2 class="mb-4" data-lang="en">Healing Body, Mind, and Spirit</h2>
+                        <h2 class="mb-4 d-none" data-lang="kn">ದೇಹ, ಮನಸ್ಸು ಮತ್ತು ಆತ್ಮವನ್ನು ಗುಣಪಡಿಸುವುದು</h2>
+                        <p class="mb-4" data-lang="en">At Sanjeevini Cancer Centre, we understand that cancer affects more than just the body — it impacts emotions, families, and futures. That's why we emphasize holistic care.</p>
+                        <p class="mb-4 d-none" data-lang="kn">ಸಂಜೀವಿನಿ ಕ್ಯಾನ್ಸರ್ ಸೆಂಟರ್ನಲ್ಲಿ, ಕ್ಯಾನ್ಸರ್ ದೇಹವನ್ನು ಮಾತ್ರವಲ್ಲದೆ ಭಾವನೆಗಳು, ಕುಟುಂಬಗಳು ಮತ್ತು ಭವಿಷ್ಯಗಳ ಮೇಲೆ ಪರಿಣಾಮ ಬೀರುತ್ತದೆ ಎಂದು ನಾವು ಅರ್ಥಮಾಡಿಕೊಂಡಿದ್ದೇವೆ. ಅದಕ್ಕಾಗಿಯೇ ನಾವು ಸಮಗ್ರ ಸಂರಕ್ಷಣೆಯನ್ನು ಒತ್ತಿಹೇಳುತ್ತೇವೆ.</p>
+                        <p class="mb-0" data-lang="en">We are here to walk with you through every stage of your treatment journey.</p>
+                        <p class="mb-0 d-none" data-lang="kn">ನಿಮ್ಮ ಚಿಕಿತ್ಸಾ ಪ್ರಯಾಣದ ಪ್ರತಿ ಹಂತದಲ್ಲೂ ನಿಮ್ಮೊಂದಿಗೆ ನಡೆಯಲು ನಾವು ಇಲ್ಲಿದ್ದೇವೆ.</p>
                     </div>
                 </div>
             </div>
@@ -455,15 +542,18 @@
     <!-- Support Services Section -->
     <section id="support-services" class="section bg-light">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Our Support Services</h2>
+            <h2 class="section-title" data-aos="fade-up" data-lang="en">Our Support Services</h2>
+            <h2 class="section-title d-none" data-aos="fade-up" data-lang="kn">ನಮ್ಮ ಬೆಂಬಲ ಸೇವೆಗಳು</h2>
             
             <div class="row">
                 <div class="col-lg-6 mb-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="support-card">
                         <div class="card-body text-center p-4">
                             <i class="fas fa-comments support-icon"></i>
-                            <h4 class="card-title">Emotional Counseling & Psychological Support</h4>
-                            <p class="card-text">Professional counseling services to help patients and families cope with the emotional challenges of cancer diagnosis and treatment.</p>
+                            <h4 class="card-title" data-lang="en">Emotional Counseling & Psychological Support</h4>
+                            <h4 class="card-title d-none" data-lang="kn">ಭಾವನಾತ್ಮಕ ಸಲಹೆ ಮತ್ತು ಮನೋವೈಜ್ಞಾನಿಕ ಬೆಂಬಲ</h4>
+                            <p class="card-text" data-lang="en">Professional counseling services to help patients and families cope with the emotional challenges of cancer diagnosis and treatment.</p>
+                            <p class="card-text d-none" data-lang="kn">ಕ್ಯಾನ್ಸರ್ ರೋಗನಿರ್ಣಯ ಮತ್ತು ಚಿಕಿತ್ಸೆಯ ಭಾವನಾತ್ಮಕ ಸವಾಲುಗಳನ್ನು ನಿಭಾಯಿಸಲು ರೋಗಿಗಳು ಮತ್ತು ಕುಟುಂಬಗಳಿಗೆ ಸಹಾಯ ಮಾಡಲು ವೃತ್ತಿಪರ ಸಲಹಾ ಸೇವೆಗಳು.</p>
                         </div>
                     </div>
                 </div>
@@ -472,8 +562,10 @@
                     <div class="support-card">
                         <div class="card-body text-center p-4">
                             <i class="fas fa-apple-alt support-icon"></i>
-                            <h4 class="card-title">Nutritional Guidance for Cancer Patients</h4>
-                            <p class="card-text">Expert dietary advice and nutritional support tailored to help patients maintain strength and manage treatment side effects.</p>
+                            <h4 class="card-title" data-lang="en">Nutritional Guidance for Cancer Patients</h4>
+                            <h4 class="card-title d-none" data-lang="kn">ಕ್ಯಾನ್ಸರ್ ರೋಗಿಗಳಿಗೆ ಪೋಷಕಾಂಶ ಮಾರ್ಗದರ್ಶನ</h4>
+                            <p class="card-text" data-lang="en">Expert dietary advice and nutritional support tailored to help patients maintain strength and manage treatment side effects.</p>
+                            <p class="card-text d-none" data-lang="kn">ರೋಗಿಗಳು ಶಕ್ತಿಯನ್ನು ಕಾಪಾಡಿಕೊಳ್ಳಲು ಮತ್ತು ಚಿಕಿತ್ಸೆಯ ಅಡ್ಡಪರಿಣಾಮಗಳನ್ನು ನಿರ್ವಹಿಸಲು ಸಹಾಯ ಮಾಡಲು ರೂಪಿಸಲಾದ ತಜ್ಞರ ಆಹಾರ ಸಲಹೆ ಮತ್ತು ಪೋಷಕಾಂಶ ಬೆಂಬಲ.</p>
                         </div>
                     </div>
                 </div>
@@ -482,8 +574,10 @@
                     <div class="support-card">
                         <div class="card-body text-center p-4">
                             <i class="fas fa-users support-icon"></i>
-                            <h4 class="card-title">Family Education & Caregiver Support</h4>
-                            <p class="card-text">Comprehensive education and support services for family members and caregivers to help them provide the best possible care.</p>
+                            <h4 class="card-title" data-lang="en">Family Education & Caregiver Support</h4>
+                            <h4 class="card-title d-none" data-lang="kn">ಕುಟುಂಬ ಶಿಕ್ಷಣ ಮತ್ತು ಕೇಯರ್ ಗಿವರ್ ಬೆಂಬಲ</h4>
+                            <p class="card-text" data-lang="en">Comprehensive education and support services for family members and caregivers to help them provide the best possible care.</p>
+                            <p class="card-text d-none" data-lang="kn">ಅತ್ಯುತ್ತಮ ಸಂರಕ್ಷಣೆಯನ್ನು ಒದಗಿಸಲು ಕುಟುಂಬದ ಸದಸ್ಯರು ಮತ್ತು ಕೇಯರ್ ಗಿವರ್ಗಳಿಗೆ ಸಮಗ್ರ ಶಿಕ್ಷಣ ಮತ್ತು ಬೆಂಬಲ ಸೇವೆಗಳು.</p>
                         </div>
                     </div>
                 </div>
@@ -492,8 +586,10 @@
                     <div class="support-card">
                         <div class="card-body text-center p-4">
                             <i class="fas fa-heart support-icon"></i>
-                            <h4 class="card-title">Survivorship Care Plans</h4>
-                            <p class="card-text">Long-term care plans and guidance for cancer survivors to ensure continued health and wellbeing after treatment completion.</p>
+                            <h4 class="card-title" data-lang="en">Survivorship Care Plans</h4>
+                            <h4 class="card-title d-none" data-lang="kn">ಉಳಿವು ಸಂರಕ್ಷಣಾ ಯೋಜನೆಗಳು</h4>
+                            <p class="card-text" data-lang="en">Long-term care plans and guidance for cancer survivors to ensure continued health and wellbeing after treatment completion.</p>
+                            <p class="card-text d-none" data-lang="kn">ಚಿಕಿತ್ಸೆ ಪೂರ್ಣಗೊಂಡ ನಂತರ ನಿರಂತರ ಆರೋಗ್ಯ ಮತ್ತು ಯೋಗಕ್ಷೇಮವನ್ನು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಲು ಕ್ಯಾನ್ಸರ್ ಉಳಿದವರಿಗೆ ದೀರ್ಘಕಾಲಿಕ ಸಂರಕ್ಷಣಾ ಯೋಜನೆಗಳು ಮತ್ತು ಮಾರ್ಗದರ್ಶನ.</p>
                         </div>
                     </div>
                 </div>
@@ -504,7 +600,8 @@
     <!-- Detailed Support Features -->
     <section class="section">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Comprehensive Support Features</h2>
+            <h2 class="section-title" data-aos="fade-up" data-lang="en">Comprehensive Support Features</h2>
+            <h2 class="section-title d-none" data-aos="fade-up" data-lang="kn">ಸಮಗ್ರ ಬೆಂಬಲ ವೈಶಿಷ್ಟ್ಯಗಳು</h2>
             
             <div class="row">
                 <div class="col-lg-6 mb-4" data-aos="fade-right">
@@ -513,8 +610,10 @@
                             <i class="fas fa-brain"></i>
                         </div>
                         <div>
-                            <h4>Emotional & Psychological Support</h4>
-                            <p class="mb-0">Counseling and emotional support to help patients and families navigate the psychological challenges of cancer treatment.</p>
+                            <h4 data-lang="en">Emotional & Psychological Support</h4>
+                            <h4 class="d-none" data-lang="kn">ಭಾವನಾತ್ಮಕ ಮತ್ತು ಮನೋವೈಜ್ಞಾನಿಕ ಬೆಂಬಲ</h4>
+                            <p class="mb-0" data-lang="en">Counseling and emotional support to help patients and families navigate the psychological challenges of cancer treatment.</p>
+                            <p class="mb-0 d-none" data-lang="kn">ಕ್ಯಾನ್ಸರ್ ಚಿಕಿತ್ಸೆಯ ಮನೋವೈಜ್ಞಾನಿಕ ಸವಾಲುಗಳನ್ನು ನ್ಯಾವಿಗೇಟ್ ಮಾಡಲು ರೋಗಿಗಳು ಮತ್ತು ಕುಟುಂಬಗಳಿಗೆ ಸಹಾಯ ಮಾಡಲು ಸಲಹೆ ಮತ್ತು ಭಾವನಾತ್ಮಕ ಬೆಂಬಲ.</p>
                         </div>
                     </div>
                 </div>
@@ -524,8 +623,10 @@
                             <i class="fas fa-utensils"></i>
                         </div>
                         <div>
-                            <h4>Nutritional Guidance</h4>
-                            <p class="mb-0">Specialized nutritional guidance for cancer patients to support treatment and recovery.</p>
+                            <h4 data-lang="en">Nutritional Guidance</h4>
+                            <h4 class="d-none" data-lang="kn">ಪೋಷಕಾಂಶ ಮಾರ್ಗದರ್ಶನ</h4>
+                            <p class="mb-0" data-lang="en">Specialized nutritional guidance for cancer patients to support treatment and recovery.</p>
+                            <p class="mb-0 d-none" data-lang="kn">ಚಿಕಿತ್ಸೆ ಮತ್ತು ಮರುಪಡೆಯನ್ನು ಬೆಂಬಲಿಸಲು ಕ್ಯಾನ್ಸರ್ ರೋಗಿಗಳಿಗೆ ವಿಶೇಷ ಪೋಷಕಾಂಶ ಮಾರ್ಗದರ್ಶನ.</p>
                         </div>
                     </div>
                 </div>
@@ -535,8 +636,10 @@
                             <i class="fas fa-graduation-cap"></i>
                         </div>
                         <div>
-                            <h4>Patient Education Programs</h4>
-                            <p class="mb-0">Educational programs to help patients understand their condition and treatment options.</p>
+                            <h4 data-lang="en">Patient Education Programs</h4>
+                            <h4 class="d-none" data-lang="kn">ರೋಗಿ ಶಿಕ್ಷಣ ಕಾರ್ಯಕ್ರಮಗಳು</h4>
+                            <p class="mb-0" data-lang="en">Educational programs to help patients understand their condition and treatment options.</p>
+                            <p class="mb-0 d-none" data-lang="kn">ರೋಗಿಗಳು ತಮ್ಮ ಸ್ಥಿತಿ ಮತ್ತು ಚಿಕಿತ್ಸಾ ಆಯ್ಕೆಗಳನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ಸಹಾಯ ಮಾಡುವ ಶೈಕ್ಷಣಿಕ ಕಾರ್ಯಕ್ರಮಗಳು.</p>
                         </div>
                     </div>
                 </div>
@@ -546,8 +649,10 @@
                             <i class="fas fa-hands-helping"></i>
                         </div>
                         <div>
-                            <h4>Family Support Services</h4>
-                            <p class="mb-0">Comprehensive support services for family members and caregivers.</p>
+                            <h4 data-lang="en">Family Support Services</h4>
+                            <h4 class="d-none" data-lang="kn">ಕುಟುಂಬ ಬೆಂಬಲ ಸೇವೆಗಳು</h4>
+                            <p class="mb-0" data-lang="en">Comprehensive support services for family members and caregivers.</p>
+                            <p class="mb-0 d-none" data-lang="kn">ಕುಟುಂಬದ ಸದಸ್ಯರು ಮತ್ತು ಕೇಯರ್ ಗಿವರ್ಗಳಿಗೆ ಸಮಗ್ರ ಬೆಂಬಲ ಸೇವೆಗಳು.</p>
                         </div>
                     </div>
                 </div>
@@ -558,36 +663,46 @@
     <!-- Journey Support Section -->
     <section class="section bg-light">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">We Walk With You Every Step</h2>
-            <p class="text-center mb-5" data-aos="fade-up" data-aos-delay="100">We walk with you every step of the way, making sure you and your family feel supported.</p>
+            <h2 class="section-title" data-aos="fade-up" data-lang="en">We Walk With You Every Step</h2>
+            <h2 class="section-title d-none" data-aos="fade-up" data-lang="kn">ನಾವು ನಿಮ್ಮೊಂದಿಗೆ ಪ್ರತಿ ಹೆಜ್ಜೆಯಲ್ಲೂ ನಡೆಯುತ್ತೇವೆ</h2>
+            <p class="text-center mb-5" data-aos="fade-up" data-aos-delay="100" data-lang="en">We walk with you every step of the way, making sure you and your family feel supported.</p>
+            <p class="text-center mb-5 d-none" data-aos="fade-up" data-aos-delay="100" data-lang="kn">ನಾವು ನಿಮ್ಮೊಂದಿಗೆ ದಾರಿಯ ಪ್ರತಿ ಹೆಜ್ಜೆಯಲ್ಲೂ ನಡೆಯುತ್ತೇವೆ, ನೀವು ಮತ್ತು ನಿಮ್ಮ ಕುಟುಂಬವು ಬೆಂಬಲಿತರಾಗಿದ್ದೀರಿ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳುತ್ತೇವೆ.</p>
             
             <div class="row">
                 <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="journey-step">
                         <div class="step-number">1</div>
-                        <h4>Diagnosis & Understanding</h4>
-                        <p>Comprehensive support from the moment of diagnosis, helping you understand your condition and options.</p>
+                        <h4 data-lang="en">Diagnosis & Understanding</h4>
+                        <h4 class="d-none" data-lang="kn">ರೋಗನಿರ್ಣಯ ಮತ್ತು ತಿಳುವಳಿಕೆ</h4>
+                        <p data-lang="en">Comprehensive support from the moment of diagnosis, helping you understand your condition and options.</p>
+                        <p class="d-none" data-lang="kn">ರೋಗನಿರ್ಣಯದ ಕ್ಷಣದಿಂದ ಸಮಗ್ರ ಬೆಂಬಲ, ನಿಮ್ಮ ಸ್ಥಿತಿ ಮತ್ತು ಆಯ್ಕೆಗಳನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳಲು ನಿಮಗೆ ಸಹಾಯ ಮಾಡುತ್ತದೆ.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="journey-step">
                         <div class="step-number">2</div>
-                        <h4>Treatment Planning</h4>
-                        <p>Guidance and emotional support as you navigate treatment decisions and prepare for the journey ahead.</p>
+                        <h4 data-lang="en">Treatment Planning</h4>
+                        <h4 class="d-none" data-lang="kn">ಚಿಕಿತ್ಸಾ ಯೋಜನೆ</h4>
+                        <p data-lang="en">Guidance and emotional support as you navigate treatment decisions and prepare for the journey ahead.</p>
+                        <p class="d-none" data-lang="kn">ನೀವು ಚಿಕಿತ್ಸಾ ನಿರ್ಧಾರಗಳನ್ನು ನ್ಯಾವಿಗೇಟ್ ಮಾಡುವಾಗ ಮತ್ತು ಮುಂದಿನ ಪ್ರಯಾಣಕ್ಕೆ ತಯಾರಾಗುವಾಗ ಮಾರ್ಗದರ್ಶನ ಮತ್ತು ಭಾವನಾತ್ಮಕ ಬೆಂಬಲ.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
                     <div class="journey-step">
                         <div class="step-number">3</div>
-                        <h4>During Treatment</h4>
-                        <p>Continuous emotional, nutritional, and psychological support throughout your treatment process.</p>
+                        <h4 data-lang="en">During Treatment</h4>
+                        <h4 class="d-none" data-lang="kn">ಚಿಕಿತ್ಸೆಯ ಸಮಯದಲ್ಲಿ</h4>
+                        <p data-lang="en">Continuous emotional, nutritional, and psychological support throughout your treatment process.</p>
+                        <p class="d-none" data-lang="kn">ನಿಮ್ಮ ಚಿಕಿತ್ಸಾ ಪ್ರಕ್ರಿಯೆಯುದ್ದಕ್ಕೂ ನಿರಂತರ ಭಾವನಾತ್ಮಕ, ಪೋಷಕಾಂಶ ಮತ್ತು ಮನೋವೈಜ್ಞಾನಿಕ ಬೆಂಬಲ.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
                     <div class="journey-step">
                         <div class="step-number">4</div>
-                        <h4>Aftercare & Survivorship</h4>
-                        <p>Ongoing support through survivorship care plans and long-term follow-up programs.</p>
+                        <h4 data-lang="en">Aftercare & Survivorship</h4>
+                        <h4 class="d-none" data-lang="kn">ಆಫ್ಟರ್ ಕೇರ್ ಮತ್ತು ಉಳಿವು</h4>
+                        <p data-lang="en">Ongoing support through survivorship care plans and long-term follow-up programs.</p>
+                        <p class="d-none" data-lang="kn">ಉಳಿವು ಸಂರಕ್ಷಣಾ ಯೋಜನೆಗಳು ಮತ್ತು ದೀರ್ಘಕಾಲಿಕ ಫಾಲೋ-ಅಪ್ ಕಾರ್ಯಕ್ರಮಗಳ ಮೂಲಕ ನಿರಂತರ ಬೆಂಬಲ.</p>
                     </div>
                 </div>
             </div>
@@ -599,21 +714,29 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-4" data-aos="fade-right">
-                    <h2 class="mb-4">Our Compassionate Approach</h2>
-                    <p class="mb-4">At Sanjeevini Cancer Centre, we understand that cancer treatment is not just about medicines — it is about healing body, mind, and spirit.</p>
-                    <p class="mb-4">We believe that comprehensive cancer care must address the emotional, psychological, and practical needs of patients and their families, not just the physical aspects of the disease.</p>
-                    <p class="mb-4">Our supportive services are designed to provide this holistic care, ensuring that every patient feels supported, understood, and empowered throughout their cancer journey.</p>
-                    <a href="contact.html#appointment" class="btn btn-primary">Get Support Today</a>
+                    <h2 class="mb-4" data-lang="en">Our Compassionate Approach</h2>
+                    <h2 class="mb-4 d-none" data-lang="kn">ನಮ್ಮ ಕರುಣಾಮಯಿ ವಿಧಾನ</h2>
+                    <p class="mb-4" data-lang="en">At Sanjeevini Cancer Centre, we understand that cancer treatment is not just about medicines — it is about healing body, mind, and spirit.</p>
+                    <p class="mb-4 d-none" data-lang="kn">ಸಂಜೀವಿನಿ ಕ್ಯಾನ್ಸರ್ ಸೆಂಟರ್ನಲ್ಲಿ, ಕ್ಯಾನ್ಸರ್ ಚಿಕಿತ್ಸೆಯು medicines  ಷಧಿಗಳ ಬಗ್ಗೆ ಮಾತ್ರವಲ್ಲ - ಇದು ದೇಹ, ಮನಸ್ಸು ಮತ್ತು ಆತ್ಮವನ್ನು ಗುಣಪಡಿಸುವ ಬಗ್ಗೆ ಎಂದು ನಾವು ಅರ್ಥಮಾಡಿಕೊಂಡಿದ್ದೇವೆ.</p>
+                    <p class="mb-4" data-lang="en">We believe that comprehensive cancer care must address the emotional, psychological, and practical needs of patients and their families, not just the physical aspects of the disease.</p>
+                    <p class="mb-4 d-none" data-lang="kn">ಸಮಗ್ರ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣೆಯು ರೋಗದ ಭೌತಿಕ ಅಂಶಗಳನ್ನು ಮಾತ್ರವಲ್ಲದೆ ರೋಗಿಗಳು ಮತ್ತು ಅವರ ಕುಟುಂಬಗಳ ಭಾವನಾತ್ಮಕ, ಮನೋವೈಜ್ಞಾನಿಕ ಮತ್ತು ಪ್ರಾಯೋಗಿಕ ಅಗತ್ಯಗಳನ್ನು also ೂಡಿಸಬೇಕು ಎಂದು ನಾವು ನಂಬುತ್ತೇವೆ.</p>
+                    <p class="mb-4" data-lang="en">Our supportive services are designed to provide this holistic care, ensuring that every patient feels supported, understood, and empowered throughout their cancer journey.</p>
+                    <p class="mb-4 d-none" data-lang="kn">ನಮ್ಮ ಬೆಂಬಲ ಸೇವೆಗಳನ್ನು ಈ ಸಮಗ್ರ ಸಂರಕ್ಷಣೆಯನ್ನು ಒದಗಿಸಲು ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ, ಪ್ರತಿಯೊಬ್ಬ ರೋಗಿಯು ತಮ್ಮ ಕ್ಯಾನ್ಸರ್ ಪ್ರಯಾಣದುದ್ದಕ್ಕೂ ಬೆಂಬಲಿತ, ಅರ್ಥವಾಗಿದೆ ಮತ್ತು ಸಶಕ್ತಗೊಂಡಿದ್ದಾರೆ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳುತ್ತದೆ.</p>
+                    <a href="contact.html#appointment" class="btn btn-primary" data-lang="en">Get Support Today</a>
+                    <a href="contact.html#appointment" class="btn btn-primary d-none" data-lang="kn">ಇಂದೇ ಬೆಂಬಲ ಪಡೆಯಿರಿ</a>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
                     <div class="card border-0">
                         <div class="card-body p-4 text-center">
                             <i class="fas fa-quote-left fa-3x text-primary mb-4 opacity-25"></i>
-                            <p class="fs-5 fst-italic mb-4">"We walk with you every step of the way, making sure you and your family feel supported."</p>
+                            <p class="fs-5 fst-italic mb-4" data-lang="en">"We walk with you every step of the way, making sure you and your family feel supported."</p>
+                            <p class="fs-5 fst-italic mb-4 d-none" data-lang="kn">"ನಾವು ನಿಮ್ಮೊಂದಿಗೆ ದಾರಿಯ ಪ್ರತಿ ಹೆಜ್ಜೆಯಲ್ಲೂ ನಡೆಯುತ್ತೇವೆ, ನೀವು ಮತ್ತು ನಿಮ್ಮ ಕುಟುಂಬವು ಬೆಂಬಲಿತರಾಗಿದ್ದೀರಿ ಎಂದು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳುತ್ತೇವೆ."</p>
                             <div class="d-flex align-items-center justify-content-center">
                                 <div>
-                                    <h5 class="mb-1">Sanjeevini Cancer Centre</h5>
-                                    <p class="text-muted mb-0">Patient Care Philosophy</p>
+                                    <h5 class="mb-1" data-lang="en">Sanjeevini Cancer Centre</h5>
+                                    <h5 class="mb-1 d-none" data-lang="kn">ಸಂಜೀವಿನಿ ಕ್ಯಾನ್ಸರ್ ಸೆಂಟರ್</h5>
+                                    <p class="text-muted mb-0" data-lang="en">Patient Care Philosophy</p>
+                                    <p class="text-muted mb-0 d-none" data-lang="kn">ರೋಗಿ ಸಂರಕ್ಷಣಾ ತತ್ವಶಾಸ್ತ್ರ</p>
                                 </div>
                             </div>
                         </div>
@@ -628,11 +751,14 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8" data-aos="fade-right">
-                    <h2 class="mb-3">Ready to Get the Support You Deserve?</h2>
-                    <p class="mb-0">Contact us today to learn more about our comprehensive patient care and support services.</p>
+                    <h2 class="mb-3" data-lang="en">Ready to Get the Support You Deserve?</h2>
+                    <h2 class="mb-3 d-none" data-lang="kn">ನಿಮಗೆ ಅರ್ಹವಾದ ಬೆಂಬಲವನ್ನು ಪಡೆಯಲು ಸಿದ್ಧರಾಗಿದ್ದೀರಾ?</h2>
+                    <p class="mb-0" data-lang="en">Contact us today to learn more about our comprehensive patient care and support services.</p>
+                    <p class="mb-0 d-none" data-lang="kn">ನಮ್ಮ ಸಮಗ್ರ ರೋಗಿ ಸಂರಕ್ಷಣೆ ಮತ್ತು ಬೆಂಬಲ ಸೇವೆಗಳ ಬಗ್ಗೆ ಹೆಚ್ಚಿನದನ್ನು ತಿಳಿದುಕೊಳ್ಳಲು ಇಂದೇ ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ.</p>
                 </div>
                 <div class="col-lg-4 text-lg-end" data-aos="fade-left">
-                    <a href="contact.html#appointment" class="btn btn-light btn-lg">Contact Us Now</a>
+                    <a href="contact.html#appointment" class="btn btn-light btn-lg" data-lang="en">Contact Us Now</a>
+                    <a href="contact.html#appointment" class="btn btn-light btn-lg d-none" data-lang="kn">ಇದೀಗ ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ</a>
                 </div>
             </div>
         </div>
@@ -644,7 +770,8 @@
             <div class="row">
                 <div class="col-lg-4 mb-4">
                     <h4 class="mb-3"><i class="fas fa-hand-holding-heart me-2"></i>Sanjeevini Cancer Centre</h4>
-                    <p>Compassionate Cancer Care, Guided by Expertise. We believe in providing personalized, evidence-based, and compassionate cancer care.</p>
+                    <p data-lang="en">Compassionate Cancer Care, Guided by Expertise. We believe in providing personalized, evidence-based, and compassionate cancer care.</p>
+                    <p class="d-none" data-lang="kn">ಕನಿಕರದ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣೆ, ನಿಪುಣತೆಯ ಮಾರ್ಗದರ್ಶನದೊಂದಿಗೆ. ನಾವು ವೈಯಕ್ತಿಕಗೊಳಿಸಿದ, ಪುರಾವೆ-ಆಧಾರಿತ ಮತ್ತು ಕರುಣಾಮಯಿ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣೆಯನ್ನು ನೀಡುವಲ್ಲಿ ನಂಬಿಕೆ ಇಡುತ್ತೇವೆ.</p>
                     <div class="social-icons mt-4">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -654,36 +781,39 @@
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4">
                     <div class="footer-links">
-                        <h5>Quick Links</h5>
+                        <h5 data-lang="en">Quick Links</h5>
+                        <h5 class="d-none" data-lang="kn">ತ್ವರಿತ ಲಿಂಕ್ಗಳು</h5>
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="services.html">Services</a></li>
-                            <li><a href="patient-care.html">Patient Care</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="index.html" data-lang="en">Home</a><a href="index.html" class="d-none" data-lang="kn">ಮುಖಪುಟ</a></li>
+                            <li><a href="about.html" data-lang="en">About</a><a href="about.html" class="d-none" data-lang="kn">ಬಗ್ಗೆ</a></li>
+                            <li><a href="services.html" data-lang="en">Services</a><a href="services.html" class="d-none" data-lang="kn">ಸೇವೆಗಳು</a></li>
+                            <li><a href="patient-care.html" data-lang="en">Patient Care</a><a href="patient-care.html" class="d-none" data-lang="kn">ರೋಗಿ ಸಂರಕ್ಷಣೆ</a></li>
+                            <li><a href="contact.html" data-lang="en">Contact</a><a href="contact.html" class="d-none" data-lang="kn">ಸಂಪರ್ಕಿಸಿ</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="footer-links">
-                        <h5>Our Services</h5>
+                        <h5 data-lang="en">Our Services</h5>
+                        <h5 class="d-none" data-lang="kn">ನಮ್ಮ ಸೇವೆಗಳು</h5>
                         <ul>
-                            <li><a href="services.html">Cancer Screening</a></li>
-                            <li><a href="services.html">Chemotherapy</a></li>
-                            <li><a href="services.html">Immunotherapy</a></li>
-                            <li><a href="services.html">Targeted Therapy</a></li>
-                            <li><a href="services.html">Palliative Care</a></li>
+                            <li><a href="services.html" data-lang="en">Cancer Screening</a><a href="services.html" class="d-none" data-lang="kn">ಕ್ಯಾನ್ಸರ್ ತಪಾಸಣೆ</a></li>
+                            <li><a href="services.html" data-lang="en">Chemotherapy</a><a href="services.html" class="d-none" data-lang="kn">ಕೀಮೋಥೆರಪಿ</a></li>
+                            <li><a href="services.html" data-lang="en">Immunotherapy</a><a href="services.html" class="d-none" data-lang="kn">ಇಮ್ಯೂನೋಥೆರಪಿ</a></li>
+                            <li><a href="services.html" data-lang="en">Targeted Therapy</a><a href="services.html" class="d-none" data-lang="kn">ಟಾರ್ಗೆಟೆಡ್ ಥೆರಪಿ</a></li>
+                            <li><a href="services.html" data-lang="en">Palliative Care</a><a href="services.html" class="d-none" data-lang="kn">ಪಾಲಿಯೇಟಿವ್ ಸಂರಕ್ಷಣೆ</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 mb-4">
                     <div class="footer-links">
-                        <h5>Contact Us</h5>
+                        <h5 data-lang="en">Contact Us</h5>
+                        <h5 class="d-none" data-lang="kn">ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ</h5>
                         <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Sanjeevini Cancer Centre, Mangalore</li>
-                            <li class="mb-2"><i class="fas fa-phone me-2"></i> (Insert phone number)</li>
-                            <li class="mb-2"><i class="fas fa-envelope me-2"></i> (Insert email)</li>
-                            <li class="mb-2"><i class="fas fa-globe me-2"></i> sanjeevinicancercentre.com</li>
+                            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> <span data-lang="en">Sanjeevini Cancer Centre, Mangalore</span><span class="d-none" data-lang="kn">ಸಂಜೀವಿನಿ ಕ್ಯಾನ್ಸರ್ ಸೆಂಟರ್, ಮಂಗಳೂರು</span></li>
+                            <li class="mb-2"><i class="fas fa-phone me-2"></i> <span data-lang="en">(Insert phone number)</span><span class="d-none" data-lang="kn">(ಫೋನ್ ನಂಬರ್ ಸೇರಿಸಿ)</span></li>
+                            <li class="mb-2"><i class="fas fa-envelope me-2"></i> <span data-lang="en">(Insert email)</span><span class="d-none" data-lang="kn">(ಇಮೇಲ್ ಸೇರಿಸಿ)</span></li>
+                            <li class="mb-2"><i class="fas fa-globe me-2"></i> <span>sanjeevinicancercentre.com</span></li>
                         </ul>
                     </div>
                 </div>
@@ -699,8 +829,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <!-- Custom JS -->
     <script>
         // Initialize AOS
@@ -732,6 +860,36 @@
         
         fadeElements.forEach(element => {
             fadeInObserver.observe(element);
+        });
+        
+        // Language switching functionality
+        let currentLanguage = 'en';
+        
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Hide all elements for both languages
+            document.querySelectorAll('[data-lang="en"], [data-lang="kn"]').forEach(el => {
+                el.classList.add('d-none');
+            });
+            
+            // Show elements for selected language
+            document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+                el.classList.remove('d-none');
+            });
+            
+            // Update language button text
+            const languageBtn = document.getElementById('languageToggle');
+            if (lang === 'en') {
+                languageBtn.innerHTML = '<i class="fas fa-language me-1"></i> ಕನ್ನಡ';
+            } else {
+                languageBtn.innerHTML = '<i class="fas fa-language me-1"></i> English';
+            }
+        }
+        
+        // Add event listener for language switching
+        document.getElementById('languageToggle').addEventListener('click', function() {
+            switchLanguage(currentLanguage === 'en' ? 'kn' : 'en');
         });
     </script>
 </body>

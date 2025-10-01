@@ -92,6 +92,73 @@
             width: 100%;
         }
         
+        /* Language Switcher */
+        .language-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .language-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Mobile Navbar Glass Effect */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 75%;
+                height: 100vh;
+                padding: 2rem;
+                background: rgba(255, 255, 255, 0.85);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                z-index: 1050;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                overflow-y: auto;
+            }
+            
+            .navbar-collapse.show {
+                transform: translateX(0);
+            }
+            
+            .navbar-toggler {
+                z-index: 1060;
+            }
+            
+            .navbar-nav {
+                margin-top: 2rem;
+            }
+            
+            .nav-item {
+                margin-bottom: 1rem;
+            }
+            
+            .nav-link {
+                padding: 10px 15px;
+                border-radius: 5px;
+                margin: 5px 0;
+            }
+            
+            .nav-link:hover {
+                background-color: rgba(0, 123, 255, 0.1);
+            }
+            
+            .language-btn-container {
+                margin-top: 1rem;
+                padding: 0 15px;
+            }
+        }
+        
         .hero {
             background: linear-gradient(rgba(0, 123, 255, 0.8), rgba(0, 91, 187, 0.8)), url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
             background-size: cover;
@@ -413,6 +480,16 @@
             .section {
                 padding: 60px 0;
             }
+            
+            .service-feature {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .feature-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
         }
     </style>
 </head>
@@ -435,10 +512,13 @@
                     <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    <li class="nav-item ms-2">
-                        <a class="btn btn-primary btn-sm" href="contact.html#appointment">Book Appointment</a>
-                    </li>
+                   
                 </ul>
+                <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center mt-3 mt-lg-0 ms-lg-3 language-btn-container">
+                    <button class="language-btn mb-3 mb-lg-0 me-lg-3" id="languageToggle">
+                        <i class="fas fa-language me-1"></i> ಕನ್ನಡ
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
@@ -448,11 +528,15 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
-                    <h1 class="animate__animated animate__fadeInDown">Our Comprehensive Cancer Services</h1>
-                    <p class="animate__animated animate__fadeIn animate__delay-1s">At Sanjeevini Cancer Centre, we provide comprehensive cancer care under one roof with advanced diagnostics, personalized treatments, and compassionate support.</p>
+                    <h1 class="animate__animated animate__fadeInDown" data-lang="en">Our Comprehensive Cancer Services</h1>
+                    <h1 class="animate__animated animate__fadeInDown d-none" data-lang="kn">ನಮ್ಮ ಸಮಗ್ರ ಕ್ಯಾನ್ಸರ್ ಸೇವೆಗಳು</h1>
+                    <p class="animate__animated animate__fadeIn animate__delay-1s" data-lang="en">At Sanjeevini Cancer Centre, we provide comprehensive cancer care under one roof with advanced diagnostics, personalized treatments, and compassionate support.</p>
+                    <p class="animate__animated animate__fadeIn animate__delay-1s d-none" data-lang="kn">ಸಂಜೀವಿನಿ ಕ್ಯಾನ್ಸರ್ ಸೆಂಟರ್ನಲ್ಲಿ, ನಾವು ಒಂದೇ ಛಾವಣಿಯಡಿಯಲ್ಲಿ ಸುಧಾರಿತ ರೋಗನಿರ್ಣಯ, ವೈಯಕ್ತಿಕಗೊಳಿಸಿದ ಚಿಕಿತ್ಸೆಗಳು ಮತ್ತು ಕರುಣಾಮಯಿ ಬೆಂಬಲದೊಂದಿಗೆ ಸಮಗ್ರ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣೆಯನ್ನು ಒದಗಿಸುತ್ತೇವೆ.</p>
                     <div class="mt-4 animate__animated animate__fadeInUp animate__delay-2s">
-                        <a href="#services" class="btn btn-light btn-lg me-3">View Our Services</a>
-                        <a href="contact.html#appointment" class="btn btn-outline-light btn-lg">Book Appointment</a>
+                        <a href="#services" class="btn btn-light btn-lg me-3" data-lang="en">View Our Services</a>
+                        <a href="#services" class="btn btn-light btn-lg me-3 d-none" data-lang="kn">ನಮ್ಮ ಸೇವೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ</a>
+                        <a href="contact.html#appointment" class="btn btn-outline-light btn-lg" data-lang="en">Book Appointment</a>
+                        <a href="contact.html#appointment" class="btn btn-outline-light btn-lg d-none" data-lang="kn">ನೇಮಕಾತಿ ಬುಕ್ ಮಾಡಿ</a>
                     </div>
                 </div>
             </div>
@@ -462,8 +546,10 @@
     <!-- Services Overview -->
     <section id="services" class="section">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Our Comprehensive Oncology Services</h2>
-            <p class="text-center mb-5" data-aos="fade-up" data-aos-delay="100">We offer a full spectrum of cancer care services, from prevention and early detection to advanced treatment and survivorship support.</p>
+            <h2 class="section-title" data-aos="fade-up" data-lang="en">Our Comprehensive Oncology Services</h2>
+            <h2 class="section-title d-none" data-aos="fade-up" data-lang="kn">ನಮ್ಮ ಸಮಗ್ರ ಒಂಕೋಲಜಿ ಸೇವೆಗಳು</h2>
+            <p class="text-center mb-5" data-aos="fade-up" data-aos-delay="100" data-lang="en">We offer a full spectrum of cancer care services, from prevention and early detection to advanced treatment and survivorship support.</p>
+            <p class="text-center mb-5 d-none" data-aos="fade-up" data-aos-delay="100" data-lang="kn">ನಾವು ತಡೆಗಟ್ಟುವಿಕೆ ಮತ್ತು ಮುಂಚಿನ ಪತ್ತೆಯಿಂದ ಹಿಡಿದು ಸುಧಾರಿತ ಚಿಕಿತ್ಸೆ ಮತ್ತು ಉಳಿವು ಬೆಂಬಲದವರೆಗಿನ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣಾ ಸೇವೆಗಳ ಪೂರ್ಣ ವ್ಯಾಪ್ತಿಯನ್ನು ನೀಡುತ್ತೇವೆ.</p>
             
             <div class="row">
                 <div class="col-lg-4 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
@@ -471,12 +557,17 @@
                         <div class="card-body text-center p-4">
                             <div class="service-number">01</div>
                             <i class="fas fa-search service-icon"></i>
-                            <h4 class="card-title">Cancer Screening & Prevention</h4>
-                            <p class="card-text">Early detection programs for breast cancer, cervical cancer, colon cancer, and more for better outcomes.</p>
+                            <h4 class="card-title" data-lang="en">Cancer Screening & Prevention</h4>
+                            <h4 class="card-title d-none" data-lang="kn">ಕ್ಯಾನ್ಸರ್ ತಪಾಸಣೆ ಮತ್ತು ತಡೆಗಟ್ಟುವಿಕೆ</h4>
+                            <p class="card-text" data-lang="en">Early detection programs for breast cancer, cervical cancer, colon cancer, and more for better outcomes.</p>
+                            <p class="card-text d-none" data-lang="kn">ಉತ್ತಮ ಫಲಿತಾಂಶಗಳಿಗಾಗಿ ಸ್ತನ ಕ್ಯಾನ್ಸರ್, ಗರ್ಭಕಂಠದ ಕ್ಯಾನ್ಸರ್, ಕೊಲೊನ್ ಕ್ಯಾನ್ಸರ್ ಮತ್ತು ಹೆಚ್ಚಿನವುಗಳಿಗೆ ಮುಂಚಿನ ಪತ್ತೆ ಕಾರ್ಯಕ್ರಮಗಳು.</p>
                             <div class="mt-4">
-                                <span class="tech-badge">Mammography</span>
-                                <span class="tech-badge">Pap Smear</span>
-                                <span class="tech-badge">Colonoscopy</span>
+                                <span class="tech-badge" data-lang="en">Mammography</span>
+                                <span class="tech-badge d-none" data-lang="kn">ಮ್ಯಾಮೋಗ್ರಫಿ</span>
+                                <span class="tech-badge" data-lang="en">Pap Smear</span>
+                                <span class="tech-badge d-none" data-lang="kn">ಪ್ಯಾಪ್ ಸ್ಮಿಯರ್</span>
+                                <span class="tech-badge" data-lang="en">Colonoscopy</span>
+                                <span class="tech-badge d-none" data-lang="kn">ಕೊಲೊನೋಸ್ಕೋಪಿ</span>
                             </div>
                         </div>
                     </div>
@@ -487,12 +578,17 @@
                         <div class="card-body text-center p-4">
                             <div class="service-number">02</div>
                             <i class="fas fa-pills service-icon"></i>
-                            <h4 class="card-title">Medical Oncology</h4>
-                            <p class="card-text">Chemotherapy, targeted therapy, and immunotherapy using the latest protocols and medications.</p>
+                            <h4 class="card-title" data-lang="en">Medical Oncology</h4>
+                            <h4 class="card-title d-none" data-lang="kn">ವೈದ್ಯಕೀಯ ಒಂಕೋಲಜಿ</h4>
+                            <p class="card-text" data-lang="en">Chemotherapy, targeted therapy, and immunotherapy using the latest protocols and medications.</p>
+                            <p class="card-text d-none" data-lang="kn">ಅತ್ಯಾಧುನಿಕ ಪ್ರೋಟೋಕಾಲ್ಗಳು ಮತ್ತು ಔಷಧಿಗಳನ್ನು ಬಳಸಿಕೊಂಡು ಕೀಮೋಥೆರಪಿ, ಟಾರ್ಗೆಟೆಡ್ ಥೆರಪಿ ಮತ್ತು ಇಮ್ಯೂನೋಥೆರಪಿ.</p>
                             <div class="mt-4">
-                                <span class="tech-badge">Chemotherapy</span>
-                                <span class="tech-badge">Immunotherapy</span>
-                                <span class="tech-badge">Targeted Therapy</span>
+                                <span class="tech-badge" data-lang="en">Chemotherapy</span>
+                                <span class="tech-badge d-none" data-lang="kn">ಕೀಮೋಥೆರಪಿ</span>
+                                <span class="tech-badge" data-lang="en">Immunotherapy</span>
+                                <span class="tech-badge d-none" data-lang="kn">ಇಮ್ಯೂನೋಥೆರಪಿ</span>
+                                <span class="tech-badge" data-lang="en">Targeted Therapy</span>
+                                <span class="tech-badge d-none" data-lang="kn">ಟಾರ್ಗೆಟೆಡ್ ಥೆರಪಿ</span>
                             </div>
                         </div>
                     </div>
@@ -503,12 +599,17 @@
                         <div class="card-body text-center p-4">
                             <div class="service-number">03</div>
                             <i class="fas fa-user-cog service-icon"></i>
-                            <h4 class="card-title">Personalized Treatment Plans</h4>
-                            <p class="card-text">Tailored according to patient needs and cancer type for optimal results and quality of life.</p>
+                            <h4 class="card-title" data-lang="en">Personalized Treatment Plans</h4>
+                            <h4 class="card-title d-none" data-lang="kn">ವೈಯಕ್ತಿಕಗೊಳಿಸಿದ ಚಿಕಿತ್ಸಾ ಯೋಜನೆಗಳು</h4>
+                            <p class="card-text" data-lang="en">Tailored according to patient needs and cancer type for optimal results and quality of life.</p>
+                            <p class="card-text d-none" data-lang="kn">ಉತ್ತಮ ಫಲಿತಾಂಶಗಳು ಮತ್ತು ಜೀವನದ ಗುಣಮಟ್ಟಕ್ಕಾಗಿ ರೋಗಿಯ ಅಗತ್ಯಗಳು ಮತ್ತು ಕ್ಯಾನ್ಸರ್ ಪ್ರಕಾರಕ್ಕೆ ಅನುಗುಣವಾಗಿ ರೂಪಿಸಲಾಗಿದೆ.</p>
                             <div class="mt-4">
-                                <span class="tech-badge">Genetic Testing</span>
-                                <span class="tech-badge">Molecular Profiling</span>
-                                <span class="tech-badge">Custom Protocols</span>
+                                <span class="tech-badge" data-lang="en">Genetic Testing</span>
+                                <span class="tech-badge d-none" data-lang="kn">ಜೆನೆಟಿಕ್ ಟೆಸ್ಟಿಂಗ್</span>
+                                <span class="tech-badge" data-lang="en">Molecular Profiling</span>
+                                <span class="tech-badge d-none" data-lang="kn">ಮಾಲಿಕ್ಯುಲರ್ ಪ್ರೊಫೈಲಿಂಗ್</span>
+                                <span class="tech-badge" data-lang="en">Custom Protocols</span>
+                                <span class="tech-badge d-none" data-lang="kn">ಕಸ್ಟಮ್ ಪ್ರೋಟೋಕಾಲ್ಗಳು</span>
                             </div>
                         </div>
                     </div>
@@ -519,12 +620,17 @@
                         <div class="card-body text-center p-4">
                             <div class="service-number">04</div>
                             <i class="fas fa-hand-holding-heart service-icon"></i>
-                            <h4 class="card-title">Supportive & Palliative Care</h4>
-                            <p class="card-text">Pain management and quality-of-life support for patients and families throughout the journey.</p>
+                            <h4 class="card-title" data-lang="en">Supportive & Palliative Care</h4>
+                            <h4 class="card-title d-none" data-lang="kn">ಬೆಂಬಲ ಮತ್ತು ಪಾಲಿಯೇಟಿವ್ ಸಂರಕ್ಷಣೆ</h4>
+                            <p class="card-text" data-lang="en">Pain management and quality-of-life support for patients and families throughout the journey.</p>
+                            <p class="card-text d-none" data-lang="kn">ಪ್ರಯಾಣದುದ್ದಕ್ಕೂ ರೋಗಿಗಳು ಮತ್ತು ಕುಟುಂಬಗಳಿಗೆ ನೋವು ನಿರ್ವಹಣೆ ಮತ್ತು ಜೀವನದ ಗುಣಮಟ್ಟದ ಬೆಂಬಲ.</p>
                             <div class="mt-4">
-                                <span class="tech-badge">Pain Management</span>
-                                <span class="tech-badge">Symptom Control</span>
-                                <span class="tech-badge">Emotional Support</span>
+                                <span class="tech-badge" data-lang="en">Pain Management</span>
+                                <span class="tech-badge d-none" data-lang="kn">ನೋವು ನಿರ್ವಹಣೆ</span>
+                                <span class="tech-badge" data-lang="en">Symptom Control</span>
+                                <span class="tech-badge d-none" data-lang="kn">ರೋಗಲಕ್ಷಣ ನಿಯಂತ್ರಣ</span>
+                                <span class="tech-badge" data-lang="en">Emotional Support</span>
+                                <span class="tech-badge d-none" data-lang="kn">ಭಾವನಾತ್ಮಕ ಬೆಂಬಲ</span>
                             </div>
                         </div>
                     </div>
@@ -535,12 +641,17 @@
                         <div class="card-body text-center p-4">
                             <div class="service-number">05</div>
                             <i class="fas fa-heartbeat service-icon"></i>
-                            <h4 class="card-title">Follow-up & Survivorship Programs</h4>
-                            <p class="card-text">Long-term care and recovery guidance to ensure continued health and wellbeing after treatment.</p>
+                            <h4 class="card-title" data-lang="en">Follow-up & Survivorship Programs</h4>
+                            <h4 class="card-title d-none" data-lang="kn">ಫಾಲೋ-ಅಪ್ ಮತ್ತು ಉಳಿವು ಕಾರ್ಯಕ್ರಮಗಳು</h4>
+                            <p class="card-text" data-lang="en">Long-term care and recovery guidance to ensure continued health and wellbeing after treatment.</p>
+                            <p class="card-text d-none" data-lang="kn">ಚಿಕಿತ್ಸೆಯ ನಂತರ ನಿರಂತರ ಆರೋಗ್ಯ ಮತ್ತು ಯೋಗಕ್ಷೇಮವನ್ನು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಲು ದೀರ್ಘಕಾಲಿಕ ಸಂರಕ್ಷಣೆ ಮತ್ತು ಮರುಪಡೆಯ ಮಾರ್ಗದರ್ಶನ.</p>
                             <div class="mt-4">
-                                <span class="tech-badge">Regular Monitoring</span>
-                                <span class="tech-badge">Rehabilitation</span>
-                                <span class="tech-badge">Lifestyle Guidance</span>
+                                <span class="tech-badge" data-lang="en">Regular Monitoring</span>
+                                <span class="tech-badge d-none" data-lang="kn">ನಿಯಮಿತ ಮೇಲ್ವಿಚಾರಣೆ</span>
+                                <span class="tech-badge" data-lang="en">Rehabilitation</span>
+                                <span class="tech-badge d-none" data-lang="kn">ಪುನರ್ವಸತಿ</span>
+                                <span class="tech-badge" data-lang="en">Lifestyle Guidance</span>
+                                <span class="tech-badge d-none" data-lang="kn">ಜೀವನಶೈಲಿ ಮಾರ್ಗದರ್ಶನ</span>
                             </div>
                         </div>
                     </div>
@@ -551,12 +662,17 @@
                         <div class="card-body text-center p-4">
                             <div class="service-number">06</div>
                             <i class="fas fa-comments service-icon"></i>
-                            <h4 class="card-title">Counseling & Emotional Support</h4>
-                            <p class="card-text">Professional counseling services for patients and families to cope with the emotional challenges.</p>
+                            <h4 class="card-title" data-lang="en">Counseling & Emotional Support</h4>
+                            <h4 class="card-title d-none" data-lang="kn">ಸಲಹೆ ಮತ್ತು ಭಾವನಾತ್ಮಕ ಬೆಂಬಲ</h4>
+                            <p class="card-text" data-lang="en">Professional counseling services for patients and families to cope with the emotional challenges.</p>
+                            <p class="card-text d-none" data-lang="kn">ಭಾವನಾತ್ಮಕ ಸವಾಲುಗಳನ್ನು ನಿಭಾಯಿಸಲು ರೋಗಿಗಳು ಮತ್ತು ಕುಟುಂಬಗಳಿಗೆ ವೃತ್ತಿಪರ ಸಲಹಾ ಸೇವೆಗಳು.</p>
                             <div class="mt-4">
-                                <span class="tech-badge">Individual Therapy</span>
-                                <span class="tech-badge">Support Groups</span>
-                                <span class="tech-badge">Family Counseling</span>
+                                <span class="tech-badge" data-lang="en">Individual Therapy</span>
+                                <span class="tech-badge d-none" data-lang="kn">ವೈಯಕ್ತಿಕ ಚಿಕಿತ್ಸೆ</span>
+                                <span class="tech-badge" data-lang="en">Support Groups</span>
+                                <span class="tech-badge d-none" data-lang="kn">ಬೆಂಬಲ ಗುಂಪುಗಳು</span>
+                                <span class="tech-badge" data-lang="en">Family Counseling</span>
+                                <span class="tech-badge d-none" data-lang="kn">ಕುಟುಂಬ ಸಲಹೆ</span>
                             </div>
                         </div>
                     </div>
@@ -568,7 +684,8 @@
     <!-- Detailed Services Section -->
     <section class="section bg-light">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Detailed Service Information</h2>
+            <h2 class="section-title" data-aos="fade-up" data-lang="en">Detailed Service Information</h2>
+            <h2 class="section-title d-none" data-aos="fade-up" data-lang="kn">ವಿವರವಾದ ಸೇವೆ ಮಾಹಿತಿ</h2>
             
             <div class="row mb-5">
                 <div class="col-lg-6 mb-4" data-aos="fade-right">
@@ -577,8 +694,10 @@
                             <i class="fas fa-search"></i>
                         </div>
                         <div>
-                            <h4>Cancer Screening & Prevention in Mangalore</h4>
-                            <p class="mb-0">Early detection programs for breast cancer, cervical cancer, colon cancer, and more. Regular screening can detect cancer at an early stage when treatment is most effective.</p>
+                            <h4 data-lang="en">Cancer Screening & Prevention in Mangalore</h4>
+                            <h4 class="d-none" data-lang="kn">ಮಂಗಳೂರಿನಲ್ಲಿ ಕ್ಯಾನ್ಸರ್ ತಪಾಸಣೆ ಮತ್ತು ತಡೆಗಟ್ಟುವಿಕೆ</h4>
+                            <p class="mb-0" data-lang="en">Early detection programs for breast cancer, cervical cancer, colon cancer, and more. Regular screening can detect cancer at an early stage when treatment is most effective.</p>
+                            <p class="mb-0 d-none" data-lang="kn">ಸ್ತನ ಕ್ಯಾನ್ಸರ್, ಗರ್ಭಕಂಠದ ಕ್ಯಾನ್ಸರ್, ಕೊಲೊನ್ ಕ್ಯಾನ್ಸರ್ ಮತ್ತು ಹೆಚ್ಚಿನವುಗಳಿಗೆ ಮುಂಚಿನ ಪತ್ತೆ ಕಾರ್ಯಕ್ರಮಗಳು. ನಿಯಮಿತ ತಪಾಸಣೆಯು ಕ್ಯಾನ್ಸರ್ ಅನ್ನು ಮುಂಚಿನ ಹಂತದಲ್ಲಿ ಪತ್ತೆಹಚ್ಚಬಹುದು, ಚಿಕಿತ್ಸೆಯು ಹೆಚ್ಚು ಪರಿಣಾಮಕಾರಿಯಾಗಿರುವಾಗ.</p>
                         </div>
                     </div>
                 </div>
@@ -588,8 +707,10 @@
                             <i class="fas fa-pills"></i>
                         </div>
                         <div>
-                            <h4>Chemotherapy in Mangalore</h4>
-                            <p class="mb-0">Advanced protocols to treat different cancers using the most effective medications with minimal side effects. We use the latest chemotherapy drugs and administration techniques.</p>
+                            <h4 data-lang="en">Chemotherapy in Mangalore</h4>
+                            <h4 class="d-none" data-lang="kn">ಮಂಗಳೂರಿನಲ್ಲಿ ಕೀಮೋಥೆರಪಿ</h4>
+                            <p class="mb-0" data-lang="en">Advanced protocols to treat different cancers using the most effective medications with minimal side effects. We use the latest chemotherapy drugs and administration techniques.</p>
+                            <p class="mb-0 d-none" data-lang="kn">ಕನಿಷ್ಠ ಅಡ್ಡಪರಿಣಾಮಗಳೊಂದಿಗೆ ಅತ್ಯಂತ ಪರಿಣಾಮಕಾರಿ ಔಷಧಿಗಳನ್ನು ಬಳಸಿಕೊಂಡು ವಿವಿಧ ಕ್ಯಾನ್ಸರ್ಗಳನ್ನು ಚಿಕಿತ್ಸೆ ಮಾಡಲು ಸುಧಾರಿತ ಪ್ರೋಟೋಕಾಲ್ಗಳು. ನಾವು ಅತ್ಯಾಧುನಿಕ ಕೀಮೋಥೆರಪಿ drugs  ಷಧಿಗಳು ಮತ್ತು ನಿರ್ವಹಣಾ ತಂತ್ರಗಳನ್ನು ಬಳಸುತ್ತೇವೆ.</p>
                         </div>
                     </div>
                 </div>
@@ -599,8 +720,10 @@
                             <i class="fas fa-shield-alt"></i>
                         </div>
                         <div>
-                            <h4>Immunotherapy & Targeted Therapy</h4>
-                            <p class="mb-0">Cutting-edge treatments that use the body's immune system to fight cancer or target specific cancer cells. These advanced therapies offer new hope for many cancer types.</p>
+                            <h4 data-lang="en">Immunotherapy & Targeted Therapy</h4>
+                            <h4 class="d-none" data-lang="kn">ಇಮ್ಯೂನೋಥೆರಪಿ ಮತ್ತು ಟಾರ್ಗೆಟೆಡ್ ಥೆರಪಿ</h4>
+                            <p class="mb-0" data-lang="en">Cutting-edge treatments that use the body's immune system to fight cancer or target specific cancer cells. These advanced therapies offer new hope for many cancer types.</p>
+                            <p class="mb-0 d-none" data-lang="kn">ದೇಹದ ರೋಗನಿರೋಧಕ ವ್ಯವಸ್ಥೆಯನ್ನು ಕ್ಯಾನ್ಸರ್ಗೆ ಹೋರಾಡಲು ಅಥವಾ ನಿರ್ದಿಷ್ಟ ಕ್ಯಾನ್ಸರ್ ಕೋಶಗಳನ್ನು ಗುರಿಯಾಗಿಸಲು ಬಳಸುವ ಅತ್ಯಾಧುನಿಕ ಚಿಕಿತ್ಸೆಗಳು. ಈ ಸುಧಾರಿತ ಚಿಕಿತ್ಸೆಗಳು ಅನೇಕ ಕ್ಯಾನ್ಸರ್ ಪ್ರಕಾರಗಳಿಗೆ ಹೊಸ ಭರವಸೆಯನ್ನು ನೀಡುತ್ತವೆ.</p>
                         </div>
                     </div>
                 </div>
@@ -610,8 +733,10 @@
                             <i class="fas fa-user-md"></i>
                         </div>
                         <div>
-                            <h4>Personalized Cancer Care Plans</h4>
-                            <p class="mb-0">Tailored to each patient's condition, lifestyle, and genetic profile. We believe every patient is unique and deserves a treatment plan designed specifically for them.</p>
+                            <h4 data-lang="en">Personalized Cancer Care Plans</h4>
+                            <h4 class="d-none" data-lang="kn">ವೈಯಕ್ತಿಕಗೊಳಿಸಿದ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣಾ ಯೋಜನೆಗಳು</h4>
+                            <p class="mb-0" data-lang="en">Tailored to each patient's condition, lifestyle, and genetic profile. We believe every patient is unique and deserves a treatment plan designed specifically for them.</p>
+                            <p class="mb-0 d-none" data-lang="kn">ಪ್ರತಿಯೊಬ್ಬ ರೋಗಿಯ ಸ್ಥಿತಿ, ಜೀವನಶೈಲಿ ಮತ್ತು ಜೆನೆಟಿಕ್ ಪ್ರೊಫೈಲ್ಗೆ ಅನುಗುಣವಾಗಿ ರೂಪಿಸಲಾಗಿದೆ. ಪ್ರತಿಯೊಬ್ಬ ರೋಗಿಯು ಅನನ್ಯ ಎಂದು ನಾವು ನಂಬುತ್ತೇವೆ ಮತ್ತು ಅವರಿಗಾಗಿ ವಿಶೇಷವಾಗಿ ವಿನ್ಯಾಸಗೊಳಿಸಲಾದ ಚಿಕಿತ್ಸಾ ಯೋಜನೆಗೆ ಅರ್ಹರು.</p>
                         </div>
                     </div>
                 </div>
@@ -621,8 +746,10 @@
                             <i class="fas fa-hand-holding-medical"></i>
                         </div>
                         <div>
-                            <h4>Supportive & Palliative Care in Mangalore</h4>
-                            <p class="mb-0">Pain relief and quality-of-life improvement through comprehensive symptom management and emotional support for patients and families.</p>
+                            <h4 data-lang="en">Supportive & Palliative Care in Mangalore</h4>
+                            <h4 class="d-none" data-lang="kn">ಮಂಗಳೂರಿನಲ್ಲಿ ಬೆಂಬಲ ಮತ್ತು ಪಾಲಿಯೇಟಿವ್ ಸಂರಕ್ಷಣೆ</h4>
+                            <p class="mb-0" data-lang="en">Pain relief and quality-of-life improvement through comprehensive symptom management and emotional support for patients and families.</p>
+                            <p class="mb-0 d-none" data-lang="kn">ರೋಗಿಗಳು ಮತ್ತು ಕುಟುಂಬಗಳಿಗೆ ಸಮಗ್ರ ರೋಗಲಕ್ಷಣ ನಿರ್ವಹಣೆ ಮತ್ತು ಭಾವನಾತ್ಮಕ ಬೆಂಬಲದ ಮೂಲಕ ನೋವು ನಿವಾರಣೆ ಮತ್ತು ಜೀವನದ ಗುಣಮಟ್ಟದ ಸುಧಾರಣೆ.</p>
                         </div>
                     </div>
                 </div>
@@ -632,8 +759,10 @@
                             <i class="fas fa-heart"></i>
                         </div>
                         <div>
-                            <h4>Follow-up & Survivorship Programs</h4>
-                            <p class="mb-0">Continuous care beyond treatment with regular monitoring, rehabilitation support, and lifestyle guidance to ensure long-term health and wellbeing.</p>
+                            <h4 data-lang="en">Follow-up & Survivorship Programs</h4>
+                            <h4 class="d-none" data-lang="kn">ಫಾಲೋ-ಅಪ್ ಮತ್ತು ಉಳಿವು ಕಾರ್ಯಕ್ರಮಗಳು</h4>
+                            <p class="mb-0" data-lang="en">Continuous care beyond treatment with regular monitoring, rehabilitation support, and lifestyle guidance to ensure long-term health and wellbeing.</p>
+                            <p class="mb-0 d-none" data-lang="kn">ದೀರ್ಘಕಾಲಿಕ ಆರೋಗ್ಯ ಮತ್ತು ಯೋಗಕ್ಷೇಮವನ್ನು ಖಚಿತಪಡಿಸಿಕೊಳ್ಳಲು ನಿಯಮಿತ ಮೇಲ್ವಿಚಾರಣೆ, ಪುನರ್ವಸತಿ ಬೆಂಬಲ ಮತ್ತು ಜೀವನಶೈಲಿ ಮಾರ್ಗದರ್ಶನದೊಂದಿಗೆ ಚಿಕಿತ್ಸೆಯ ಮೀರಿದ ನಿರಂತರ ಸಂರಕ್ಷಣೆ.</p>
                         </div>
                     </div>
                 </div>
@@ -644,35 +773,44 @@
     <!-- Treatment Process -->
     <section class="section">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Our Patient-Centered Treatment Process</h2>
+            <h2 class="section-title" data-aos="fade-up" data-lang="en">Our Patient-Centered Treatment Process</h2>
+            <h2 class="section-title d-none" data-aos="fade-up" data-lang="kn">ನಮ್ಮ ರೋಗಿ-ಕೇಂದ್ರಿತ ಚಿಕಿತ್ಸಾ ಪ್ರಕ್ರಿಯೆ</h2>
             
             <div class="row">
                 <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="process-step">
                         <div class="step-number">1</div>
-                        <h4>Initial Consultation</h4>
-                        <p>Comprehensive evaluation and discussion of medical history, symptoms, and concerns.</p>
+                        <h4 data-lang="en">Initial Consultation</h4>
+                        <h4 class="d-none" data-lang="kn">ಆರಂಭಿಕ ಸಲಹೆ</h4>
+                        <p data-lang="en">Comprehensive evaluation and discussion of medical history, symptoms, and concerns.</p>
+                        <p class="d-none" data-lang="kn">ವೈದ್ಯಕೀಯ ಇತಿಹಾಸ, ರೋಗಲಕ್ಷಣಗಳು ಮತ್ತು ಕಾಳಜಿಗಳ ಸಮಗ್ರ ಮೌಲ್ಯಮಾಪನ ಮತ್ತು ಚರ್ಚೆ.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="process-step">
                         <div class="step-number">2</div>
-                        <h4>Diagnosis & Staging</h4>
-                        <p>Advanced diagnostic tests and imaging to accurately identify cancer type and stage.</p>
+                        <h4 data-lang="en">Diagnosis & Staging</h4>
+                        <h4 class="d-none" data-lang="kn">ರೋಗನಿರ್ಣಯ ಮತ್ತು ಹಂತ</h4>
+                        <p data-lang="en">Advanced diagnostic tests and imaging to accurately identify cancer type and stage.</p>
+                        <p class="d-none" data-lang="kn">ಕ್ಯಾನ್ಸರ್ ಪ್ರಕಾರ ಮತ್ತು ಹಂತವನ್ನು ನಿಖರವಾಗಿ ಗುರುತಿಸಲು ಸುಧಾರಿತ ರೋಗನಿರ್ಣಯ ಪರೀಕ್ಷೆಗಳು ಮತ್ತು ಇಮೇಜಿಂಗ್.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="process-step">
                         <div class="step-number">3</div>
-                        <h4>Personalized Treatment Plan</h4>
-                        <p>Development of a customized treatment strategy based on your specific condition and needs.</p>
+                        <h4 data-lang="en">Personalized Treatment Plan</h4>
+                        <h4 class="d-none" data-lang="kn">ವೈಯಕ್ತಿಕಗೊಳಿಸಿದ ಚಿಕಿತ್ಸಾ ಯೋಜನೆ</h4>
+                        <p data-lang="en">Development of a customized treatment strategy based on your specific condition and needs.</p>
+                        <p class="d-none" data-lang="kn">ನಿಮ್ಮ ನಿರ್ದಿಷ್ಟ ಸ್ಥಿತಿ ಮತ್ತು ಅಗತ್ಯಗಳ ಆಧಾರದ ಮೇಲೆ ಕಸ್ಟಮೈಸ್ ಮಾಡಿದ ಚಿಕಿತ್ಸಾ ತಂತ್ರದ ಅಭಿವೃದ್ಧಿ.</p>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="400">
                     <div class="process-step">
                         <div class="step-number">4</div>
-                        <h4>Ongoing Support & Follow-up</h4>
-                        <p>Continuous care, monitoring, and support throughout treatment and recovery journey.</p>
+                        <h4 data-lang="en">Ongoing Support & Follow-up</h4>
+                        <h4 class="d-none" data-lang="kn">ನಿರಂತರ ಬೆಂಬಲ ಮತ್ತು ಫಾಲೋ-ಅಪ್</h4>
+                        <p data-lang="en">Continuous care, monitoring, and support throughout treatment and recovery journey.</p>
+                        <p class="d-none" data-lang="kn">ಚಿಕಿತ್ಸೆ ಮತ್ತು ಮರುಪಡೆಯ ಪ್ರಯಾಣದುದ್ದಕ್ಕೂ ನಿರಂತರ ಸಂರಕ್ಷಣೆ, ಮೇಲ್ವಿಚಾರಣೆ ಮತ್ತು ಬೆಂಬಲ.</p>
                     </div>
                 </div>
             </div>
@@ -686,25 +824,29 @@
                 <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="stats-box">
                         <div class="stats-number">1000+</div>
-                        <p>Patients Treated</p>
+                        <p data-lang="en">Patients Treated</p>
+                        <p class="d-none" data-lang="kn">ಚಿಕಿತ್ಸೆ ಪಡೆದ ರೋಗಿಗಳು</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="stats-box">
                         <div class="stats-number">15+</div>
-                        <p>Years of Experience</p>
+                        <p data-lang="en">Years of Experience</p>
+                        <p class="d-none" data-lang="kn">ಅನುಭವದ ವರ್ಷಗಳು</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="stats-box">
                         <div class="stats-number">98%</div>
-                        <p>Patient Satisfaction</p>
+                        <p data-lang="en">Patient Satisfaction</p>
+                        <p class="d-none" data-lang="kn">ರೋಗಿ ತೃಪ್ತಿ</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="400">
                     <div class="stats-box">
                         <div class="stats-number">24/7</div>
-                        <p>Support Available</p>
+                        <p data-lang="en">Support Available</p>
+                        <p class="d-none" data-lang="kn">ಬೆಂಬಲ ಲಭ್ಯವಿದೆ</p>
                     </div>
                 </div>
             </div>
@@ -716,41 +858,58 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 mb-4" data-aos="fade-right">
-                    <h2 class="mb-4">Advanced Technology & Compassionate Approach</h2>
-                    <p class="mb-4">At Sanjeevini Cancer Centre, we combine state-of-the-art medical technology with a deeply compassionate approach to cancer care.</p>
-                    <p class="mb-4">Our services are designed to address not just the physical aspects of cancer, but also the emotional, psychological, and social challenges that patients and families face.</p>
-                    <p class="mb-4">We believe in treating the whole person, not just the disease, and our comprehensive services reflect this holistic philosophy.</p>
-                    <a href="contact.html#appointment" class="btn btn-primary">Schedule a Consultation</a>
+                    <h2 class="mb-4" data-lang="en">Advanced Technology & Compassionate Approach</h2>
+                    <h2 class="mb-4 d-none" data-lang="kn">ಸುಧಾರಿತ ತಂತ್ರಜ್ಞಾನ ಮತ್ತು ಕರುಣಾಮಯಿ ವಿಧಾನ</h2>
+                    <p class="mb-4" data-lang="en">At Sanjeevini Cancer Centre, we combine state-of-the-art medical technology with a deeply compassionate approach to cancer care.</p>
+                    <p class="mb-4 d-none" data-lang="kn">ಸಂಜೀವಿನಿ ಕ್ಯಾನ್ಸರ್ ಸೆಂಟರ್ನಲ್ಲಿ, ನಾವು ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣೆಗೆ ಅತ್ಯಾಧುನಿಕ ವೈದ್ಯಕೀಯ ತಂತ್ರಜ್ಞಾನವನ್ನು ಆಳವಾದ ಕರುಣಾಮಯಿ ವಿಧಾನದೊಂದಿಗೆ ಸಂಯೋಜಿಸುತ್ತೇವೆ.</p>
+                    <p class="mb-4" data-lang="en">Our services are designed to address not just the physical aspects of cancer, but also the emotional, psychological, and social challenges that patients and families face.</p>
+                    <p class="mb-4 d-none" data-lang="kn">ನಮ್ಮ ಸೇವೆಗಳನ್ನು ಕ್ಯಾನ್ಸರ್ನ ಭೌತಿಕ ಅಂಶಗಳನ್ನು ಮಾತ್ರವಲ್ಲದೆ ರೋಗಿಗಳು ಮತ್ತು ಕುಟುಂಬಗಳು ಎದುರಿಸುವ ಭಾವನಾತ್ಮಕ, ಮನೋವೈಜ್ಞಾನಿಕ ಮತ್ತು ಸಾಮಾಜಿಕ ಸವಾಲುಗಳನ್ನು also ೂಡಿಸಲು ವಿನ್ಯಾಸಗೊಳಿಸಲಾಗಿದೆ.</p>
+                    <p class="mb-4" data-lang="en">We believe in treating the whole person, not just the disease, and our comprehensive services reflect this holistic philosophy.</p>
+                    <p class="mb-4 d-none" data-lang="kn">ರೋಗವನ್ನು ಮಾತ್ರವಲ್ಲದೆ ಸಂಪೂರ್ಣ ವ್ಯಕ್ತಿಯನ್ನು ಚಿಕಿತ್ಸೆ ಮಾಡುವಲ್ಲಿ ನಾವು ನಂಬಿಕೆ ಇಡುತ್ತೇವೆ ಮತ್ತು ನಮ್ಮ ಸಮಗ್ರ ಸೇವೆಗಳು ಈ ಸಮಗ್ರ ತತ್ವಶಾಸ್ತ್ರವನ್ನು ಪ್ರತಿಬಿಂಬಿಸುತ್ತವೆ.</p>
+                    <a href="contact.html#appointment" class="btn btn-primary" data-lang="en">Schedule a Consultation</a>
+                    <a href="contact.html#appointment" class="btn btn-primary d-none" data-lang="kn">ಸಲಹೆ ನಿಗದಿಪಡಿಸಿ</a>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
                     <div class="comparison-table">
                         <table class="table table-hover mb-0">
                             <thead>
                                 <tr>
-                                    <th scope="col">Service Feature</th>
-                                    <th scope="col">Our Approach</th>
+                                    <th scope="col" data-lang="en">Service Feature</th>
+                                    <th scope="col" data-lang="en">Our Approach</th>
+                                    <th scope="col" class="d-none" data-lang="kn">ಸೇವೆ ವೈಶಿಷ್ಟ್ಯ</th>
+                                    <th scope="col" class="d-none" data-lang="kn">ನಮ್ಮ ವಿಧಾನ</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>Treatment Planning</td>
-                                    <td>Personalized based on genetic profile and patient preferences</td>
+                                    <td data-lang="en">Treatment Planning</td>
+                                    <td data-lang="en">Personalized based on genetic profile and patient preferences</td>
+                                    <td class="d-none" data-lang="kn">ಚಿಕಿತ್ಸಾ ಯೋಜನೆ</td>
+                                    <td class="d-none" data-lang="kn">ಜೆನೆಟಿಕ್ ಪ್ರೊಫೈಲ್ ಮತ್ತು ರೋಗಿ ಆದ್ಯತೆಗಳ ಆಧಾರದ ಮೇಲೆ ವೈಯಕ್ತಿಕಗೊಳಿಸಲಾಗಿದೆ</td>
                                 </tr>
                                 <tr>
-                                    <td>Technology Used</td>
-                                    <td>Latest medical advancements and evidence-based protocols</td>
+                                    <td data-lang="en">Technology Used</td>
+                                    <td data-lang="en">Latest medical advancements and evidence-based protocols</td>
+                                    <td class="d-none" data-lang="kn">ಬಳಸಿದ ತಂತ್ರಜ್ಞಾನ</td>
+                                    <td class="d-none" data-lang="kn">ಅತ್ಯಾಧುನಿಕ ವೈದ್ಯಕೀಯ ಪ್ರಗತಿಗಳು ಮತ್ತು ಪುರಾವೆ-ಆಧಾರಿತ ಪ್ರೋಟೋಕಾಲ್ಗಳು</td>
                                 </tr>
                                 <tr>
-                                    <td>Patient Support</td>
-                                    <td>Comprehensive emotional, nutritional, and psychological care</td>
+                                    <td data-lang="en">Patient Support</td>
+                                    <td data-lang="en">Comprehensive emotional, nutritional, and psychological care</td>
+                                    <td class="d-none" data-lang="kn">ರೋಗಿ ಬೆಂಬಲ</td>
+                                    <td class="d-none" data-lang="kn">ಸಮಗ್ರ ಭಾವನಾತ್ಮಕ, ಪೋಷಕಾಂಶ ಮತ್ತು ಮನೋವೈಜ್ಞಾನಿಕ ಸಂರಕ್ಷಣೆ</td>
                                 </tr>
                                 <tr>
-                                    <td>Follow-up Care</td>
-                                    <td>Long-term survivorship programs and regular monitoring</td>
+                                    <td data-lang="en">Follow-up Care</td>
+                                    <td data-lang="en">Long-term survivorship programs and regular monitoring</td>
+                                    <td class="d-none" data-lang="kn">ಫಾಲೋ-ಅಪ್ ಸಂರಕ್ಷಣೆ</td>
+                                    <td class="d-none" data-lang="kn">ದೀರ್ಘಕಾಲಿಕ ಉಳಿವು ಕಾರ್ಯಕ್ರಮಗಳು ಮತ್ತು ನಿಯಮಿತ ಮೇಲ್ವಿಚಾರಣೆ</td>
                                 </tr>
                                 <tr>
-                                    <td>Family Involvement</td>
-                                    <td>Education and support for caregivers and family members</td>
+                                    <td data-lang="en">Family Involvement</td>
+                                    <td data-lang="en">Education and support for caregivers and family members</td>
+                                    <td class="d-none" data-lang="kn">ಕುಟುಂಬದ ಒಳಗೊಳ್ಳುವಿಕೆ</td>
+                                    <td class="d-none" data-lang="kn">ಕೇಯರ್ ಗಿವರ್ಸ್ ಮತ್ತು ಕುಟುಂಬದ ಸದಸ್ಯರಿಗೆ ಶಿಕ್ಷಣ ಮತ್ತು ಬೆಂಬಲ</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -765,11 +924,14 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8" data-aos="fade-right">
-                    <h2 class="mb-3">Begin Your Journey to Better Health</h2>
-                    <p class="mb-0">Take the first step toward comprehensive cancer care. Our team is ready to provide the expert treatment and compassionate support you deserve.</p>
+                    <h2 class="mb-3" data-lang="en">Begin Your Journey to Better Health</h2>
+                    <h2 class="mb-3 d-none" data-lang="kn">ಉತ್ತಮ ಆರೋಗ್ಯಕ್ಕೆ ನಿಮ್ಮ ಪ್ರಯಾಣವನ್ನು ಪ್ರಾರಂಭಿಸಿ</h2>
+                    <p class="mb-0" data-lang="en">Take the first step toward comprehensive cancer care. Our team is ready to provide the expert treatment and compassionate support you deserve.</p>
+                    <p class="mb-0 d-none" data-lang="kn">ಸಮಗ್ರ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣೆಯ ಕಡೆಗೆ ಮೊದಲ ಹೆಜ್ಜೆ ಇಡಿ. ನಿಮಗೆ ಅರ್ಹವಾದ ತಜ್ಞ ಚಿಕಿತ್ಸೆ ಮತ್ತು ಕರುಣಾಮಯಿ ಬೆಂಬಲವನ್ನು ಒದಗಿಸಲು ನಮ್ಮ ತಂಡವು ಸಿದ್ಧವಾಗಿದೆ.</p>
                 </div>
                 <div class="col-lg-4 text-lg-end" data-aos="fade-left">
-                    <a href="contact.html#appointment" class="btn btn-light btn-lg">Book Appointment Today</a>
+                    <a href="contact.html#appointment" class="btn btn-light btn-lg" data-lang="en">Book Appointment Today</a>
+                    <a href="contact.html#appointment" class="btn btn-light btn-lg d-none" data-lang="kn">ಇಂದೇ ನೇಮಕಾತಿ ಬುಕ್ ಮಾಡಿ</a>
                 </div>
             </div>
         </div>
@@ -781,7 +943,8 @@
             <div class="row">
                 <div class="col-lg-4 mb-4">
                     <h4 class="mb-3"><i class="fas fa-hand-holding-heart me-2"></i>Sanjeevini Cancer Centre</h4>
-                    <p>Compassionate Cancer Care, Guided by Expertise. We believe in providing personalized, evidence-based, and compassionate cancer care.</p>
+                    <p data-lang="en">Compassionate Cancer Care, Guided by Expertise. We believe in providing personalized, evidence-based, and compassionate cancer care.</p>
+                    <p class="d-none" data-lang="kn">ಕನಿಕರದ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣೆ, ನಿಪುಣತೆಯ ಮಾರ್ಗದರ್ಶನದೊಂದಿಗೆ. ನಾವು ವೈಯಕ್ತಿಕಗೊಳಿಸಿದ, ಪುರಾವೆ-ಆಧಾರಿತ ಮತ್ತು ಕರುಣಾಮಯಿ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣೆಯನ್ನು ನೀಡುವಲ್ಲಿ ನಂಬಿಕೆ ಇಡುತ್ತೇವೆ.</p>
                     <div class="social-icons mt-4">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -791,36 +954,39 @@
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4">
                     <div class="footer-links">
-                        <h5>Quick Links</h5>
+                        <h5 data-lang="en">Quick Links</h5>
+                        <h5 class="d-none" data-lang="kn">ತ್ವರಿತ ಲಿಂಕ್ಗಳು</h5>
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="services.html">Services</a></li>
-                            <li><a href="patient-care.html">Patient Care</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="index.html" data-lang="en">Home</a><a href="index.html" class="d-none" data-lang="kn">ಮುಖಪುಟ</a></li>
+                            <li><a href="about.html" data-lang="en">About</a><a href="about.html" class="d-none" data-lang="kn">ಬಗ್ಗೆ</a></li>
+                            <li><a href="services.html" data-lang="en">Services</a><a href="services.html" class="d-none" data-lang="kn">ಸೇವೆಗಳು</a></li>
+                            <li><a href="patient-care.html" data-lang="en">Patient Care</a><a href="patient-care.html" class="d-none" data-lang="kn">ರೋಗಿ ಸಂರಕ್ಷಣೆ</a></li>
+                            <li><a href="contact.html" data-lang="en">Contact</a><a href="contact.html" class="d-none" data-lang="kn">ಸಂಪರ್ಕಿಸಿ</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="footer-links">
-                        <h5>Our Services</h5>
+                        <h5 data-lang="en">Our Services</h5>
+                        <h5 class="d-none" data-lang="kn">ನಮ್ಮ ಸೇವೆಗಳು</h5>
                         <ul>
-                            <li><a href="services.html">Cancer Screening</a></li>
-                            <li><a href="services.html">Chemotherapy</a></li>
-                            <li><a href="services.html">Immunotherapy</a></li>
-                            <li><a href="services.html">Targeted Therapy</a></li>
-                            <li><a href="services.html">Palliative Care</a></li>
+                            <li><a href="services.html" data-lang="en">Cancer Screening</a><a href="services.html" class="d-none" data-lang="kn">ಕ್ಯಾನ್ಸರ್ ತಪಾಸಣೆ</a></li>
+                            <li><a href="services.html" data-lang="en">Chemotherapy</a><a href="services.html" class="d-none" data-lang="kn">ಕೀಮೋಥೆರಪಿ</a></li>
+                            <li><a href="services.html" data-lang="en">Immunotherapy</a><a href="services.html" class="d-none" data-lang="kn">ಇಮ್ಯೂನೋಥೆರಪಿ</a></li>
+                            <li><a href="services.html" data-lang="en">Targeted Therapy</a><a href="services.html" class="d-none" data-lang="kn">ಟಾರ್ಗೆಟೆಡ್ ಥೆರಪಿ</a></li>
+                            <li><a href="services.html" data-lang="en">Palliative Care</a><a href="services.html" class="d-none" data-lang="kn">ಪಾಲಿಯೇಟಿವ್ ಸಂರಕ್ಷಣೆ</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 mb-4">
                     <div class="footer-links">
-                        <h5>Contact Us</h5>
+                        <h5 data-lang="en">Contact Us</h5>
+                        <h5 class="d-none" data-lang="kn">ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ</h5>
                         <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Sanjeevini Cancer Centre, Mangalore</li>
-                            <li class="mb-2"><i class="fas fa-phone me-2"></i> (Insert phone number)</li>
-                            <li class="mb-2"><i class="fas fa-envelope me-2"></i> (Insert email)</li>
-                            <li class="mb-2"><i class="fas fa-globe me-2"></i> sanjeevinicancercentre.com</li>
+                            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> <span data-lang="en">Sanjeevini Cancer Centre, Mangalore</span><span class="d-none" data-lang="kn">ಸಂಜೀವಿನಿ ಕ್ಯಾನ್ಸರ್ ಸೆಂಟರ್, ಮಂಗಳೂರು</span></li>
+                            <li class="mb-2"><i class="fas fa-phone me-2"></i> <span data-lang="en">(Insert phone number)</span><span class="d-none" data-lang="kn">(ಫೋನ್ ನಂಬರ್ ಸೇರಿಸಿ)</span></li>
+                            <li class="mb-2"><i class="fas fa-envelope me-2"></i> <span data-lang="en">(Insert email)</span><span class="d-none" data-lang="kn">(ಇಮೇಲ್ ಸೇರಿಸಿ)</span></li>
+                            <li class="mb-2"><i class="fas fa-globe me-2"></i> <span>sanjeevinicancercentre.com</span></li>
                         </ul>
                     </div>
                 </div>
@@ -836,8 +1002,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <!-- Custom JS -->
     <script>
         // Initialize AOS
@@ -869,6 +1033,36 @@
         
         fadeElements.forEach(element => {
             fadeInObserver.observe(element);
+        });
+        
+        // Language switching functionality
+        let currentLanguage = 'en';
+        
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Hide all elements for both languages
+            document.querySelectorAll('[data-lang="en"], [data-lang="kn"]').forEach(el => {
+                el.classList.add('d-none');
+            });
+            
+            // Show elements for selected language
+            document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+                el.classList.remove('d-none');
+            });
+            
+            // Update language button text
+            const languageBtn = document.getElementById('languageToggle');
+            if (lang === 'en') {
+                languageBtn.innerHTML = '<i class="fas fa-language me-1"></i> ಕನ್ನಡ';
+            } else {
+                languageBtn.innerHTML = '<i class="fas fa-language me-1"></i> English';
+            }
+        }
+        
+        // Add event listener for language switching
+        document.getElementById('languageToggle').addEventListener('click', function() {
+            switchLanguage(currentLanguage === 'en' ? 'kn' : 'en');
         });
         
         // Simple animation for stats counter

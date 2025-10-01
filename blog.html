@@ -92,6 +92,73 @@
             width: 100%;
         }
         
+        /* Language Switcher */
+        .language-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .language-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Mobile Navbar Glass Effect */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 75%;
+                height: 100vh;
+                padding: 2rem;
+                background: rgba(255, 255, 255, 0.85);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                z-index: 1050;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                overflow-y: auto;
+            }
+            
+            .navbar-collapse.show {
+                transform: translateX(0);
+            }
+            
+            .navbar-toggler {
+                z-index: 1060;
+            }
+            
+            .navbar-nav {
+                margin-top: 2rem;
+            }
+            
+            .nav-item {
+                margin-bottom: 1rem;
+            }
+            
+            .nav-link {
+                padding: 10px 15px;
+                border-radius: 5px;
+                margin: 5px 0;
+            }
+            
+            .nav-link:hover {
+                background-color: rgba(0, 123, 255, 0.1);
+            }
+            
+            .language-btn-container {
+                margin-top: 1rem;
+                padding: 0 15px;
+            }
+        }
+        
         .hero {
             background: linear-gradient(rgba(0, 123, 255, 0.8), rgba(0, 91, 187, 0.8)), url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
             background-size: cover;
@@ -420,6 +487,15 @@
             .section {
                 padding: 60px 0;
             }
+            
+            .blog-meta {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .blog-meta span {
+                margin-bottom: 5px;
+            }
         }
     </style>
 </head>
@@ -443,9 +519,14 @@
                     <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
                     <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
                     <li class="nav-item ms-2">
-                        <a class="btn btn-primary btn-sm" href="contact.html#appointment">Book Appointment</a>
+                        
                     </li>
                 </ul>
+                <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center mt-3 mt-lg-0 ms-lg-3 language-btn-container">
+                    <button class="language-btn mb-3 mb-lg-0 me-lg-3" id="languageToggle">
+                        <i class="fas fa-language me-1"></i> ಕನ್ನಡ
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
@@ -455,11 +536,15 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
-                    <h1 class="animate__animated animate__fadeInDown">Patient Education Blog</h1>
-                    <p class="animate__animated animate__fadeIn animate__delay-1s">Stay informed about cancer prevention, early detection, and treatment options with our educational resources.</p>
+                    <h1 class="animate__animated animate__fadeInDown" data-lang="en">Patient Education Blog</h1>
+                    <h1 class="animate__animated animate__fadeInDown d-none" data-lang="kn">ರೋಗಿ ಶಿಕ್ಷಣ ಬ್ಲಾಗ್</h1>
+                    <p class="animate__animated animate__fadeIn animate__delay-1s" data-lang="en">Stay informed about cancer prevention, early detection, and treatment options with our educational resources.</p>
+                    <p class="animate__animated animate__fadeIn animate__delay-1s d-none" data-lang="kn">ನಮ್ಮ ಶೈಕ್ಷಣಿಕ ಸಂಪನ್ಮೂಲಗಳೊಂದಿಗೆ ಕ್ಯಾನ್ಸರ್ ತಡೆಗಟ್ಟುವಿಕೆ, ಮುಂಚಿನ ಪತ್ತೆ ಮತ್ತು ಚಿಕಿತ್ಸಾ ಆಯ್ಕೆಗಳ ಬಗ್ಗೆ ತಿಳಿದುಕೊಳ್ಳಿ.</p>
                     <div class="mt-4 animate__animated animate__fadeInUp animate__delay-2s">
-                        <a href="#featured-article" class="btn btn-light btn-lg me-3">Read Featured Article</a>
-                        <a href="contact.html#appointment" class="btn btn-outline-light btn-lg">Book Consultation</a>
+                        <a href="#featured-article" class="btn btn-light btn-lg me-3" data-lang="en">Read Featured Article</a>
+                        <a href="#featured-article" class="btn btn-light btn-lg me-3 d-none" data-lang="kn">ವಿಶೇಷ ಲೇಖನವನ್ನು ಓದಿ</a>
+                        <a href="contact.html#appointment" class="btn btn-outline-light btn-lg" data-lang="en">Book Consultation</a>
+                        <a href="contact.html#appointment" class="btn btn-outline-light btn-lg d-none" data-lang="kn">ಸಲಹೆ ಬುಕ್ ಮಾಡಿ</a>
                     </div>
                 </div>
             </div>
@@ -469,159 +554,202 @@
     <!-- Featured Article Section -->
     <section id="featured-article" class="section">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Early Warning Signs of Cancer You Shouldn't Ignore</h2>
+            <h2 class="section-title" data-aos="fade-up" data-lang="en">Early Warning Signs of Cancer You Shouldn't Ignore</h2>
+            <h2 class="section-title d-none" data-aos="fade-up" data-lang="kn">ನೀವು ನಿರ್ಲಕ್ಷಿಸಬಾರದ ಕ್ಯಾನ್ಸರ್ನ ಮುಂಚಿನ ಎಚ್ಚರಿಕೆ ಚಿಹ್ನೆಗಳು</h2>
             
             <div class="row">
                 <div class="col-lg-8" data-aos="fade-right">
                     <div class="blog-meta">
-                        <span><i class="far fa-calendar"></i> October 15, 2024</span>
-                        <span><i class="far fa-user"></i> Dr. Rachan Shetty KS</span>
-                        <span><i class="far fa-clock"></i> 5 min read</span>
+                        <span><i class="far fa-calendar"></i> <span data-lang="en">October 15, 2024</span><span class="d-none" data-lang="kn">ಅಕ್ಟೋಬರ್ 15, 2024</span></span>
+                        <span><i class="far fa-user"></i> <span data-lang="en">Dr. Rachan Shetty KS</span><span class="d-none" data-lang="kn">ಡಾ. ರಾಚನ್ ಶೆಟ್ಟಿ ಕೆಎಸ್</span></span>
+                        <span><i class="far fa-clock"></i> <span data-lang="en">5 min read</span><span class="d-none" data-lang="kn">5 ನಿಮಿಷ ಓದು</span></span>
                     </div>
                     
-                    <p class="mb-4">Cancer is one of the leading health concerns worldwide, but the good news is that early detection can save lives. Many cancers, when diagnosed in their initial stages, are highly treatable. At Sanjeevini Cancer Centre, Mangalore, we encourage people to stay informed about the early warning signs of cancer and seek medical advice without delay.</p>
+                    <p class="mb-4" data-lang="en">Cancer is one of the leading health concerns worldwide, but the good news is that early detection can save lives. Many cancers, when diagnosed in their initial stages, are highly treatable. At Sanjeevini Cancer Centre, Mangalore, we encourage people to stay informed about the early warning signs of cancer and seek medical advice without delay.</p>
+                    <p class="mb-4 d-none" data-lang="kn">ಕ್ಯಾನ್ಸರ್ ವಿಶ್ವದಾದ್ಯಂತ ಪ್ರಮುಖ ಆರೋಗ್ಯ ಕಾಳಜಿಗಳಲ್ಲಿ ಒಂದಾಗಿದೆ, ಆದರೆ ಒಳ್ಳೆಯ ಸುದ್ದಿ ಎಂದರೆ ಮುಂಚಿನ ಪತ್ತೆಯು ಜೀವಗಳನ್ನು ಉಳಿಸಬಹುದು. ಅನೇಕ ಕ್ಯಾನ್ಸರ್ಗಳು, ಅವುಗಳ ಆರಂಭಿಕ ಹಂತಗಳಲ್ಲಿ ರೋಗನಿರ್ಣಯ ಮಾಡಿದಾಗ, ಹೆಚ್ಚು ಚಿಕಿತ್ಸೆ ಮಾಡಬಹುದಾದವು. ಸಂಜೀವಿನಿ ಕ್ಯಾನ್ಸರ್ ಸೆಂಟರ್, ಮಂಗಳೂರಿನಲ್ಲಿ, ಕ್ಯಾನ್ಸರ್ನ ಮುಂಚಿನ ಎಚ್ಚರಿಕೆ ಚಿಹ್ನೆಗಳ ಬಗ್ಗೆ ಜನರು ತಿಳಿದುಕೊಳ್ಳುವಂತೆ ಮತ್ತು ವಿಳಂಬವಿಲ್ಲದೆ ವೈದ್ಯಕೀಯ ಸಲಹೆ ಪಡೆಯುವಂತೆ ನಾವು ಪ್ರೋತ್ಸಾಹಿಸುತ್ತೇವೆ.</p>
                     
-                    <p class="mb-5">Here are some of the most common symptoms you should never ignore:</p>
+                    <p class="mb-5" data-lang="en">Here are some of the most common symptoms you should never ignore:</p>
+                    <p class="mb-5 d-none" data-lang="kn">ನೀವು ಎಂದಿಗೂ ನಿರ್ಲಕ್ಷಿಸಬಾರದ ಕೆಲವು ಸಾಮಾನ್ಯ ರೋಗಲಕ್ಷಣಗಳು ಇಲ್ಲಿವೆ:</p>
                     
                     <div class="mb-5">
                         <div class="symptom-item" data-aos="fade-up" data-aos-delay="100">
                             <div class="symptom-number">1</div>
                             <div>
-                                <h4>Unexplained Weight Loss</h4>
-                                <p class="mb-0">Losing weight without trying, especially more than 5 kg in a short period, could be a warning sign of cancers such as stomach, pancreas, or lung cancer.</p>
+                                <h4 data-lang="en">Unexplained Weight Loss</h4>
+                                <h4 class="d-none" data-lang="kn">ವಿವರಿಸಲಾಗದ ತೂಕ ಕಡಿಮೆಯಾಗುವುದು</h4>
+                                <p class="mb-0" data-lang="en">Losing weight without trying, especially more than 5 kg in a short period, could be a warning sign of cancers such as stomach, pancreas, or lung cancer.</p>
+                                <p class="mb-0 d-none" data-lang="kn">ಪ್ರಯತ್ನಿಸದೆ ತೂಕ ಕಳೆದುಕೊಳ್ಳುವುದು, ವಿಶೇಷವಾಗಿ ಕಡಿಮೆ ಅವಧಿಯಲ್ಲಿ 5 ಕೆಜಿಗಿಂತ ಹೆಚ್ಚು, ಹೊಟ್ಟೆ, ಕ pancreas ್ಲಾ ಗ್ರಂಥಿ ಅಥವಾ ಶ್ವಾಸಕೋಶದ ಕ್ಯಾನ್ಸರ್ನಂತಹ ಕ್ಯಾನ್ಸರ್ಗಳ ಎಚ್ಚರಿಕೆಯ ಚಿಹ್ನೆಯಾಗಿರಬಹುದು.</p>
                             </div>
                         </div>
                         
                         <div class="symptom-item" data-aos="fade-up" data-aos-delay="200">
                             <div class="symptom-number">2</div>
                             <div>
-                                <h4>Persistent Fatigue</h4>
-                                <p class="mb-0">Constant tiredness that doesn't improve with rest can sometimes be linked to leukemia or colon cancer.</p>
+                                <h4 data-lang="en">Persistent Fatigue</h4>
+                                <h4 class="d-none" data-lang="kn">ನಿರಂತರ ದಣಿವು</h4>
+                                <p class="mb-0" data-lang="en">Constant tiredness that doesn't improve with rest can sometimes be linked to leukemia or colon cancer.</p>
+                                <p class="mb-0 d-none" data-lang="kn">ವಿಶ್ರಾಂತಿಯೊಂದಿಗೆ ಸುಧಾರಿಸದ ನಿರಂತರ ದಣಿವು ಕೆಲವೊಮ್ಮೆ ಲ್ಯುಕೀಮಿಯಾ ಅಥವಾ ಕೊಲೊನ್ ಕ್ಯಾನ್ಸರ್ಗೆ ಸಂಬಂಧಿಸಿರಬಹುದು.</p>
                             </div>
                         </div>
                         
                         <div class="symptom-item" data-aos="fade-up" data-aos-delay="300">
                             <div class="symptom-number">3</div>
                             <div>
-                                <h4>Lumps or Thickening in the Body</h4>
-                                <p class="mb-0">A new lump in the breast, neck, underarm, or other areas should always be checked by a doctor. While many lumps are harmless, some can indicate cancer.</p>
+                                <h4 data-lang="en">Lumps or Thickening in the Body</h4>
+                                <h4 class="d-none" data-lang="kn">ದೇಹದಲ್ಲಿ ಗಂಟುಗಳು ಅಥವಾ ದಪ್ಪವಾಗುವುದು</h4>
+                                <p class="mb-0" data-lang="en">A new lump in the breast, neck, underarm, or other areas should always be checked by a doctor. While many lumps are harmless, some can indicate cancer.</p>
+                                <p class="mb-0 d-none" data-lang="kn">ಸ್ತನ, ಕುತ್ತಿಗೆ, ಅಂಗೈಯ ಕೆಳಗೆ ಅಥವಾ ಇತರ ಪ್ರದೇಶಗಳಲ್ಲಿ ಹೊಸ ಗಂಟು ಯಾವಾಗಲೂ ವೈದ್ಯರಿಂದ ಪರಿಶೀಲಿಸಬೇಕು. ಅನೇಕ ಗಂಟುಗಳು ಹಾನಿಕಾರಕವಲ್ಲದಿದ್ದರೂ, ಕೆಲವು ಕ್ಯಾನ್ಸರ್ ಅನ್ನು ಸೂಚಿಸಬಹುದು.</p>
                             </div>
                         </div>
                         
                         <div class="symptom-item" data-aos="fade-up" data-aos-delay="400">
                             <div class="symptom-number">4</div>
                             <div>
-                                <h4>Changes in Skin</h4>
-                                <p class="mb-0">Look out for unusual changes like new moles, changes in existing moles, or non-healing sores. These may signal skin cancer or other underlying issues.</p>
+                                <h4 data-lang="en">Changes in Skin</h4>
+                                <h4 class="d-none" data-lang="kn">ಚರ್ಮದಲ್ಲಿನ ಬದಲಾವಣೆಗಳು</h4>
+                                <p class="mb-0" data-lang="en">Look out for unusual changes like new moles, changes in existing moles, or non-healing sores. These may signal skin cancer or other underlying issues.</p>
+                                <p class="mb-0 d-none" data-lang="kn">ಹೊಸ ಮೊಳೆಗಳು, ಅಸ್ತಿತ್ವದಲ್ಲಿರುವ ಮೊಳೆಗಳಲ್ಲಿನ ಬದಲಾವಣೆಗಳು ಅಥವಾ ಗುಣವಾಗದ sores ುಣ್ಣಗಳಂತಹ ಅಸಾಮಾನ್ಯ ಬದಲಾವಣೆಗಳಿಗೆ ಗಮನ ಕೊಡಿ. ಇವು ಚರ್ಮದ ಕ್ಯಾನ್ಸರ್ ಅಥವಾ ಇತರ ಆಂತರಿಕ ಸಮಸ್ಯೆಗಳನ್ನು ಸೂಚಿಸಬಹುದು.</p>
                             </div>
                         </div>
                         
                         <div class="symptom-item" data-aos="fade-up" data-aos-delay="500">
                             <div class="symptom-number">5</div>
                             <div>
-                                <h4>Persistent Cough or Hoarseness</h4>
-                                <p class="mb-0">A long-lasting cough, difficulty breathing, or hoarseness could be linked to lung cancer or throat cancer, especially if you are a smoker.</p>
+                                <h4 data-lang="en">Persistent Cough or Hoarseness</h4>
+                                <h4 class="d-none" data-lang="kn">ನಿರಂತರ ಕೆಮ್ಮು ಅಥವಾ ಗಂಟಲು ಬಾಗುವುದು</h4>
+                                <p class="mb-0" data-lang="en">A long-lasting cough, difficulty breathing, or hoarseness could be linked to lung cancer or throat cancer, especially if you are a smoker.</p>
+                                <p class="mb-0 d-none" data-lang="kn">ದೀರ್ಘಕಾಲದ ಕೆಮ್ಮು, ಉಸಿರಾಡುವ ತೊಂದರೆ ಅಥವಾ ಗಂಟಲು ಬಾಗುವುದು ಶ್ವಾಸಕೋಶದ ಕ್ಯಾನ್ಸರ್ ಅಥವಾ ಗಂಟಲ ಕ್ಯಾನ್ಸರ್ಗೆ ಸಂಬಂಧಿಸಿರಬಹುದು, ವಿಶೇಷವಾಗಿ ನೀವು ಧೂಮಪಾನಿ ಆಗಿದ್ದರೆ.</p>
                             </div>
                         </div>
                         
                         <div class="symptom-item" data-aos="fade-up" data-aos-delay="600">
                             <div class="symptom-number">6</div>
                             <div>
-                                <h4>Abnormal Bleeding</h4>
-                                <p class="mb-0">Unexplained bleeding — such as blood in urine, stool, coughing up blood, or unusual vaginal bleeding — should always be investigated.</p>
+                                <h4 data-lang="en">Abnormal Bleeding</h4>
+                                <h4 class="d-none" data-lang="kn">ಅಸಹಜ ರಕ್ತಸ್ರಾವ</h4>
+                                <p class="mb-0" data-lang="en">Unexplained bleeding — such as blood in urine, stool, coughing up blood, or unusual vaginal bleeding — should always be investigated.</p>
+                                <p class="mb-0 d-none" data-lang="kn">ವಿವರಿಸಲಾಗದ ರಕ್ತಸ್ರಾವ — ಮೂತ್ರ, ಮಲ, ರಕ್ತವನ್ನು ಕೆಮ್ಮುವುದು ಅಥವಾ ಅಸಾಮಾನ್ಯ ಯೋನಿ ರಕ್ತಸ್ರಾವ — ಯಾವಾಗಲೂ ತನಿಖೆ ಮಾಡಬೇಕು.</p>
                             </div>
                         </div>
                         
                         <div class="symptom-item" data-aos="fade-up" data-aos-delay="700">
                             <div class="symptom-number">7</div>
                             <div>
-                                <h4>Difficulty Swallowing</h4>
-                                <p class="mb-0">Trouble swallowing or a persistent feeling of food being "stuck" in the throat can be linked to esophageal or stomach cancer.</p>
+                                <h4 data-lang="en">Difficulty Swallowing</h4>
+                                <h4 class="d-none" data-lang="kn">ನುಂಗುವ ತೊಂದರೆ</h4>
+                                <p class="mb-0" data-lang="en">Trouble swallowing or a persistent feeling of food being "stuck" in the throat can be linked to esophageal or stomach cancer.</p>
+                                <p class="mb-0 d-none" data-lang="kn">ನುಂಗುವ ತrou ೊಂದರೆ ಅಥವಾ ಆಹಾರವು ಗಂಟಲಲ್ಲಿ "ಸಿಕ್ಕಿಹಾಕಿಕೊಂಡಿರುವ" ನಿರಂತರ ಭಾವನೆಯು ಅನ್ನನಾಳ ಅಥವಾ ಹೊಟ್ಟೆಯ ಕ್ಯಾನ್ಸರ್ಗೆ ಸಂಬಂಧಿಸಿರಬಹುದು.</p>
                             </div>
                         </div>
                         
                         <div class="symptom-item" data-aos="fade-up" data-aos-delay="800">
                             <div class="symptom-number">8</div>
                             <div>
-                                <h4>Chronic Pain</h4>
-                                <p class="mb-0">Unexplained, long-lasting pain (back pain, headaches, bone pain) may sometimes be associated with certain cancers and should not be ignored.</p>
+                                <h4 data-lang="en">Chronic Pain</h4>
+                                <h4 class="d-none" data-lang="kn">ದೀರ್ಘಕಾಲಿಕ ನೋವು</h4>
+                                <p class="mb-0" data-lang="en">Unexplained, long-lasting pain (back pain, headaches, bone pain) may sometimes be associated with certain cancers and should not be ignored.</p>
+                                <p class="mb-0 d-none" data-lang="kn">ವಿವರಿಸಲಾಗದ, ದೀರ್ಘಕಾಲಿಕ ನೋವು (ಬೆನ್ನಿನ ನೋವು, ತಲೆನೋವು, ಮೂಳೆಯ ನೋವು) ಕೆಲವೊಮ್ಮೆ ಕೆಲವು ಕ್ಯಾನ್ಸರ್ಗಳೊಂದಿಗೆ ಸಂಬಂಧಿಸಿರಬಹುದು ಮತ್ತು ನಿರ್ಲಕ್ಷಿಸಬಾರದು.</p>
                             </div>
                         </div>
                     </div>
                     
-                    <h3 class="mb-3" data-aos="fade-up">When to See a Doctor?</h3>
-                    <p class="mb-4" data-aos="fade-up">If you experience any of the above symptoms for more than a few weeks, it's important to consult a qualified oncologist. Not all these symptoms mean cancer, but early medical evaluation ensures timely diagnosis and peace of mind.</p>
+                    <h3 class="mb-3" data-aos="fade-up" data-lang="en">When to See a Doctor?</h3>
+                    <h3 class="mb-3 d-none" data-aos="fade-up" data-lang="kn">ಯಾವಾಗ ವೈದ್ಯರನ್ನು ಭೇಟಿ ಮಾಡಬೇಕು?</h3>
+                    <p class="mb-4" data-aos="fade-up" data-lang="en">If you experience any of the above symptoms for more than a few weeks, it's important to consult a qualified oncologist. Not all these symptoms mean cancer, but early medical evaluation ensures timely diagnosis and peace of mind.</p>
+                    <p class="mb-4 d-none" data-aos="fade-up" data-lang="kn">ನೀವು ಮೇಲಿನ ಯಾವುದೇ ರೋಗಲಕ್ಷಣಗಳನ್ನು ಕೆಲವು ವಾರಗಳಿಗಿಂತ ಹೆಚ್ಚು ಕಾಲ ಅನುಭವಿಸಿದರೆ, ಅರ್ಹ ಒಂಕೋಲಜಿಸ್ಟ್ ಅನ್ನು ಸಂಪರ್ಕಿಸುವುದು ಮುಖ್ಯ. ಈ ಎಲ್ಲಾ ರೋಗಲಕ್ಷಣಗಳು ಕ್ಯಾನ್ಸರ್ ಅರ್ಥವಲ್ಲ, ಆದರೆ ಮುಂಚಿನ ವೈದ್ಯಕೀಯ ಮೌಲ್ಯಮಾಪನವು ಸಕಾಲಿಕ ರೋಗನಿರ್ಣಯ ಮತ್ತು ಮನಸ್ಸಿನ ಶಾಂತಿಯನ್ನು ಖಚಿತಪಡಿಸುತ್ತದೆ.</p>
                     
                     <div class="takeaway-box" data-aos="zoom-in">
                         <div class="takeaway-content">
-                            <h3 class="mb-3">Takeaway</h3>
-                            <p class="mb-4">Awareness and early action are the most powerful tools against cancer. If you or your loved ones notice any of these warning signs, don't delay — schedule a consultation at Sanjeevini Cancer Centre today.</p>
+                            <h3 class="mb-3" data-lang="en">Takeaway</h3>
+                            <h3 class="mb-3 d-none" data-lang="kn">ಟೇಕಾವೇ</h3>
+                            <p class="mb-4" data-lang="en">Awareness and early action are the most powerful tools against cancer. If you or your loved ones notice any of these warning signs, don't delay — schedule a consultation at Sanjeevini Cancer Centre today.</p>
+                            <p class="mb-4 d-none" data-lang="kn">ಜಾಗೃತಿ ಮತ್ತು ಮುಂಚಿನ ಕ್ರಮವು ಕ್ಯಾನ್ಸರ್ಗೆ ವಿರುದ್ಧದ ಅತ್ಯಂತ ಶಕ್ತಿಶಾಲಿ ಸಾಧನಗಳಾಗಿವೆ. ನೀವು ಅಥವಾ ನಿಮ್ಮ ಪ್ರಿಯರಿಗೆ ಈ ಎಚ್ಚರಿಕೆ ಚಿಹ್ನೆಗಳಲ್ಲಿ ಯಾವುದಾದರೂ ಗಮನಕ್ಕೆ ಬಂದರೆ, ವಿಳಂಬ ಮಾಡಬೇಡಿ — ಇಂದೇ ಸಂಜೀವಿನಿ ಕ್ಯಾನ್ಸರ್ ಸೆಂಟರ್ನಲ್ಲಿ ಸಲಹೆ ನಿಗದಿಪಡಿಸಿ.</p>
                             <div class="d-flex align-items-center">
                                 <i class="fas fa-map-marker-alt fa-2x me-3"></i>
                                 <div>
-                                    <h5 class="mb-1">Visit us in Mangalore</h5>
-                                    <p class="mb-0">Your health is our priority. Early detection saves lives.</p>
+                                    <h5 class="mb-1" data-lang="en">Visit us in Mangalore</h5>
+                                    <h5 class="mb-1 d-none" data-lang="kn">ಮಂಗಳೂರಿನಲ್ಲಿ ನಮ್ಮನ್ನು ಭೇಟಿ ಮಾಡಿ</h5>
+                                    <p class="mb-0" data-lang="en">Your health is our priority. Early detection saves lives.</p>
+                                    <p class="mb-0 d-none" data-lang="kn">ನಿಮ್ಮ ಆರೋಗ್ಯವೇ ನಮ್ಮ ಆದ್ಯತೆ. ಮುಂಚಿನ ಪತ್ತೆಯು ಜೀವಗಳನ್ನು ಉಳಿಸುತ್ತದೆ.</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
                     <div data-aos="fade-up">
-                        <h3 class="mb-3">At Sanjeevini Cancer Centre, Mangalore</h3>
-                        <p class="mb-4">Dr. Rachan Shetty KS and his team specialize in:</p>
+                        <h3 class="mb-3" data-lang="en">At Sanjeevini Cancer Centre, Mangalore</h3>
+                        <h3 class="mb-3 d-none" data-lang="kn">ಸಂಜೀವಿನಿ ಕ್ಯಾನ್ಸರ್ ಸೆಂಟರ್, ಮಂಗಳೂರಿನಲ್ಲಿ</h3>
+                        <p class="mb-4" data-lang="en">Dr. Rachan Shetty KS and his team specialize in:</p>
+                        <p class="mb-4 d-none" data-lang="kn">ಡಾ. ರಾಚನ್ ಶೆಟ್ಟಿ ಕೆಎಸ್ ಮತ್ತು ಅವರ ತಂಡವು ಇವುಗಳಲ್ಲಿ ಪರಿಣತಿ ಹೊಂದಿದೆ:</p>
                         <ul>
-                            <li class="mb-2">Cancer screening & prevention</li>
-                            <li class="mb-2">Chemotherapy, immunotherapy & targeted therapy</li>
-                            <li class="mb-2">Comprehensive patient care and support</li>
+                            <li class="mb-2" data-lang="en">Cancer screening & prevention</li>
+                            <li class="mb-2 d-none" data-lang="kn">ಕ್ಯಾನ್ಸರ್ ತಪಾಸಣೆ ಮತ್ತು ತಡೆಗಟ್ಟುವಿಕೆ</li>
+                            <li class="mb-2" data-lang="en">Chemotherapy, immunotherapy & targeted therapy</li>
+                            <li class="mb-2 d-none" data-lang="kn">ಕೀಮೋಥೆರಪಿ, ಇಮ್ಯೂನೋಥೆರಪಿ ಮತ್ತು ಟಾರ್ಗೆಟೆಡ್ ಥೆರಪಿ</li>
+                            <li class="mb-2" data-lang="en">Comprehensive patient care and support</li>
+                            <li class="mb-2 d-none" data-lang="kn">ಸಮಗ್ರ ರೋಗಿ ಸಂರಕ್ಷಣೆ ಮತ್ತು ಬೆಂಬಲ</li>
                         </ul>
                     </div>
                 </div>
                 
                 <div class="col-lg-4" data-aos="fade-left">
                     <div class="blog-sidebar">
-                        <h4 class="sidebar-title">Other Blog Topics</h4>
+                        <h4 class="sidebar-title" data-lang="en">Other Blog Topics</h4>
+                        <h4 class="sidebar-title d-none" data-lang="kn">ಇತರ ಬ್ಲಾಗ್ ವಿಷಯಗಳು</h4>
                         <ul class="sidebar-list">
                             <li>
                                 <a href="#">
-                                    <h5>Understanding Immunotherapy in Cancer Treatment</h5>
-                                    <p class="mb-0 text-muted small">Learn how immunotherapy works and who can benefit from this advanced treatment.</p>
+                                    <h5 data-lang="en">Understanding Immunotherapy in Cancer Treatment</h5>
+                                    <h5 class="d-none" data-lang="kn">ಕ್ಯಾನ್ಸರ್ ಚಿಕಿತ್ಸೆಯಲ್ಲಿ ಇಮ್ಯೂನೋಥೆರಪಿಯನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವುದು</h5>
+                                    <p class="mb-0 text-muted small" data-lang="en">Learn how immunotherapy works and who can benefit from this advanced treatment.</p>
+                                    <p class="mb-0 text-muted small d-none" data-lang="kn">ಇಮ್ಯೂನೋಥೆರಪಿ ಹೇಗೆ ಕಾರ್ಯನಿರ್ವಹಿಸುತ್ತದೆ ಮತ್ತು ಈ ಅತ್ಯಾಧುನಿಕ ಚಿಕಿತ್ಸೆಯಿಂದ ಯಾರು ಪ್ರಯೋಜನ ಪಡೆಯಬಹುದು ಎಂಬುದನ್ನು ತಿಳಿಯಿರಿ.</p>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <h5>Nutrition During Cancer Treatment</h5>
-                                    <p class="mb-0 text-muted small">Expert tips on maintaining proper nutrition to support your body during treatment.</p>
+                                    <h5 data-lang="en">Nutrition During Cancer Treatment</h5>
+                                    <h5 class="d-none" data-lang="kn">ಕ್ಯಾನ್ಸರ್ ಚಿಕಿತ್ಸೆಯ ಸಮಯದಲ್ಲಿ ಪೋಷಣೆ</h5>
+                                    <p class="mb-0 text-muted small" data-lang="en">Expert tips on maintaining proper nutrition to support your body during treatment.</p>
+                                    <p class="mb-0 text-muted small d-none" data-lang="kn">ಚಿಕಿತ್ಸೆಯ ಸಮಯದಲ್ಲಿ ನಿಮ್ಮ ದೇಹವನ್ನು ಬೆಂಬಲಿಸಲು ಸರಿಯಾದ ಪೋಷಣೆಯನ್ನು ಕಾಪಾಡಿಕೊಳ್ಳುವ ತಜ್ಞರ ಸಲಹೆಗಳು.</p>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <h5>Cancer Screening Guidelines by Age</h5>
-                                    <p class="mb-0 text-muted small">Find out which cancer screenings are recommended for your age group.</p>
+                                    <h5 data-lang="en">Cancer Screening Guidelines by Age</h5>
+                                    <h5 class="d-none" data-lang="kn">ವಯಸ್ಸಿನ ಪ್ರಕಾರ ಕ್ಯಾನ್ಸರ್ ತಪಾಸಣೆ ಮಾರ್ಗಸೂಚಿಗಳು</h5>
+                                    <p class="mb-0 text-muted small" data-lang="en">Find out which cancer screenings are recommended for your age group.</p>
+                                    <p class="mb-0 text-muted small d-none" data-lang="kn">ನಿಮ್ಮ ವಯಸ್ಸಿನ ಗುಂಪಿಗೆ ಯಾವ ಕ್ಯಾನ್ಸರ್ ತಪಾಸಣೆಗಳನ್ನು ಶಿಫಾರಸು ಮಾಡಲಾಗಿದೆ ಎಂಬುದನ್ನು ಕಂಡುಹಿಡಿಯಿರಿ.</p>
                                 </a>
                             </li>
                             <li>
                                 <a href="#">
-                                    <h5>Coping with Cancer Diagnosis</h5>
-                                    <p class="mb-0 text-muted small">Psychological strategies and support resources for patients and families.</p>
+                                    <h5 data-lang="en">Coping with Cancer Diagnosis</h5>
+                                    <h5 class="d-none" data-lang="kn">ಕ್ಯಾನ್ಸರ್ ರೋಗನಿರ್ಣಯದೊಂದಿಗೆ ಹೋರಾಡುವುದು</h5>
+                                    <p class="mb-0 text-muted small" data-lang="en">Psychological strategies and support resources for patients and families.</p>
+                                    <p class="mb-0 text-muted small d-none" data-lang="kn">ರೋಗಿಗಳು ಮತ್ತು ಕುಟುಂಬಗಳಿಗೆ ಮಾನಸಿಕ ತಂತ್ರಗಳು ಮತ್ತು ಬೆಂಬಲ ಸಂಪನ್ಮೂಲಗಳು.</p>
                                 </a>
                             </li>
                         </ul>
                         
                         <div class="mt-5">
-                            <h4 class="sidebar-title">Categories</h4>
+                            <h4 class="sidebar-title" data-lang="en">Categories</h4>
+                            <h4 class="sidebar-title d-none" data-lang="kn">ವರ್ಗಗಳು</h4>
                             <ul class="sidebar-list">
-                                <li><a href="#">Cancer Prevention</a></li>
-                                <li><a href="#">Early Detection</a></li>
-                                <li><a href="#">Treatment Options</a></li>
-                                <li><a href="#">Patient Support</a></li>
-                                <li><a href="#">Survivorship</a></li>
+                                <li><a href="#" data-lang="en">Cancer Prevention</a><a href="#" class="d-none" data-lang="kn">ಕ್ಯಾನ್ಸರ್ ತಡೆಗಟ್ಟುವಿಕೆ</a></li>
+                                <li><a href="#" data-lang="en">Early Detection</a><a href="#" class="d-none" data-lang="kn">ಮುಂಚಿನ ಪತ್ತೆ</a></li>
+                                <li><a href="#" data-lang="en">Treatment Options</a><a href="#" class="d-none" data-lang="kn">ಚಿಕಿತ್ಸಾ ಆಯ್ಕೆಗಳು</a></li>
+                                <li><a href="#" data-lang="en">Patient Support</a><a href="#" class="d-none" data-lang="kn">ರೋಗಿ ಬೆಂಬಲ</a></li>
+                                <li><a href="#" data-lang="en">Survivorship</a><a href="#" class="d-none" data-lang="kn">ಉಳಿವು</a></li>
                             </ul>
                         </div>
                         
                         <div class="mt-5">
-                            <h4 class="sidebar-title">Need Help?</h4>
-                            <p>If you have concerns about any symptoms or need to schedule a screening, don't hesitate to reach out.</p>
-                            <a href="contact.html#appointment" class="btn btn-primary w-100">Book Consultation</a>
+                            <h4 class="sidebar-title" data-lang="en">Need Help?</h4>
+                            <h4 class="sidebar-title d-none" data-lang="kn">ಸಹಾಯ ಬೇಕೇ?</h4>
+                            <p data-lang="en">If you have concerns about any symptoms or need to schedule a screening, don't hesitate to reach out.</p>
+                            <p class="d-none" data-lang="kn">ನೀವು ಯಾವುದೇ ರೋಗಲಕ್ಷಣಗಳ ಬಗ್ಗೆ ಕಾಳಜಿ ಹೊಂದಿದ್ದರೆ ಅಥವಾ ತಪಾಸಣೆ ನಿಗದಿಪಡಿಸಬೇಕಾದರೆ, ಸಂಪರ್ಕಿಸಲು ಹಿಂಜರಿಯಬೇಡಿ.</p>
+                            <a href="contact.html#appointment" class="btn btn-primary w-100" data-lang="en">Book Consultation</a>
+                            <a href="contact.html#appointment" class="btn btn-primary w-100 d-none" data-lang="kn">ಸಲಹೆ ಬುಕ್ ಮಾಡಿ</a>
                         </div>
                     </div>
                 </div>
@@ -632,17 +760,22 @@
     <!-- More Blog Posts Section -->
     <section class="section bg-light">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">More Educational Articles</h2>
+            <h2 class="section-title" data-aos="fade-up" data-lang="en">More Educational Articles</h2>
+            <h2 class="section-title d-none" data-aos="fade-up" data-lang="kn">ಹೆಚ್ಚಿನ ಶೈಕ್ಷಣಿಕ ಲೇಖನಗಳು</h2>
             
             <div class="row">
                 <div class="col-md-4 mb-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="blog-card">
                         <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Immunotherapy" class="blog-img">
                         <div class="card-body p-4">
-                            <span class="blog-category">Treatment</span>
-                            <h4 class="card-title">Understanding Immunotherapy in Cancer Treatment</h4>
-                            <p class="card-text">Immunotherapy helps the body's immune system fight cancer more effectively. It is one of the latest advances in oncology.</p>
-                            <a href="#" class="btn btn-outline-primary">Read More</a>
+                            <span class="blog-category" data-lang="en">Treatment</span>
+                            <span class="blog-category d-none" data-lang="kn">ಚಿಕಿತ್ಸೆ</span>
+                            <h4 class="card-title" data-lang="en">Understanding Immunotherapy in Cancer Treatment</h4>
+                            <h4 class="card-title d-none" data-lang="kn">ಕ್ಯಾನ್ಸರ್ ಚಿಕಿತ್ಸೆಯಲ್ಲಿ ಇಮ್ಯೂನೋಥೆರಪಿಯನ್ನು ಅರ್ಥಮಾಡಿಕೊಳ್ಳುವುದು</h4>
+                            <p class="card-text" data-lang="en">Immunotherapy helps the body's immune system fight cancer more effectively. It is one of the latest advances in oncology.</p>
+                            <p class="card-text d-none" data-lang="kn">ಇಮ್ಯೂನೋಥೆರಪಿಯು ದೇಹದ ರೋಗನಿರೋಧಕ ವ್ಯವಸ್ಥೆಯು ಕ್ಯಾನ್ಸರ್ಗೆ ಹೆಚ್ಚು ಪರಿಣಾಮಕಾರಿಯಾಗಿ ಹೋರಾಡಲು ಸಹಾಯ ಮಾಡುತ್ತದೆ. ಇದು ಒಂಕೋಲಜಿಯಲ್ಲಿ ಇತ್ತೀಚಿನ ಪ್ರಗತಿಗಳಲ್ಲಿ ಒಂದಾಗಿದೆ.</p>
+                            <a href="#" class="btn btn-outline-primary" data-lang="en">Read More</a>
+                            <a href="#" class="btn btn-outline-primary d-none" data-lang="kn">ಹೆಚ್ಚು ಓದಿ</a>
                         </div>
                     </div>
                 </div>
@@ -651,10 +784,14 @@
                     <div class="blog-card">
                         <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Nutrition" class="blog-img">
                         <div class="card-body p-4">
-                            <span class="blog-category">Nutrition</span>
-                            <h4 class="card-title">Nutritional Guidance During Cancer Treatment</h4>
-                            <p class="card-text">Proper nutrition plays a crucial role in supporting your body through cancer treatment.</p>
-                            <a href="#" class="btn btn-outline-primary">Read More</a>
+                            <span class="blog-category" data-lang="en">Nutrition</span>
+                            <span class="blog-category d-none" data-lang="kn">ಪೋಷಣೆ</span>
+                            <h4 class="card-title" data-lang="en">Nutritional Guidance During Cancer Treatment</h4>
+                            <h4 class="card-title d-none" data-lang="kn">ಕ್ಯಾನ್ಸರ್ ಚಿಕಿತ್ಸೆಯ ಸಮಯದಲ್ಲಿ ಪೋಷಕಾಂಶ ಮಾರ್ಗದರ್ಶನ</h4>
+                            <p class="card-text" data-lang="en">Proper nutrition plays a crucial role in supporting your body through cancer treatment.</p>
+                            <p class="card-text d-none" data-lang="kn">ಕ್ಯಾನ್ಸರ್ ಚಿಕಿತ್ಸೆಯ ಮೂಲಕ ನಿಮ್ಮ ದೇಹವನ್ನು ಬೆಂಬಲಿಸುವಲ್ಲಿ ಸರಿಯಾದ ಪೋಷಣೆಯು ನಿರ್ಣಾಯಕ ಪಾತ್ರವನ್ನು ವಹಿಸುತ್ತದೆ.</p>
+                            <a href="#" class="btn btn-outline-primary" data-lang="en">Read More</a>
+                            <a href="#" class="btn btn-outline-primary d-none" data-lang="kn">ಹೆಚ್ಚು ಓದಿ</a>
                         </div>
                     </div>
                 </div>
@@ -663,10 +800,14 @@
                     <div class="blog-card">
                         <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Screening" class="blog-img">
                         <div class="card-body p-4">
-                            <span class="blog-category">Prevention</span>
-                            <h4 class="card-title">Cancer Screening Guidelines by Age</h4>
-                            <p class="card-text">Regular cancer screening is strongly recommended for early detection, especially for common cancers.</p>
-                            <a href="#" class="btn btn-outline-primary">Read More</a>
+                            <span class="blog-category" data-lang="en">Prevention</span>
+                            <span class="blog-category d-none" data-lang="kn">ತಡೆಗಟ್ಟುವಿಕೆ</span>
+                            <h4 class="card-title" data-lang="en">Cancer Screening Guidelines by Age</h4>
+                            <h4 class="card-title d-none" data-lang="kn">ವಯಸ್ಸಿನ ಪ್ರಕಾರ ಕ್ಯಾನ್ಸರ್ ತಪಾಸಣೆ ಮಾರ್ಗಸೂಚಿಗಳು</h4>
+                            <p class="card-text" data-lang="en">Regular cancer screening is strongly recommended for early detection, especially for common cancers.</p>
+                            <p class="card-text d-none" data-lang="kn">ಮುಂಚಿನ ಪತ್ತೆಗಾಗಿ, ವಿಶೇಷವಾಗಿ ಸಾಮಾನ್ಯ ಕ್ಯಾನ್ಸರ್ಗಳಿಗೆ, ನಿಯಮಿತ ಕ್ಯಾನ್ಸರ್ ತಪಾಸಣೆಯನ್ನು ಬಲವಾಗಿ ಶಿಫಾರಸು ಮಾಡಲಾಗುತ್ತದೆ.</p>
+                            <a href="#" class="btn btn-outline-primary" data-lang="en">Read More</a>
+                            <a href="#" class="btn btn-outline-primary d-none" data-lang="kn">ಹೆಚ್ಚು ಓದಿ</a>
                         </div>
                     </div>
                 </div>
@@ -679,11 +820,14 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8" data-aos="fade-right">
-                    <h2 class="mb-3">Stay Informed About Your Health</h2>
-                    <p class="mb-0">Knowledge is power when it comes to cancer prevention and early detection. Subscribe to our blog for regular updates.</p>
+                    <h2 class="mb-3" data-lang="en">Stay Informed About Your Health</h2>
+                    <h2 class="mb-3 d-none" data-lang="kn">ನಿಮ್ಮ ಆರೋಗ್ಯದ ಬಗ್ಗೆ ತಿಳಿದುಕೊಳ್ಳಿ</h2>
+                    <p class="mb-0" data-lang="en">Knowledge is power when it comes to cancer prevention and early detection. Subscribe to our blog for regular updates.</p>
+                    <p class="mb-0 d-none" data-lang="kn">ಕ್ಯಾನ್ಸರ್ ತಡೆಗಟ್ಟುವಿಕೆ ಮತ್ತು ಮುಂಚಿನ ಪತ್ತೆಗೆ ಬಂದಾಗ ಜ್ಞಾನವೇ ಶಕ್ತಿ. ನಿಯಮಿತ ನವೀಕರಣಗಳಿಗಾಗಿ ನಮ್ಮ ಬ್ಲಾಗ್ಗೆ ಚಂದಾದಾರರಾಗಿ.</p>
                 </div>
                 <div class="col-lg-4 text-lg-end" data-aos="fade-left">
-                    <a href="contact.html" class="btn btn-light btn-lg">Subscribe to Updates</a>
+                    <a href="contact.html" class="btn btn-light btn-lg" data-lang="en">Subscribe to Updates</a>
+                    <a href="contact.html" class="btn btn-light btn-lg d-none" data-lang="kn">ನವೀಕರಣಗಳಿಗೆ ಚಂದಾದಾರರಾಗಿ</a>
                 </div>
             </div>
         </div>
@@ -695,7 +839,8 @@
             <div class="row">
                 <div class="col-lg-4 mb-4">
                     <h4 class="mb-3"><i class="fas fa-hand-holding-heart me-2"></i>Sanjeevini Cancer Centre</h4>
-                    <p>Compassionate Cancer Care, Guided by Expertise. We believe in providing personalized, evidence-based, and compassionate cancer care.</p>
+                    <p data-lang="en">Compassionate Cancer Care, Guided by Expertise. We believe in providing personalized, evidence-based, and compassionate cancer care.</p>
+                    <p class="d-none" data-lang="kn">ಕನಿಕರದ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣೆ, ನಿಪುಣತೆಯ ಮಾರ್ಗದರ್ಶನದೊಂದಿಗೆ. ನಾವು ವೈಯಕ್ತಿಕಗೊಳಿಸಿದ, ಪುರಾವೆ-ಆಧಾರಿತ ಮತ್ತು ಕರುಣಾಮಯಿ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣೆಯನ್ನು ನೀಡುವಲ್ಲಿ ನಂಬಿಕೆ ಇಡುತ್ತೇವೆ.</p>
                     <div class="social-icons mt-4">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -705,36 +850,39 @@
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4">
                     <div class="footer-links">
-                        <h5>Quick Links</h5>
+                        <h5 data-lang="en">Quick Links</h5>
+                        <h5 class="d-none" data-lang="kn">ತ್ವರಿತ ಲಿಂಕ್ಗಳು</h5>
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="services.html">Services</a></li>
-                            <li><a href="patient-care.html">Patient Care</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="index.html" data-lang="en">Home</a><a href="index.html" class="d-none" data-lang="kn">ಮುಖಪುಟ</a></li>
+                            <li><a href="about.html" data-lang="en">About</a><a href="about.html" class="d-none" data-lang="kn">ಬಗ್ಗೆ</a></li>
+                            <li><a href="services.html" data-lang="en">Services</a><a href="services.html" class="d-none" data-lang="kn">ಸೇವೆಗಳು</a></li>
+                            <li><a href="patient-care.html" data-lang="en">Patient Care</a><a href="patient-care.html" class="d-none" data-lang="kn">ರೋಗಿ ಸಂರಕ್ಷಣೆ</a></li>
+                            <li><a href="contact.html" data-lang="en">Contact</a><a href="contact.html" class="d-none" data-lang="kn">ಸಂಪರ್ಕಿಸಿ</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="footer-links">
-                        <h5>Our Services</h5>
+                        <h5 data-lang="en">Our Services</h5>
+                        <h5 class="d-none" data-lang="kn">ನಮ್ಮ ಸೇವೆಗಳು</h5>
                         <ul>
-                            <li><a href="services.html">Cancer Screening</a></li>
-                            <li><a href="services.html">Chemotherapy</a></li>
-                            <li><a href="services.html">Immunotherapy</a></li>
-                            <li><a href="services.html">Targeted Therapy</a></li>
-                            <li><a href="services.html">Palliative Care</a></li>
+                            <li><a href="services.html" data-lang="en">Cancer Screening</a><a href="services.html" class="d-none" data-lang="kn">ಕ್ಯಾನ್ಸರ್ ತಪಾಸಣೆ</a></li>
+                            <li><a href="services.html" data-lang="en">Chemotherapy</a><a href="services.html" class="d-none" data-lang="kn">ಕೀಮೋಥೆರಪಿ</a></li>
+                            <li><a href="services.html" data-lang="en">Immunotherapy</a><a href="services.html" class="d-none" data-lang="kn">ಇಮ್ಯೂನೋಥೆರಪಿ</a></li>
+                            <li><a href="services.html" data-lang="en">Targeted Therapy</a><a href="services.html" class="d-none" data-lang="kn">ಟಾರ್ಗೆಟೆಡ್ ಥೆರಪಿ</a></li>
+                            <li><a href="services.html" data-lang="en">Palliative Care</a><a href="services.html" class="d-none" data-lang="kn">ಪಾಲಿಯೇಟಿವ್ ಸಂರಕ್ಷಣೆ</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 mb-4">
                     <div class="footer-links">
-                        <h5>Contact Us</h5>
+                        <h5 data-lang="en">Contact Us</h5>
+                        <h5 class="d-none" data-lang="kn">ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ</h5>
                         <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Sanjeevini Cancer Centre, Mangalore</li>
-                            <li class="mb-2"><i class="fas fa-phone me-2"></i> (Insert phone number)</li>
-                            <li class="mb-2"><i class="fas fa-envelope me-2"></i> (Insert email)</li>
-                            <li class="mb-2"><i class="fas fa-globe me-2"></i> sanjeevinicancercentre.com</li>
+                            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> <span data-lang="en">Sanjeevini Cancer Centre, Mangalore</span><span class="d-none" data-lang="kn">ಸಂಜೀವಿನಿ ಕ್ಯಾನ್ಸರ್ ಸೆಂಟರ್, ಮಂಗಳೂರು</span></li>
+                            <li class="mb-2"><i class="fas fa-phone me-2"></i> <span data-lang="en">(Insert phone number)</span><span class="d-none" data-lang="kn">(ಫೋನ್ ನಂಬರ್ ಸೇರಿಸಿ)</span></li>
+                            <li class="mb-2"><i class="fas fa-envelope me-2"></i> <span data-lang="en">(Insert email)</span><span class="d-none" data-lang="kn">(ಇಮೇಲ್ ಸೇರಿಸಿ)</span></li>
+                            <li class="mb-2"><i class="fas fa-globe me-2"></i> <span>sanjeevinicancercentre.com</span></li>
                         </ul>
                     </div>
                 </div>
@@ -750,8 +898,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <!-- Custom JS -->
     <script>
         // Initialize AOS
@@ -783,6 +929,36 @@
         
         fadeElements.forEach(element => {
             fadeInObserver.observe(element);
+        });
+        
+        // Language switching functionality
+        let currentLanguage = 'en';
+        
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Hide all elements for both languages
+            document.querySelectorAll('[data-lang="en"], [data-lang="kn"]').forEach(el => {
+                el.classList.add('d-none');
+            });
+            
+            // Show elements for selected language
+            document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+                el.classList.remove('d-none');
+            });
+            
+            // Update language button text
+            const languageBtn = document.getElementById('languageToggle');
+            if (lang === 'en') {
+                languageBtn.innerHTML = '<i class="fas fa-language me-1"></i> ಕನ್ನಡ';
+            } else {
+                languageBtn.innerHTML = '<i class="fas fa-language me-1"></i> English';
+            }
+        }
+        
+        // Add event listener for language switching
+        document.getElementById('languageToggle').addEventListener('click', function() {
+            switchLanguage(currentLanguage === 'en' ? 'kn' : 'en');
         });
     </script>
 </body>

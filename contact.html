@@ -92,6 +92,73 @@
             width: 100%;
         }
         
+        /* Language Switcher */
+        .language-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .language-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+        
+        /* Mobile Navbar Glass Effect */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                position: fixed;
+                top: 0;
+                right: 0;
+                width: 75%;
+                height: 100vh;
+                padding: 2rem;
+                background: rgba(255, 255, 255, 0.85);
+                backdrop-filter: blur(10px);
+                -webkit-backdrop-filter: blur(10px);
+                z-index: 1050;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+                overflow-y: auto;
+            }
+            
+            .navbar-collapse.show {
+                transform: translateX(0);
+            }
+            
+            .navbar-toggler {
+                z-index: 1060;
+            }
+            
+            .navbar-nav {
+                margin-top: 2rem;
+            }
+            
+            .nav-item {
+                margin-bottom: 1rem;
+            }
+            
+            .nav-link {
+                padding: 10px 15px;
+                border-radius: 5px;
+                margin: 5px 0;
+            }
+            
+            .nav-link:hover {
+                background-color: rgba(0, 123, 255, 0.1);
+            }
+            
+            .language-btn-container {
+                margin-top: 1rem;
+                padding: 0 15px;
+            }
+        }
+        
         .hero {
             background: linear-gradient(rgba(0, 123, 255, 0.8), rgba(0, 91, 187, 0.8)), url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
             background-size: cover;
@@ -394,6 +461,16 @@
             .appointment-form {
                 padding: 25px;
             }
+            
+            .contact-info-box {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .info-icon {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
         }
     </style>
 </head>
@@ -416,10 +493,13 @@
                     <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
                     <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
                     <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
-                    <li class="nav-item ms-2">
-                        <a class="btn btn-primary btn-sm" href="#appointment">Book Appointment</a>
-                    </li>
+                    
                 </ul>
+                <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center mt-3 mt-lg-0 ms-lg-3 language-btn-container">
+                    <button class="language-btn mb-3 mb-lg-0 me-lg-3" id="languageToggle">
+                        <i class="fas fa-language me-1"></i> ಕನ್ನಡ
+                    </button>
+                </div>
             </div>
         </div>
     </nav>
@@ -429,11 +509,15 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
-                    <h1 class="animate__animated animate__fadeInDown">Contact Us</h1>
-                    <p class="animate__animated animate__fadeIn animate__delay-1s">Your health is our priority. Reach out to us and take the first step toward expert cancer care.</p>
+                    <h1 class="animate__animated animate__fadeInDown" data-lang="en">Contact Us</h1>
+                    <h1 class="animate__animated animate__fadeInDown d-none" data-lang="kn">ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ</h1>
+                    <p class="animate__animated animate__fadeIn animate__delay-1s" data-lang="en">Your health is our priority. Reach out to us and take the first step toward expert cancer care.</p>
+                    <p class="animate__animated animate__fadeIn animate__delay-1s d-none" data-lang="kn">ನಿಮ್ಮ ಆರೋಗ್ಯವೇ ನಮ್ಮ ಆದ್ಯತೆ. ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ ಮತ್ತು ತಜ್ಞ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣೆಯ ಕಡೆಗೆ ಮೊದಲ ಹೆಜ್ಜೆ ಇಡಿ.</p>
                     <div class="mt-4 animate__animated animate__fadeInUp animate__delay-2s">
-                        <a href="#appointment" class="btn btn-light btn-lg me-3">Book Appointment</a>
-                        <a href="#contact-info" class="btn btn-outline-light btn-lg">Visit Our Centre</a>
+                        <a href="#appointment" class="btn btn-light btn-lg me-3" data-lang="en">Book Appointment</a>
+                        <a href="#appointment" class="btn btn-light btn-lg me-3 d-none" data-lang="kn">ಆಪಾಯಿಂಟ್ಮೆಂಟ್ ಬುಕ್ ಮಾಡಿ</a>
+                        <a href="#contact-info" class="btn btn-outline-light btn-lg" data-lang="en">Visit Our Centre</a>
+                        <a href="#contact-info" class="btn btn-outline-light btn-lg d-none" data-lang="kn">ನಮ್ಮ ಸೆಂಟರ್ ಭೇಟಿ ಮಾಡಿ</a>
                     </div>
                 </div>
             </div>
@@ -443,16 +527,20 @@
     <!-- Contact Information -->
     <section id="contact-info" class="section">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Get In Touch</h2>
+            <h2 class="section-title" data-aos="fade-up" data-lang="en">Get In Touch</h2>
+            <h2 class="section-title d-none" data-aos="fade-up" data-lang="kn">ಸಂಪರ್ಕಿಸಿ</h2>
             
             <div class="row">
                 <div class="col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="contact-card">
                         <div class="card-body text-center p-4">
                             <i class="fas fa-map-marker-alt contact-icon"></i>
-                            <h4 class="card-title">Our Location</h4>
-                            <p class="card-text">Sanjeevini Cancer Centre, Mangalore</p>
-                            <p class="card-text">(Insert full address here)</p>
+                            <h4 class="card-title" data-lang="en">Our Location</h4>
+                            <h4 class="card-title d-none" data-lang="kn">ನಮ್ಮ ಸ್ಥಳ</h4>
+                            <p class="card-text" data-lang="en">Sanjeevini Cancer Centre, Mangalore</p>
+                            <p class="card-text d-none" data-lang="kn">ಸಂಜೀವಿನಿ ಕ್ಯಾನ್ಸರ್ ಸೆಂಟರ್, ಮಂಗಳೂರು</p>
+                            <p class="card-text" data-lang="en">(Insert full address here)</p>
+                            <p class="card-text d-none" data-lang="kn">(ಪೂರ್ಣ ವಿಳಾಸವನ್ನು ಇಲ್ಲಿ ಸೇರಿಸಿ)</p>
                         </div>
                     </div>
                 </div>
@@ -461,9 +549,12 @@
                     <div class="contact-card">
                         <div class="card-body text-center p-4">
                             <i class="fas fa-phone contact-icon"></i>
-                            <h4 class="card-title">Phone Number</h4>
-                            <p class="card-text">(Insert phone number)</p>
-                            <a href="tel:(Insert phone number)" class="btn btn-outline-primary">Call Now</a>
+                            <h4 class="card-title" data-lang="en">Phone Number</h4>
+                            <h4 class="card-title d-none" data-lang="kn">ಫೋನ್ ನಂಬರ್</h4>
+                            <p class="card-text" data-lang="en">(Insert phone number)</p>
+                            <p class="card-text d-none" data-lang="kn">(ಫೋನ್ ನಂಬರ್ ಸೇರಿಸಿ)</p>
+                            <a href="tel:(Insert phone number)" class="btn btn-outline-primary" data-lang="en">Call Now</a>
+                            <a href="tel:(Insert phone number)" class="btn btn-outline-primary d-none" data-lang="kn">ಈಗ ಕರೆ ಮಾಡಿ</a>
                         </div>
                     </div>
                 </div>
@@ -472,9 +563,12 @@
                     <div class="contact-card">
                         <div class="card-body text-center p-4">
                             <i class="fas fa-envelope contact-icon"></i>
-                            <h4 class="card-title">Email Address</h4>
-                            <p class="card-text">(Insert email)</p>
-                            <a href="mailto:(Insert email)" class="btn btn-outline-primary">Send Email</a>
+                            <h4 class="card-title" data-lang="en">Email Address</h4>
+                            <h4 class="card-title d-none" data-lang="kn">ಇಮೇಲ್ ವಿಳಾಸ</h4>
+                            <p class="card-text" data-lang="en">(Insert email)</p>
+                            <p class="card-text d-none" data-lang="kn">(ಇಮೇಲ್ ಸೇರಿಸಿ)</p>
+                            <a href="mailto:(Insert email)" class="btn btn-outline-primary" data-lang="en">Send Email</a>
+                            <a href="mailto:(Insert email)" class="btn btn-outline-primary d-none" data-lang="kn">ಇಮೇಲ್ ಕಳುಹಿಸಿ</a>
                         </div>
                     </div>
                 </div>
@@ -487,9 +581,12 @@
                             <i class="fas fa-clock"></i>
                         </div>
                         <div>
-                            <h4>Working Hours</h4>
-                            <p class="mb-0">Monday - Saturday: 9:00 AM - 6:00 PM</p>
-                            <p class="mb-0">Sunday: Emergency Services Only</p>
+                            <h4 data-lang="en">Working Hours</h4>
+                            <h4 class="d-none" data-lang="kn">ಕೆಲಸದ ಸಮಯ</h4>
+                            <p class="mb-0" data-lang="en">Monday - Saturday: 9:00 AM - 6:00 PM</p>
+                            <p class="mb-0 d-none" data-lang="kn">ಸೋಮವಾರ - ಶನಿವಾರ: ಬೆಳಿಗ್ಗೆ 9:00 - ಸಂಜೆ 6:00</p>
+                            <p class="mb-0" data-lang="en">Sunday: Emergency Services Only</p>
+                            <p class="mb-0 d-none" data-lang="kn">ಭಾನುವಾರ: ತುರ್ತು ಸೇವೆಗಳು ಮಾತ್ರ</p>
                         </div>
                     </div>
                     
@@ -498,9 +595,12 @@
                             <i class="fas fa-user-md"></i>
                         </div>
                         <div>
-                            <h4>Consultation Hours</h4>
-                            <p class="mb-0">Dr. Rachan Shetty KS: 10:00 AM - 4:00 PM</p>
-                            <p class="mb-0">(By appointment only)</p>
+                            <h4 data-lang="en">Consultation Hours</h4>
+                            <h4 class="d-none" data-lang="kn">ಸಲಹಾ ಸಮಯ</h4>
+                            <p class="mb-0" data-lang="en">Dr. Rachan Shetty KS: 10:00 AM - 4:00 PM</p>
+                            <p class="mb-0 d-none" data-lang="kn">ಡಾ. ರಾಚನ್ ಶೆಟ್ಟಿ ಕೆಎಸ್: ಬೆಳಿಗ್ಗೆ 10:00 - ಮಧ್ಯಾಹ್ನ 4:00</p>
+                            <p class="mb-0" data-lang="en">(By appointment only)</p>
+                            <p class="mb-0 d-none" data-lang="kn">(ಆಪಾಯಿಂಟ್ಮೆಂಟ್ ಮೂಲಕ ಮಾತ್ರ)</p>
                         </div>
                     </div>
                     
@@ -509,9 +609,11 @@
                             <i class="fas fa-globe"></i>
                         </div>
                         <div>
-                            <h4>Website</h4>
+                            <h4 data-lang="en">Website</h4>
+                            <h4 class="d-none" data-lang="kn">ವೆಬ್ಸೈಟ್</h4>
                             <p class="mb-0">sanjeevinicancercentre.com</p>
-                            <a href="https://sanjeevinicancercentre.com" class="btn btn-outline-primary btn-sm mt-2">Visit Website</a>
+                            <a href="https://sanjeevinicancercentre.com" class="btn btn-outline-primary btn-sm mt-2" data-lang="en">Visit Website</a>
+                            <a href="https://sanjeevinicancercentre.com" class="btn btn-outline-primary btn-sm mt-2 d-none" data-lang="kn">ವೆಬ್ಸೈಟ್ ಭೇಟಿ ಮಾಡಿ</a>
                         </div>
                     </div>
                 </div>
@@ -521,8 +623,10 @@
                         <div class="map-placeholder">
                             <div class="text-center">
                                 <i class="fas fa-map-marked-alt fa-3x mb-3"></i>
-                                <h4>Our Location in Mangalore</h4>
-                                <p>Interactive map would be displayed here</p>
+                                <h4 data-lang="en">Our Location in Mangalore</h4>
+                                <h4 class="d-none" data-lang="kn">ಮಂಗಳೂರಿನಲ್ಲಿ ನಮ್ಮ ಸ್ಥಳ</h4>
+                                <p data-lang="en">Interactive map would be displayed here</p>
+                                <p class="d-none" data-lang="kn">ಇಂಟರಾಕ್ಟಿವ್ ನಕ್ಷೆ ಇಲ್ಲಿ ಪ್ರದರ್ಶಿಸಲಾಗುತ್ತದೆ</p>
                             </div>
                         </div>
                     </div>
@@ -534,51 +638,59 @@
     <!-- Appointment Section -->
     <section id="appointment" class="section bg-light">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Book an Appointment Today</h2>
+            <h2 class="section-title" data-aos="fade-up" data-lang="en">Book an Appointment Today</h2>
+            <h2 class="section-title d-none" data-aos="fade-up" data-lang="kn">ಇಂದೇ ಆಪಾಯಿಂಟ್ಮೆಂಟ್ ಬುಕ್ ಮಾಡಿ</h2>
             
             <div class="row">
                 <div class="col-lg-8 mx-auto">
                     <div class="appointment-form" data-aos="zoom-in">
-                        <h3 class="text-center mb-4">Appointment Request Form</h3>
-                        <p class="text-center mb-4">Fill out the form below and we'll contact you to confirm your appointment.</p>
+                        <h3 class="text-center mb-4" data-lang="en">Appointment Request Form</h3>
+                        <h3 class="text-center mb-4 d-none" data-lang="kn">ಆಪಾಯಿಂಟ್ಮೆಂಟ್ ವಿನಂತಿ ಫಾರ್ಮ್</h3>
+                        <p class="text-center mb-4" data-lang="en">Fill out the form below and we'll contact you to confirm your appointment.</p>
+                        <p class="text-center mb-4 d-none" data-lang="kn">ಕೆಳಗಿನ ಫಾರ್ಮ್ ಅನ್ನು ಭರ್ತಿ ಮಾಡಿ ಮತ್ತು ನಿಮ್ಮ ಆಪಾಯಿಂಟ್ಮೆಂಟ್ ಅನ್ನು ಖಚಿತಪಡಿಸಲು ನಾವು ನಿಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸುತ್ತೇವೆ.</p>
                         
                         <!-- Formspree Form - Replace with your Formspree ID -->
                         <form id="appointment-form" action="https://formspree.io/f/xkgqrdrz" method="POST">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="name" class="form-label">Full Name *</label>
+                                        <label for="name" class="form-label" data-lang="en">Full Name *</label>
+                                        <label for="name" class="form-label d-none" data-lang="kn">ಪೂರ್ಣ ಹೆಸರು *</label>
                                         <input type="text" class="form-control" id="name" name="name" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="phone" class="form-label">Phone Number *</label>
+                                        <label for="phone" class="form-label" data-lang="en">Phone Number *</label>
+                                        <label for="phone" class="form-label d-none" data-lang="kn">ಫೋನ್ ನಂಬರ್ *</label>
                                         <input type="tel" class="form-control" id="phone" name="phone" required>
                                     </div>
                                 </div>
                             </div>
                             
                             <div class="mb-3">
-                                <label for="email" class="form-label">Email Address (Optional)</label>
+                                <label for="email" class="form-label" data-lang="en">Email Address (Optional)</label>
+                                <label for="email" class="form-label d-none" data-lang="kn">ಇಮೇಲ್ ವಿಳಾಸ (ಐಚ್ಛಿಕ)</label>
                                 <input type="email" class="form-control" id="email" name="email">
                             </div>
                             
                             <div class="mb-3">
-                                <label for="message" class="form-label">Message (Optional)</label>
-                                <textarea class="form-control" id="message" name="message" rows="4" placeholder="Briefly describe your concern or any specific requirements"></textarea>
+                                <label for="message" class="form-label" data-lang="en">Message (Optional)</label>
+                                <label for="message" class="form-label d-none" data-lang="kn">ಸಂದೇಶ (ಐಚ್ಛಿಕ)</label>
+                                <textarea class="form-control" id="message" name="message" rows="4" placeholder="Briefly describe your concern or any specific requirements" data-lang-placeholder="en" data-lang-placeholder-kn="ನಿಮ್ಮ ಕಾಳಜಿ ಅಥವಾ ಯಾವುದೇ ನಿರ್ದಿಷ್ಟ ಅವಶ್ಯಕತೆಗಳನ್ನು ಸಂಕ್ಷಿಪ್ತವಾಗಿ ವಿವರಿಸಿ"></textarea>
                             </div>
                             
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-lg me-3">Submit Appointment Request</button>
+                                <button type="submit" class="btn btn-primary btn-lg me-3" data-lang="en">Submit Appointment Request</button>
+                                <button type="submit" class="btn btn-primary btn-lg me-3 d-none" data-lang="kn">ಆಪಾಯಿಂಟ್ಮೆಂಟ್ ವಿನಂತಿಯನ್ನು ಸಲ್ಲಿಸಿ</button>
                                 <button type="button" id="whatsapp-btn" class="btn btn-success btn-lg">
-                                    <i class="fab fa-whatsapp me-2"></i>Contact via WhatsApp
+                                    <i class="fab fa-whatsapp me-2"></i><span data-lang="en">Contact via WhatsApp</span><span class="d-none" data-lang="kn">ವಾಟ್ಸಾಪ್ ಮೂಲಕ ಸಂಪರ್ಕಿಸಿ</span>
                                 </button>
                             </div>
                         </form>
                         
                         <div id="form-success" class="form-success">
-                            <i class="fas fa-check-circle me-2"></i> Thank you! Your appointment request has been submitted. We will contact you shortly.
+                            <i class="fas fa-check-circle me-2"></i> <span data-lang="en">Thank you! Your appointment request has been submitted. We will contact you shortly.</span><span class="d-none" data-lang="kn">ಧನ್ಯವಾದಗಳು! ನಿಮ್ಮ ಆಪಾಯಿಂಟ್ಮೆಂಟ್ ವಿನಂತಿಯನ್ನು ಸಲ್ಲಿಸಲಾಗಿದೆ. ನಾವು ತಕ್ಷಣವೇ ನಿಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸುತ್ತೇವೆ.</span>
                         </div>
                     </div>
                 </div>
@@ -593,25 +705,29 @@
                 <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="stats-box">
                         <div class="stats-number">1000+</div>
-                        <p>Patients Treated</p>
+                        <p data-lang="en">Patients Treated</p>
+                        <p class="d-none" data-lang="kn">ಚಿಕಿತ್ಸೆ ಪಡೆದ ರೋಗಿಗಳು</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="stats-box">
                         <div class="stats-number">15+</div>
-                        <p>Years of Experience</p>
+                        <p data-lang="en">Years of Experience</p>
+                        <p class="d-none" data-lang="kn">ವರ್ಷಗಳ ಅನುಭವ</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="stats-box">
                         <div class="stats-number">98%</div>
-                        <p>Patient Satisfaction</p>
+                        <p data-lang="en">Patient Satisfaction</p>
+                        <p class="d-none" data-lang="kn">ರೋಗಿ ತೃಪ್ತಿ</p>
                     </div>
                 </div>
                 <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="400">
                     <div class="stats-box">
                         <div class="stats-number">24/7</div>
-                        <p>Support Available</p>
+                        <p data-lang="en">Support Available</p>
+                        <p class="d-none" data-lang="kn">ಲಭ್ಯವಿರುವ ಬೆಂಬಲ</p>
                     </div>
                 </div>
             </div>
@@ -624,7 +740,8 @@
             <div class="row">
                 <div class="col-lg-4 mb-4">
                     <h4 class="mb-3"><i class="fas fa-hand-holding-heart me-2"></i>Sanjeevini Cancer Centre</h4>
-                    <p>Compassionate Cancer Care, Guided by Expertise. We believe in providing personalized, evidence-based, and compassionate cancer care.</p>
+                    <p data-lang="en">Compassionate Cancer Care, Guided by Expertise. We believe in providing personalized, evidence-based, and compassionate cancer care.</p>
+                    <p class="d-none" data-lang="kn">ಕನಿಕರದ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣೆ, ನಿಪುಣತೆಯ ಮಾರ್ಗದರ್ಶನದೊಂದಿಗೆ. ನಾವು ವೈಯಕ್ತಿಕಗೊಳಿಸಿದ, ಪುರಾವೆ-ಆಧಾರಿತ ಮತ್ತು ಕರುಣಾಮಯಿ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣೆಯನ್ನು ನೀಡುವಲ್ಲಿ ನಂಬಿಕೆ ಇಡುತ್ತೇವೆ.</p>
                     <div class="social-icons mt-4">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -634,36 +751,39 @@
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4">
                     <div class="footer-links">
-                        <h5>Quick Links</h5>
+                        <h5 data-lang="en">Quick Links</h5>
+                        <h5 class="d-none" data-lang="kn">ತ್ವರಿತ ಲಿಂಕ್ಗಳು</h5>
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="services.html">Services</a></li>
-                            <li><a href="patient-care.html">Patient Care</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="index.html" data-lang="en">Home</a><a href="index.html" class="d-none" data-lang="kn">ಮುಖಪುಟ</a></li>
+                            <li><a href="about.html" data-lang="en">About</a><a href="about.html" class="d-none" data-lang="kn">ಬಗ್ಗೆ</a></li>
+                            <li><a href="services.html" data-lang="en">Services</a><a href="services.html" class="d-none" data-lang="kn">ಸೇವೆಗಳು</a></li>
+                            <li><a href="patient-care.html" data-lang="en">Patient Care</a><a href="patient-care.html" class="d-none" data-lang="kn">ರೋಗಿ ಸಂರಕ್ಷಣೆ</a></li>
+                            <li><a href="contact.html" data-lang="en">Contact</a><a href="contact.html" class="d-none" data-lang="kn">ಸಂಪರ್ಕಿಸಿ</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="footer-links">
-                        <h5>Our Services</h5>
+                        <h5 data-lang="en">Our Services</h5>
+                        <h5 class="d-none" data-lang="kn">ನಮ್ಮ ಸೇವೆಗಳು</h5>
                         <ul>
-                            <li><a href="services.html">Cancer Screening</a></li>
-                            <li><a href="services.html">Chemotherapy</a></li>
-                            <li><a href="services.html">Immunotherapy</a></li>
-                            <li><a href="services.html">Targeted Therapy</a></li>
-                            <li><a href="services.html">Palliative Care</a></li>
+                            <li><a href="services.html" data-lang="en">Cancer Screening</a><a href="services.html" class="d-none" data-lang="kn">ಕ್ಯಾನ್ಸರ್ ತಪಾಸಣೆ</a></li>
+                            <li><a href="services.html" data-lang="en">Chemotherapy</a><a href="services.html" class="d-none" data-lang="kn">ಕೀಮೋಥೆರಪಿ</a></li>
+                            <li><a href="services.html" data-lang="en">Immunotherapy</a><a href="services.html" class="d-none" data-lang="kn">ಇಮ್ಯೂನೋಥೆರಪಿ</a></li>
+                            <li><a href="services.html" data-lang="en">Targeted Therapy</a><a href="services.html" class="d-none" data-lang="kn">ಟಾರ್ಗೆಟೆಡ್ ಥೆರಪಿ</a></li>
+                            <li><a href="services.html" data-lang="en">Palliative Care</a><a href="services.html" class="d-none" data-lang="kn">ಪಾಲಿಯೇಟಿವ್ ಸಂರಕ್ಷಣೆ</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 mb-4">
                     <div class="footer-links">
-                        <h5>Contact Us</h5>
+                        <h5 data-lang="en">Contact Us</h5>
+                        <h5 class="d-none" data-lang="kn">ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ</h5>
                         <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Sanjeevini Cancer Centre, Mangalore</li>
-                            <li class="mb-2"><i class="fas fa-phone me-2"></i> (Insert phone number)</li>
-                            <li class="mb-2"><i class="fas fa-envelope me-2"></i> (Insert email)</li>
-                            <li class="mb-2"><i class="fas fa-globe me-2"></i> sanjeevinicancercentre.com</li>
+                            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> <span data-lang="en">Sanjeevini Cancer Centre, Mangalore</span><span class="d-none" data-lang="kn">ಸಂಜೀವಿನಿ ಕ್ಯಾನ್ಸರ್ ಸೆಂಟರ್, ಮಂಗಳೂರು</span></li>
+                            <li class="mb-2"><i class="fas fa-phone me-2"></i> <span data-lang="en">(Insert phone number)</span><span class="d-none" data-lang="kn">(ಫೋನ್ ನಂಬರ್ ಸೇರಿಸಿ)</span></li>
+                            <li class="mb-2"><i class="fas fa-envelope me-2"></i> <span data-lang="en">(Insert email)</span><span class="d-none" data-lang="kn">(ಇಮೇಲ್ ಸೇರಿಸಿ)</span></li>
+                            <li class="mb-2"><i class="fas fa-globe me-2"></i> <span>sanjeevinicancercentre.com</span></li>
                         </ul>
                     </div>
                 </div>
@@ -679,8 +799,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
     <!-- Custom JS -->
     <script>
         // Initialize AOS
@@ -699,6 +817,44 @@
             }
         });
         
+        // Language switching functionality
+        let currentLanguage = 'en';
+        
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Hide all elements for both languages
+            document.querySelectorAll('[data-lang="en"], [data-lang="kn"]').forEach(el => {
+                el.classList.add('d-none');
+            });
+            
+            // Show elements for selected language
+            document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+                el.classList.remove('d-none');
+            });
+            
+            // Update placeholder text for textarea
+            const textarea = document.getElementById('message');
+            if (lang === 'en') {
+                textarea.placeholder = textarea.getAttribute('data-lang-placeholder');
+            } else {
+                textarea.placeholder = textarea.getAttribute('data-lang-placeholder-kn');
+            }
+            
+            // Update language button text
+            const languageBtn = document.getElementById('languageToggle');
+            if (lang === 'en') {
+                languageBtn.innerHTML = '<i class="fas fa-language me-1"></i> ಕನ್ನಡ';
+            } else {
+                languageBtn.innerHTML = '<i class="fas fa-language me-1"></i> English';
+            }
+        }
+        
+        // Add event listener for language switching
+        document.getElementById('languageToggle').addEventListener('click', function() {
+            switchLanguage(currentLanguage === 'en' ? 'kn' : 'en');
+        });
+        
         // Form submission handling
         document.getElementById('appointment-form').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -711,14 +867,14 @@
             const phone = document.getElementById('phone').value;
             
             if (!name || !phone) {
-                alert('Please fill in all required fields');
+                alert(currentLanguage === 'en' ? 'Please fill in all required fields' : 'ದಯವಿಟ್ಟು ಎಲ್ಲಾ ಅಗತ್ಯವಿರುವ ಫೀಲ್ಡ್‌ಗಳನ್ನು ಭರ್ತಿ ಮಾಡಿ');
                 return;
             }
             
             // Show loading state
             const submitBtn = this.querySelector('button[type="submit"]');
             const originalText = submitBtn.innerHTML;
-            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> Submitting...';
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin me-2"></i> ' + (currentLanguage === 'en' ? 'Submitting...' : 'ಸಲ್ಲಿಸಲಾಗುತ್ತಿದೆ...');
             submitBtn.disabled = true;
             
             // Send form data using Formspree
@@ -738,11 +894,11 @@
                     // Also send WhatsApp message if phone is provided
                     sendWhatsAppMessage(name, phone);
                 } else {
-                    alert('There was an error submitting your form. Please try again.');
+                    alert(currentLanguage === 'en' ? 'There was an error submitting your form. Please try again.' : 'ನಿಮ್ಮ ಫಾರ್ಮ್ ಅನ್ನು ಸಲ್ಲಿಸುವಲ್ಲಿ ದೋಷ ಸಂಭವಿಸಿದೆ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.');
                 }
             })
             .catch(error => {
-                alert('There was an error submitting your form. Please try again.');
+                alert(currentLanguage === 'en' ? 'There was an error submitting your form. Please try again.' : 'ನಿಮ್ಮ ಫಾರ್ಮ್ ಅನ್ನು ಸಲ್ಲಿಸುವಲ್ಲಿ ದೋಷ ಸಂಭವಿಸಿದೆ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.');
                 console.error('Error:', error);
             })
             .finally(() => {
@@ -760,7 +916,7 @@
             const message = document.getElementById('message').value;
             
             if (!name || !phone) {
-                alert('Please enter your name and phone number to contact via WhatsApp');
+                alert(currentLanguage === 'en' ? 'Please enter your name and phone number to contact via WhatsApp' : 'ವಾಟ್ಸಾಪ್ ಮೂಲಕ ಸಂಪರ್ಕಿಸಲು ದಯವಿಟ್ಟು ನಿಮ್ಮ ಹೆಸರು ಮತ್ತು ಫೋನ್ ನಂಬರ್ ನಮೂದಿಸಿ');
                 return;
             }
             
@@ -772,19 +928,24 @@
             // Replace with your actual phone number (with country code, without +)
             const doctorPhone = '919110687983'; // Example: 91 for India, followed by phone number
             
-            let whatsappMessage = `Hello, I would like to book an appointment at Sanjeevini Cancer Centre.%0A%0A`;
-            whatsappMessage += `Name: ${name}%0A`;
-            whatsappMessage += `Phone: ${phone}%0A`;
+            let whatsappMessage = currentLanguage === 'en' 
+                ? `Hello, I would like to book an appointment at Sanjeevini Cancer Centre.%0A%0A` 
+                : `ನಮಸ್ತೆ, ನಾನು ಸಂಜೀವಿನಿ ಕ್ಯಾನ್ಸರ್ ಸೆಂಟರ್ನಲ್ಲಿ ಆಪಾಯಿಂಟ್ಮೆಂಟ್ ಬುಕ್ ಮಾಡಲು ಬಯಸುತ್ತೇನೆ.%0A%0A`;
+            
+            whatsappMessage += currentLanguage === 'en' ? `Name: ${name}%0A` : `ಹೆಸರು: ${name}%0A`;
+            whatsappMessage += currentLanguage === 'en' ? `Phone: ${phone}%0A` : `ಫೋನ್: ${phone}%0A`;
             
             if (email) {
-                whatsappMessage += `Email: ${email}%0A`;
+                whatsappMessage += currentLanguage === 'en' ? `Email: ${email}%0A` : `ಇಮೇಲ್: ${email}%0A`;
             }
             
             if (message) {
-                whatsappMessage += `Message: ${message}%0A`;
+                whatsappMessage += currentLanguage === 'en' ? `Message: ${message}%0A` : `ಸಂದೇಶ: ${message}%0A`;
             }
             
-            whatsappMessage += `%0APlease contact me to schedule an appointment.`;
+            whatsappMessage += currentLanguage === 'en' 
+                ? `%0APlease contact me to schedule an appointment.` 
+                : `%0Aಆಪಾಯಿಂಟ್ಮೆಂಟ್ ನಿಗದಿಪಡಿಸಲು ದಯವಿಟ್ಟು ನನ್ನನ್ನು ಸಂಪರ್ಕಿಸಿ.`;
             
             // Open WhatsApp with pre-filled message
             window.open(`https://wa.me/${doctorPhone}?text=${whatsappMessage}`, '_blank');

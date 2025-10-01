@@ -4,67 +4,109 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Dr. Rachan Shetty KS - Sanjeevini Cancer Centre</title>
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Animate CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <!-- AOS CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <!-- Custom CSS -->
     <style>
         :root {
             --primary: #007bff;
             --primary-dark: #0056b3;
+            --primary-light: #4da8ff;
             --secondary: #6c757d;
             --light: #f8f9fa;
             --dark: #343a40;
             --accent: #17a2b8;
+            --gradient-1: linear-gradient(135deg, #007bff 0%, #0056b3 100%);
+            --gradient-2: linear-gradient(135deg, #17a2b8 0%, #007bff 100%);
+            --gradient-3: linear-gradient(135deg, #6c757d 0%, #343a40 100%);
         }
-        
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
         
+        html, body {
+            overflow-x: hidden;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.6;
             color: #333;
-            overflow-x: hidden;
             background-color: #fff;
         }
-        
+
         h1, h2, h3, h4, h5 {
             font-family: 'Playfair Display', serif;
             font-weight: 600;
             color: var(--dark);
         }
+
+        /* Page Loader */
+        #page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--gradient-1);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+
+        .loader-content {
+            text-align: center;
+            color: white;
+        }
         
+        .loader-logo {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .loader-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: white;
+            animation: spin 1s ease-in-out infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        .loader-text {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
         .navbar {
             background-color: rgba(255, 255, 255, 0.95);
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
             padding: 15px 0;
             transition: all 0.3s ease;
         }
-        
+
         .navbar.scrolled {
             padding: 10px 0;
             background-color: rgba(255, 255, 255, 0.98);
         }
-        
+
         .navbar-brand {
             font-weight: 700;
-            font-size: 1.8rem;
+            font-size: 1.5rem;
             color: var(--primary) !important;
         }
-        
+
         .nav-link {
             font-weight: 500;
             color: var(--dark) !important;
@@ -72,11 +114,11 @@
             transition: all 0.3s ease;
             position: relative;
         }
-        
+
         .nav-link:hover, .nav-link.active {
             color: var(--primary) !important;
         }
-        
+
         .nav-link:after {
             content: '';
             position: absolute;
@@ -87,11 +129,28 @@
             background-color: var(--primary);
             transition: width 0.3s ease;
         }
-        
+
         .nav-link:hover:after, .nav-link.active:after {
             width: 100%;
         }
-        
+
+        /* Language Switcher */
+        .language-btn {
+            background: transparent;
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .language-btn:hover {
+            background: var(--primary);
+            color: white;
+        }
+
         .hero {
             background: linear-gradient(rgba(0, 123, 255, 0.8), rgba(0, 91, 187, 0.8)), url('https://images.unsplash.com/photo-1559757148-5c350d0d3c56?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
             background-size: cover;
@@ -102,93 +161,62 @@
             text-align: center;
             position: relative;
         }
-        
+
         .hero h1 {
-            font-size: 3.5rem;
+            font-size: 2.5rem;
             margin-bottom: 20px;
             color: white;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
         }
-        
+
         .hero p {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             max-width: 800px;
             margin: 0 auto 30px;
         }
-        
+
         .btn-primary {
-            background-color: var(--primary);
-            border-color: var(--primary);
+            background: var(--gradient-1);
+            border: none;
             padding: 12px 30px;
             font-weight: 500;
             border-radius: 30px;
             transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
         }
-        
+
         .btn-primary:hover {
-            background-color: var(--primary-dark);
-            border-color: var(--primary-dark);
+            background: var(--gradient-2);
             transform: translateY(-3px);
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
-        .btn-outline-primary {
-            color: var(--primary);
-            border-color: var(--primary);
-            padding: 12px 30px;
+        .btn-outline-light {
+             padding: 12px 30px;
             font-weight: 500;
             border-radius: 30px;
             transition: all 0.3s ease;
         }
-        
-        .btn-outline-primary:hover {
-            background-color: var(--primary);
-            border-color: var(--primary);
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .section {
-            padding: 80px 0;
-        }
-        
+
+        .section { padding: 80px 0; }
+
         .section-title {
             text-align: center;
             margin-bottom: 50px;
             position: relative;
         }
-        
+
         .section-title:after {
             content: '';
             position: absolute;
             width: 80px;
             height: 3px;
-            background-color: var(--primary);
+            background: var(--gradient-1);
             bottom: -15px;
             left: 50%;
             transform: translateX(-50%);
         }
-        
-        .card {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            height: 100%;
-            overflow: hidden;
-        }
-        
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .card-icon {
-            font-size: 3rem;
-            color: var(--primary);
-            margin-bottom: 20px;
-        }
-        
+
         .doctor-profile {
             text-align: center;
             padding: 40px 30px;
@@ -197,8 +225,9 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
             position: relative;
             overflow: hidden;
+            border: 1px solid rgba(0, 123, 255, 0.1);
         }
-        
+
         .doctor-profile:before {
             content: '';
             position: absolute;
@@ -206,9 +235,9 @@
             left: 0;
             width: 100%;
             height: 5px;
-            background: linear-gradient(to right, var(--primary), var(--accent));
+            background: var(--gradient-1);
         }
-        
+
         .doctor-img {
             width: 200px;
             height: 200px;
@@ -219,6 +248,19 @@
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         }
         
+        .stats-box {
+            padding: 15px 10px;
+        }
+
+        .stats-number {
+            font-size: 2rem;
+            font-weight: 700;
+            background: var(--gradient-1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 5px;
+        }
+
         .qualification-item {
             display: flex;
             align-items: center;
@@ -228,12 +270,12 @@
             background-color: var(--light);
             transition: all 0.3s ease;
         }
-        
+
         .qualification-item:hover {
             background-color: #e9ecef;
             transform: translateX(5px);
         }
-        
+
         .qualification-icon {
             font-size: 2rem;
             color: var(--primary);
@@ -241,92 +283,9 @@
             min-width: 50px;
             text-align: center;
         }
-        
-        .timeline {
-            position: relative;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .timeline::after {
-            content: '';
-            position: absolute;
-            width: 6px;
-            background-color: var(--primary);
-            top: 0;
-            bottom: 0;
-            left: 50%;
-            margin-left: -3px;
-        }
-        
-        .timeline-item {
-            padding: 10px 40px;
-            position: relative;
-            width: 50%;
-            box-sizing: border-box;
-        }
-        
-        .timeline-item::after {
-            content: '';
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            right: -10px;
-            background-color: white;
-            border: 4px solid var(--primary);
-            top: 15px;
-            border-radius: 50%;
-            z-index: 1;
-        }
-        
-        .left {
-            left: 0;
-        }
-        
-        .right {
-            left: 50%;
-        }
-        
-        .left::before {
-            content: " ";
-            height: 0;
-            position: absolute;
-            top: 22px;
-            width: 0;
-            z-index: 1;
-            right: 30px;
-            border: medium solid white;
-            border-width: 10px 0 10px 10px;
-            border-color: transparent transparent transparent white;
-        }
-        
-        .right::before {
-            content: " ";
-            height: 0;
-            position: absolute;
-            top: 22px;
-            width: 0;
-            z-index: 1;
-            left: 30px;
-            border: medium solid white;
-            border-width: 10px 10px 10px 0;
-            border-color: transparent white transparent transparent;
-        }
-        
-        .right::after {
-            left: -10px;
-        }
-        
-        .timeline-content {
-            padding: 20px 30px;
-            background-color: white;
-            position: relative;
-            border-radius: 6px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
+
         .philosophy-box {
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            background: var(--gradient-2);
             color: white;
             padding: 40px;
             border-radius: 10px;
@@ -334,7 +293,7 @@
             position: relative;
             overflow: hidden;
         }
-        
+
         .philosophy-box:before {
             content: '"';
             font-size: 10rem;
@@ -343,10 +302,11 @@
             top: -30px;
             left: 20px;
             font-family: Georgia, serif;
+            line-height: 1;
         }
-        
+
         .philosophy-text {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-style: italic;
             margin-bottom: 20px;
             position: relative;
@@ -361,11 +321,13 @@
             background-color: white;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             height: 100%;
+            border: 1px solid rgba(0, 123, 255, 0.1);
         }
         
         .expertise-item:hover {
             background-color: var(--light);
             transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
         }
         
         .expertise-icon {
@@ -373,70 +335,41 @@
             color: var(--primary);
             margin-bottom: 20px;
         }
-        
-        .stats-box {
-            text-align: center;
-            padding: 30px 20px;
-            border-radius: 10px;
-            background-color: white;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-        }
-        
-        .stats-box:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-        }
-        
-        .stats-number {
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 10px;
-        }
-        
+
         footer {
-            background-color: var(--dark);
+            background: var(--gradient-3);
             color: white;
             padding: 60px 0 20px;
         }
-        
+
         .footer-links h5 {
             color: white;
             margin-bottom: 20px;
             position: relative;
         }
-        
+
         .footer-links h5:after {
             content: '';
             position: absolute;
             width: 40px;
             height: 2px;
-            background-color: var(--primary);
+            background: var(--gradient-1);
             bottom: -10px;
             left: 0;
         }
-        
-        .footer-links ul {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
+
+        .footer-links ul { list-style: none; padding: 0; }
+        .footer-links li { margin-bottom: 10px; }
         .footer-links a {
             color: #adb5bd;
             text-decoration: none;
             transition: all 0.3s ease;
         }
-        
         .footer-links a:hover {
             color: white;
             padding-left: 5px;
         }
-        
+
         .social-icons a {
             display: inline-block;
             width: 40px;
@@ -449,12 +382,12 @@
             color: white;
             transition: all 0.3s ease;
         }
-        
+
         .social-icons a:hover {
-            background-color: var(--primary);
+            background: var(--gradient-1);
             transform: translateY(-3px);
         }
-        
+
         .copyright {
             border-top: 1px solid rgba(255, 255, 255, 0.1);
             padding-top: 20px;
@@ -463,338 +396,291 @@
             color: #adb5bd;
         }
         
-        /* Animations */
-        .fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.6s ease;
+        @media (max-width: 991.98px) {
+            .offcanvas-body .nav-link {
+                padding: 12px 15px;
+                margin: 5px 0;
+                border-radius: 5px;
+            }
+             .offcanvas-body .nav-link:hover {
+                background-color: var(--light);
+            }
         }
-        
-        .fade-in.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Responsive */
+
         @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
-            
-            .hero p {
-                font-size: 1rem;
-            }
-            
-            .section {
-                padding: 60px 0;
-            }
-            
-            .timeline::after {
-                left: 31px;
-            }
-            
-            .timeline-item {
-                width: 100%;
-                padding-left: 70px;
-                padding-right: 25px;
-            }
-            
-            .timeline-item::before {
-                left: 60px;
-                border: medium solid white;
-                border-width: 10px 10px 10px 0;
-                border-color: transparent white transparent transparent;
-            }
-            
-            .left::after, .right::after {
-                left: 21px;
-            }
-            
-            .right {
-                left: 0%;
-            }
+            .hero h1 { font-size: 2rem; }
+            .hero p { font-size: 1rem; }
+            .section { padding: 40px 0; }
+            .doctor-img { width: 150px; height: 150px;}
         }
+
     </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
+    
+
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
             <a class="navbar-brand" href="index.html">
                 <i class="fas fa-hand-holding-heart me-2"></i>Sanjeevini Cancer Centre
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="patient-care.html">Patient Care</a></li>
-                    <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
-                    <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
-                    <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-                    <li class="nav-item ms-2">
-                        <a class="btn btn-primary btn-sm" href="contact.html#appointment">Book Appointment</a>
-                    </li>
-                </ul>
+            <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                <div class="offcanvas-header">
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Sanjeevini</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                </div>
+                <div class="offcanvas-body">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
+                        <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="services.html">Services</a></li>
+                        <li class="nav-item"><a class="nav-link" href="patient-care.html">Patient Care</a></li>
+                        <li class="nav-item"><a class="nav-link" href="blog.html">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link" href="faq.html">FAQ</a></li>
+                        <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+                    </ul>
+                    <div class="d-flex flex-column flex-lg-row align-items-start align-items-lg-center mt-3 mt-lg-0 ms-lg-3">
+                        <button class="language-btn mb-3 mb-lg-0 me-lg-3" id="languageToggle">
+                            <i class="fas fa-language me-1"></i> ಕನ್ನಡ
+                        </button>
+                        
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-lg-10">
-                    <h1 class="animate__animated animate__fadeInDown">About Dr. Rachan Shetty KS</h1>
-                    <p class="animate__animated animate__fadeIn animate__delay-1s">Best Medical Oncologist in Mangalore</p>
+                    <h1 class="animate__animated animate__fadeInDown" data-lang="en">About Dr. Rachan Shetty KS</h1>
+                    <h1 class="animate__animated animate__fadeInDown d-none" data-lang="kn">ಡಾ. ರಾಚನ್ ಶೆಟ್ಟಿ ಕೆಎಸ್ ಅವರ ಬಗ್ಗೆ</h1>
+                    
+                    <p class="animate__animated animate__fadeIn animate__delay-1s" data-lang="en">Best Medical Oncologist in Mangalore</p>
+                    <p class="animate__animated animate__fadeIn animate__delay-1s d-none" data-lang="kn">ಮಂಗಳೂರಿನ ಅತ್ಯುತ್ತಮ ವೈದ್ಯಕೀಯ ಒಂಕೋಲಜಿಸ್ಟ್</p>
+                    
                     <div class="mt-4 animate__animated animate__fadeInUp animate__delay-2s">
-                        <a href="#qualifications" class="btn btn-light btn-lg me-3">View Qualifications</a>
-                        <a href="contact.html#appointment" class="btn btn-outline-light btn-lg">Book Appointment</a>
+                        <a href="#qualifications" class="btn btn-light btn-lg me-3" data-lang="en">View Qualifications</a>
+                        <a href="#qualifications" class="btn btn-light btn-lg me-3 d-none" data-lang="kn">ಅರ್ಹತೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ</a>
+
+                        <a href="contact.html#appointment" class="btn btn-outline-light btn-lg" data-lang="en">Book Appointment</a>
+                        <a href="contact.html#appointment" class="btn btn-outline-light btn-lg d-none" data-lang="kn">ಅಪಾಯಿಂಟ್ಮೆಂಟ್ ಬುಕ್ ಮಾಡಿ</a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Doctor Profile Section -->
     <section class="section">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-5 mb-4" data-aos="fade-right">
                     <div class="doctor-profile">
-                        <img src="https://images.unsplash.com/photo-1612349317150-e413f6a5b16d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80" alt="Dr. Rachan Shetty KS" class="doctor-img">
-                        <h3>Dr. Rachan Shetty KS</h3>
-                        <p class="text-muted mb-3">Medical Oncologist</p>
-                        <p class="mb-4">A dedicated Medical Oncologist committed to delivering world-class cancer care with compassion and precision.</p>
+                        <img src="Dr Rachan Shetty KS.jpg" alt="Dr. Rachan Shetty KS" class="doctor-img">
+                        
+                        <h3 data-lang="en">Dr. Rachan Shetty KS</h3>
+                        <h3 class="d-none" data-lang="kn">ಡಾ. ರಾಚನ್ ಶೆಟ್ಟಿ ಕೆಎಸ್</h3>
+                        
+                        <p class="text-muted mb-3" data-lang="en">Medical Oncologist</p>
+                        <p class="text-muted mb-3 d-none" data-lang="kn">ವೈದ್ಯಕೀಯ ಒಂಕೋಲಜಿಸ್ಟ್</p>
+                        
+                        <p class="mb-4" data-lang="en">A dedicated Medical Oncologist committed to delivering world-class cancer care with compassion and precision.</p>
+                        <p class="mb-4 d-none" data-lang="kn">ಕರುಣೆ ಮತ್ತು ನಿಖರತೆಯೊಂದಿಗೆ ವಿಶ್ವ ದರ್ಜೆಯ ಕ್ಯಾನ್ಸರ್ ಆರೈಕೆಯನ್ನು ನೀಡಲು ಬದ್ಧರಾಗಿರುವ ಸಮರ್ಪಿತ ವೈದ್ಯಕೀಯ ಒಂಕೋಲಜಿಸ್ಟ್.</p>
+
                         <div class="row text-center">
                             <div class="col-6">
                                 <div class="stats-box">
                                     <div class="stats-number">15+</div>
-                                    <p>Years Experience</p>
+                                    <p data-lang="en">Years Experience</p>
+                                    <p class="d-none" data-lang="kn">ವರ್ಷಗಳ ಅನುಭವ</p>
                                 </div>
                             </div>
                             <div class="col-6">
                                 <div class="stats-box">
                                     <div class="stats-number">1000+</div>
-                                    <p>Patients Treated</p>
+                                    <p data-lang="en">Patients Treated</p>
+                                    <p class="d-none" data-lang="kn">ಚಿಕಿತ್ಸೆ ಪಡೆದ ರೋಗಿಗಳು</p>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-7" data-aos="fade-left">
-                    <h2 class="mb-4">Meet Your Oncologist</h2>
-                    <p class="mb-4">Dr. Rachan Shetty KS is a highly qualified Medical Oncologist with extensive experience in diagnosing and treating different types of cancer. His expertise lies in chemotherapy, immunotherapy, targeted therapy, and personalized cancer treatment plans.</p>
-                    <p class="mb-4">He believes that every patient deserves world-class care with a human touch, and his approach focuses on combining the latest scientific advances with compassionate patient care.</p>
-                    <p class="mb-4">If you are looking for a cancer specialist in Mangalore, Dr. Rachan Shetty KS offers trusted guidance and treatment throughout your cancer journey.</p>
+                    <h2 class="mb-4" data-lang="en">Meet Your Oncologist</h2>
+                    <h2 class="mb-4 d-none" data-lang="kn">ನಿಮ್ಮ ಒಂಕೋಲಜಿಸ್ಟ್ ಅನ್ನು ಭೇಟಿ ಮಾಡಿ</h2>
+                    
+                    <p class="mb-4" data-lang="en">Dr. Rachan Shetty KS is a highly qualified Medical Oncologist with extensive experience in diagnosing and treating different types of cancer. His expertise lies in chemotherapy, immunotherapy, targeted therapy, and personalized cancer treatment plans.</p>
+                    <p class="mb-4 d-none" data-lang="kn">ಡಾ. ರಾಚನ್ ಶೆಟ್ಟಿ ಕೆಎಸ್ ಅವರು ವಿವಿಧ ರೀತಿಯ ಕ್ಯಾನ್ಸರ್ಗಳನ್ನು ಪತ್ತೆಹಚ್ಚುವ ಮತ್ತು ಚಿಕಿತ್ಸೆ ನೀಡುವಲ್ಲಿ ವ್ಯಾಪಕ ಅನುಭವ ಹೊಂದಿರುವ ಉನ್ನತ ಅರ್ಹತೆಯ ವೈದ್ಯಕೀಯ ಒಂಕೋಲಜಿಸ್ಟ್ ಆಗಿದ್ದಾರೆ. ಅವರ ಪರಿಣತಿಯು ಕೀಮೋಥೆರಪಿ, ಇಮ್ಯುನೋಥೆರಪಿ, ಟಾರ್ಗೆಟೆಡ್ ಥೆರಪಿ ಮತ್ತು ವೈಯಕ್ತಿಕಗೊಳಿಸಿದ ಕ್ಯಾನ್ಸರ್ ಚಿಕಿತ್ಸಾ ಯೋಜನೆಗಳಲ್ಲಿದೆ.</p>
+                    
+                    <p class="mb-4" data-lang="en">He believes that every patient deserves world-class care with a human touch, and his approach focuses on combining the latest scientific advances with compassionate patient care.</p>
+                    <p class="mb-4 d-none" data-lang="kn">ಪ್ರತಿಯೊಬ್ಬ ರೋಗಿಯು ಮಾನವೀಯ ಸ್ಪರ್ಶದೊಂದಿಗೆ ವಿಶ್ವ ದರ್ಜೆಯ ಆರೈಕೆಗೆ ಅರ್ಹರು ಎಂದು ಅವರು ನಂಬುತ್ತಾರೆ ಮತ್ತು ಅವರ ವಿಧಾನವು ಇತ್ತೀಚಿನ ವೈಜ್ಞಾನಿಕ ಪ್ರಗತಿಗಳನ್ನು ಕರುಣಾಮಯಿ ರೋಗಿಗಳ ಆರೈಕೆಯೊಂದಿಗೆ ಸಂಯೋಜಿಸುವುದರ ಮೇಲೆ ಕೇಂದ್ರೀಕರಿಸುತ್ತದೆ.</p>
+                    
+                    <p class="mb-4" data-lang="en">If you are looking for a cancer specialist in Mangalore, Dr. Rachan Shetty KS offers trusted guidance and treatment throughout your cancer journey.</p>
+                    <p class="mb-4 d-none" data-lang="kn">ನೀವು ಮಂಗಳೂರಿನಲ್ಲಿ ಕ್ಯಾನ್ಸರ್ ತಜ್ಞರನ್ನು ಹುಡುಕುತ್ತಿದ್ದರೆ, ಡಾ. ರಾಚನ್ ಶೆಟ್ಟಿ ಕೆಎಸ್ ನಿಮ್ಮ ಕ್ಯಾನ್ಸರ್ ಪ್ರಯಾಣದ ಉದ್ದಕ್ಕೂ ವಿಶ್ವಾಸಾರ್ಹ ಮಾರ್ಗದರ್ಶನ ಮತ್ತು ಚಿಕಿತ್ಸೆಯನ್ನು ನೀಡುತ್ತಾರೆ.</p>
                     
                     <div class="philosophy-box mt-5" data-aos="zoom-in">
-                        <p class="philosophy-text">"Every patient deserves not just treatment, but care that restores hope and dignity."</p>
-                        <p class="mb-0">- Dr. Rachan Shetty KS</p>
+                        <p class="philosophy-text" data-lang="en">"Every patient deserves not just treatment, but care that restores hope and dignity."</p>
+                        <p class="philosophy-text d-none" data-lang="kn">"ಪ್ರತಿಯೊಬ್ಬ ರೋಗಿಯು ಕೇವಲ ಚಿಕಿತ್ಸೆಗೆ ಮಾತ್ರವಲ್ಲ, ಭರವಸೆ ಮತ್ತು ಘನತೆಯನ್ನು ಪುನಃಸ್ಥಾಪಿಸುವ ಆರೈಕೆಗೆ ಅರ್ಹರು."</p>
+                        
+                        <p class="mb-0" data-lang="en">- Dr. Rachan Shetty KS</p>
+                        <p class="mb-0 d-none" data-lang="kn">- ಡಾ. ರಾಚನ್ ಶೆಟ್ಟಿ ಕೆಎಸ್</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Qualifications Section -->
     <section id="qualifications" class="section bg-light">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Qualifications & Credentials</h2>
+            <h2 class="section-title" data-aos="fade-up" data-lang="en">Qualifications & Credentials</h2>
+            <h2 class="section-title d-none" data-aos="fade-up" data-lang="kn">ಅರ್ಹತೆಗಳು ಮತ್ತು ಮಾನ್ಯತೆಗಳು</h2>
             <div class="row">
                 <div class="col-lg-6 mb-4" data-aos="fade-right">
                     <div class="qualification-item">
-                        <div class="qualification-icon">
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
+                        <div class="qualification-icon"><i class="fas fa-graduation-cap"></i></div>
                         <div>
-                            <h5>MBBS</h5>
-                            <p class="mb-0">Bachelor of Medicine, Bachelor of Surgery</p>
+                            <h5 data-lang="en">MBBS</h5>
+                            <h5 class="d-none" data-lang="kn">ಎಂಬಿಬಿಎಸ್</h5>
+                            <p class="mb-0" data-lang="en">Bachelor of Medicine, Bachelor of Surgery</p>
+                            <p class="mb-0 d-none" data-lang="kn">ಬ್ಯಾಚುಲರ್ ಆಫ್ ಮೆಡಿಸಿನ್, ಬ್ಯಾಚುಲರ್ ಆಫ್ ಸರ್ಜರಿ</p>
                         </div>
                     </div>
                     <div class="qualification-item">
-                        <div class="qualification-icon">
-                            <i class="fas fa-user-md"></i>
-                        </div>
+                        <div class="qualification-icon"><i class="fas fa-user-md"></i></div>
                         <div>
-                            <h5>MD (General Medicine)</h5>
-                            <p class="mb-0">Doctor of Medicine in General Medicine</p>
+                            <h5 data-lang="en">MD (General Medicine)</h5>
+                            <h5 class="d-none" data-lang="kn">ಎಂಡಿ (ಜನರಲ್ ಮೆಡಿಸಿನ್)</h5>
+                            <p class="mb-0" data-lang="en">Doctor of Medicine in General Medicine</p>
+                            <p class="mb-0 d-none" data-lang="kn">ಡಾಕ್ಟರ್ ಆಫ್ ಮೆಡಿಸಿನ್ ಇನ್ ಜನರಲ್ ಮೆಡಿಸಿನ್</p>
                         </div>
                     </div>
                     <div class="qualification-item">
-                        <div class="qualification-icon">
-                            <i class="fas fa-stethoscope"></i>
-                        </div>
+                        <div class="qualification-icon"><i class="fas fa-stethoscope"></i></div>
                         <div>
-                            <h5>DM (Medical Oncology)</h5>
-                            <p class="mb-0">Doctorate of Medicine in Medical Oncology</p>
+                            <h5 data-lang="en">DM (Medical Oncology)</h5>
+                            <h5 class="d-none" data-lang="kn">ಡಿಎಂ (ಮೆಡಿಕಲ್ ಆಂಕೊಲಾಜಿ)</h5>
+                            <p class="mb-0" data-lang="en">Doctorate of Medicine in Medical Oncology</p>
+                            <p class="mb-0 d-none" data-lang="kn">ಡಾಕ್ಟರೇಟ್ ಆಫ್ ಮೆಡಿಸಿನ್ ಇನ್ ಮೆಡಿಕಲ್ ಆಂಕೊಲಾಜಿ</p>
                         </div>
                     </div>
                     <div class="qualification-item">
-                        <div class="qualification-icon">
-                            <i class="fas fa-award"></i>
-                        </div>
+                        <div class="qualification-icon"><i class="fas fa-award"></i></div>
                         <div>
-                            <h5>MRCP</h5>
-                            <p class="mb-0">Member of the Royal College of Physicians</p>
+                            <h5 data-lang="en">MRCP</h5>
+                            <h5 class="d-none" data-lang="kn">ಎಂಆರ್ಸಿಪಿ</h5>
+                            <p class="mb-0" data-lang="en">Member of the Royal College of Physicians</p>
+                            <p class="mb-0 d-none" data-lang="kn">ಮೆಂಬರ್ ಆಫ್ ದಿ ರಾಯಲ್ ಕಾಲೇಜ್ ಆಫ್ ಫಿಸಿಶಿಯನ್ಸ್</p>
                         </div>
                     </div>
                 </div>
                 <div class="col-lg-6" data-aos="fade-left">
-                    <div class="card h-100">
-                        <div class="card-body p-4">
-                            <h4 class="card-title mb-4">Professional Affiliations</h4>
-                            <ul class="list-unstyled">
-                                <li class="mb-3">
-                                    <i class="fas fa-check text-primary me-2"></i> Indian Society of Medical & Paediatric Oncology
-                                </li>
-                                <li class="mb-3">
-                                    <i class="fas fa-check text-primary me-2"></i> European Society for Medical Oncology
-                                </li>
-                                <li class="mb-3">
-                                    <i class="fas fa-check text-primary me-2"></i> American Society of Clinical Oncology
-                                </li>
-                                <li class="mb-3">
-                                    <i class="fas fa-check text-primary me-2"></i> Association of Physicians of India
-                                </li>
-                                <li class="mb-3">
-                                    <i class="fas fa-check text-primary me-2"></i> Indian Medical Association
-                                </li>
-                            </ul>
-                        </div>
+                    <div class="card h-100 p-4">
+                        <h4 class="mb-4" data-lang="en">Professional Affiliations</h4>
+                        <h4 class="mb-4 d-none" data-lang="kn">ವೃತ್ತಿಪರ ಸದಸ್ಯತ್ವಗಳು</h4>
+                        <ul class="list-unstyled">
+                            <li class="mb-3"><i class="fas fa-check text-primary me-2"></i> <span data-lang="en">Indian Society of Medical & Paediatric Oncology</span><span class="d-none" data-lang="kn">ಇಂಡಿಯನ್ ಸೊಸೈಟಿ ಆಫ್ ಮೆಡಿಕಲ್ & ಪೀಡಿಯಾಟ್ರಿಕ್ ಆಂಕೊಲಾಜಿ</span></li>
+                            <li class="mb-3"><i class="fas fa-check text-primary me-2"></i> <span data-lang="en">European Society for Medical Oncology</span><span class="d-none" data-lang="kn">ಯುರೋಪಿಯನ್ ಸೊಸೈಟಿ ಫಾರ್ ಮೆಡಿಕಲ್ ಆಂಕೊಲಾಜಿ</span></li>
+                            <li class="mb-3"><i class="fas fa-check text-primary me-2"></i> <span data-lang="en">American Society of Clinical Oncology</span><span class="d-none" data-lang="kn">ಅಮೆರಿಕನ್ ಸೊಸೈಟಿ ಆಫ್ ಕ್ಲಿನಿಕಲ್ ಆಂಕೊಲಾಜಿ</span></li>
+                            <li class="mb-3"><i class="fas fa-check text-primary me-2"></i> <span data-lang="en">Association of Physicians of India</span><span class="d-none" data-lang="kn">ಅಸೋಸಿಯೇಷನ್ ಆಫ್ ಫಿಸಿಶಿಯನ್ಸ್ ಆಫ್ ಇಂಡಿಯಾ</span></li>
+                            <li class="mb-3"><i class="fas fa-check text-primary me-2"></i> <span data-lang="en">Indian Medical Association</span><span class="d-none" data-lang="kn">ಇಂಡಿಯನ್ ಮೆಡಿಕಲ್ ಅಸೋಸಿಯೇಷನ್</span></li>
+                        </ul>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Expertise Section -->
     <section class="section">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Areas of Expertise</h2>
+            <h2 class="section-title" data-aos="fade-up" data-lang="en">Areas of Expertise</h2>
+            <h2 class="section-title d-none" data-aos="fade-up" data-lang="kn">ಪರಿಣತಿಯ ಕ್ಷೇತ್ರಗಳು</h2>
             <div class="row">
                 <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="expertise-item">
                         <i class="fas fa-pills expertise-icon"></i>
-                        <h4>Chemotherapy</h4>
-                        <p>Advanced chemotherapy protocols to treat different types of cancers with minimal side effects.</p>
+                        <h4 data-lang="en">Chemotherapy</h4>
+                        <h4 class="d-none" data-lang="kn">ಕೀಮೋಥೆರಪಿ</h4>
+                        <p data-lang="en">Advanced chemotherapy protocols to treat different types of cancers with minimal side effects.</p>
+                        <p class="d-none" data-lang="kn">ಕನಿಷ್ಠ ಅಡ್ಡಪರಿಣಾಮಗಳೊಂದಿಗೆ ವಿವಿಧ ರೀತಿಯ ಕ್ಯಾನ್ಸರ್ಗಳಿಗೆ ಚಿಕಿತ್ಸೆ ನೀಡಲು ಸುಧಾರಿತ ಕೀಮೋಥೆರಪಿ ಪ್ರೋಟೋಕಾಲ್ಗಳು.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="expertise-item">
                         <i class="fas fa-shield-alt expertise-icon"></i>
-                        <h4>Immunotherapy</h4>
-                        <p>Cutting-edge immunotherapy treatments that help the body's immune system fight cancer.</p>
+                        <h4 data-lang="en">Immunotherapy</h4>
+                        <h4 class="d-none" data-lang="kn">ಇಮ್ಯುನೋಥೆರಪಿ</h4>
+                        <p data-lang="en">Cutting-edge immunotherapy treatments that help the body's immune system fight cancer.</p>
+                        <p class="d-none" data-lang="kn">ದೇಹದ ರೋಗನಿರೋಧಕ ವ್ಯವಸ್ಥೆಯು ಕ್ಯಾನ್ಸರ್ ವಿರುದ್ಧ ಹೋರಾಡಲು ಸಹಾಯ ಮಾಡುವ ಅತ್ಯಾಧುನಿಕ ಇಮ್ಯುನೋಥೆರಪಿ ಚಿಕಿತ್ಸೆಗಳು.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="300">
                     <div class="expertise-item">
                         <i class="fas fa-bullseye expertise-icon"></i>
-                        <h4>Targeted Therapy</h4>
-                        <p>Precision medicine approaches that target specific cancer cells without harming healthy cells.</p>
+                        <h4 data-lang="en">Targeted Therapy</h4>
+                        <h4 class="d-none" data-lang="kn">ಟಾರ್ಗೆಟೆಡ್ ಥೆರಪಿ</h4>
+                        <p data-lang="en">Precision medicine approaches that target specific cancer cells without harming healthy cells.</p>
+                        <p class="d-none" data-lang="kn">ಆರೋಗ್ಯಕರ ಕೋಶಗಳಿಗೆ ಹಾನಿಯಾಗದಂತೆ ನಿರ್ದಿಷ್ಟ ಕ್ಯಾನ್ಸರ್ ಕೋಶಗಳನ್ನು ಗುರಿಯಾಗಿಸುವ ನಿಖರ ಔಷಧ ವಿಧಾನಗಳು.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="400">
                     <div class="expertise-item">
                         <i class="fas fa-user-cog expertise-icon"></i>
-                        <h4>Personalized Treatment</h4>
-                        <p>Tailored cancer treatment plans based on individual patient needs and genetic profiles.</p>
+                        <h4 data-lang="en">Personalized Treatment</h4>
+                        <h4 class="d-none" data-lang="kn">ವೈಯಕ್ತಿಕಗೊಳಿಸಿದ ಚಿಕಿತ್ಸೆ</h4>
+                        <p data-lang="en">Tailored cancer treatment plans based on individual patient needs and genetic profiles.</p>
+                        <p class="d-none" data-lang="kn">ವೈಯಕ್ತಿಕ ರೋಗಿಗಳ ಅಗತ್ಯತೆಗಳು ಮತ್ತು ಆನುವಂಶಿಕ ಪ್ರೊಫೈಲ್ಗಳ ಆಧಾರದ ಮೇಲೆ ಸೂಕ್ತವಾದ ಕ್ಯಾನ್ಸರ್ ಚಿಕಿತ್ಸಾ ಯೋಜನೆಗಳು.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="500">
                     <div class="expertise-item">
                         <i class="fas fa-search expertise-icon"></i>
-                        <h4>Cancer Screening</h4>
-                        <p>Comprehensive screening programs for early detection of various types of cancer.</p>
+                        <h4 data-lang="en">Cancer Screening</h4>
+                        <h4 class="d-none" data-lang="kn">ಕ್ಯಾನ್ಸರ್ ಸ್ಕ್ರೀನಿಂಗ್</h4>
+                        <p data-lang="en">Comprehensive screening programs for early detection of various types of cancer.</p>
+                        <p class="d-none" data-lang="kn">ವಿವಿಧ ರೀತಿಯ ಕ್ಯಾನ್ಸರ್ಗಳ ಆರಂಭಿಕ ಪತ್ತೆಗಾಗಿ ಸಮಗ್ರ ಸ್ಕ್ರೀನಿಂಗ್ ಕಾರ್ಯಕ್ರಮಗಳು.</p>
                     </div>
                 </div>
                 <div class="col-md-6 col-lg-4 mb-4" data-aos="fade-up" data-aos-delay="600">
                     <div class="expertise-item">
                         <i class="fas fa-hand-holding-heart expertise-icon"></i>
-                        <h4>Palliative Care</h4>
-                        <p>Supportive care focused on improving quality of life for patients and their families.</p>
+                        <h4 data-lang="en">Palliative Care</h4>
+                        <h4 class="d-none" data-lang="kn">ಪಾಲಿಯೇಟಿವ್ ಕೇರ್</h4>
+                        <p data-lang="en">Supportive care focused on improving quality of life for patients and their families.</p>
+                        <p class="d-none" data-lang="kn">ರೋಗಿಗಳು ಮತ್ತು ಅವರ ಕುಟುಂಬಗಳ ಜೀವನದ ಗುಣಮಟ್ಟವನ್ನು ಸುಧಾರಿಸುವುದರ ಮೇಲೆ ಕೇಂದ್ರೀಕರಿಸಿದ ಬೆಂಬಲ ಆರೈಕೆ.</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Professional Journey -->
-    <section class="section bg-light">
-        <div class="container">
-            <h2 class="section-title" data-aos="fade-up">Professional Journey</h2>
-            <div class="timeline">
-                <div class="timeline-item left" data-aos="fade-right">
-                    <div class="timeline-content">
-                        <h4>Medical Education</h4>
-                        <p class="text-muted">2000-2006</p>
-                        <p>Completed MBBS from prestigious medical institution, laying the foundation for medical career.</p>
-                    </div>
-                </div>
-                <div class="timeline-item right" data-aos="fade-left">
-                    <div class="timeline-content">
-                        <h4>MD in General Medicine</h4>
-                        <p class="text-muted">2007-2010</p>
-                        <p>Specialized in General Medicine, developing comprehensive understanding of internal medicine.</p>
-                    </div>
-                </div>
-                <div class="timeline-item left" data-aos="fade-right">
-                    <div class="timeline-content">
-                        <h4>DM in Medical Oncology</h4>
-                        <p class="text-muted">2011-2014</p>
-                        <p>Advanced specialization in Medical Oncology, focusing on cancer diagnosis and treatment.</p>
-                    </div>
-                </div>
-                <div class="timeline-item right" data-aos="fade-left">
-                    <div class="timeline-content">
-                        <h4>MRCP Certification</h4>
-                        <p class="text-muted">2015</p>
-                        <p>Achieved MRCP certification, demonstrating excellence in medical practice and knowledge.</p>
-                    </div>
-                </div>
-                <div class="timeline-item left" data-aos="fade-right">
-                    <div class="timeline-content">
-                        <h4>Senior Oncologist</h4>
-                        <p class="text-muted">2015-2019</p>
-                        <p>Served as Senior Medical Oncologist at leading cancer hospital, treating complex cases.</p>
-                    </div>
-                </div>
-                <div class="timeline-item right" data-aos="fade-left">
-                    <div class="timeline-content">
-                        <h4>Sanjeevini Cancer Centre</h4>
-                        <p class="text-muted">2020-Present</p>
-                        <p>Founded Sanjeevini Cancer Centre to provide compassionate, personalized cancer care in Mangalore.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- CTA Section -->
-    <section class="section" style="background-color: var(--primary); color: white;">
+    <section class="section" style="background: var(--gradient-1); color: white;">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-8" data-aos="fade-right">
-                    <h2 class="mb-3">Ready to Take the Next Step?</h2>
-                    <p class="mb-0">Schedule a consultation with Dr. Rachan Shetty KS for personalized cancer care and treatment guidance.</p>
+                    <h2 class="mb-3" data-lang="en">Ready to Take the Next Step?</h2>
+                    <h2 class="mb-3 d-none" data-lang="kn">ಮುಂದಿನ ಹೆಜ್ಜೆ ಇಡಲು ಸಿದ್ಧರಿದ್ದೀರಾ?</h2>
+                    <p class="mb-0" data-lang="en">Schedule a consultation with Dr. Rachan Shetty KS for personalized cancer care and treatment guidance.</p>
+                    <p class="mb-0 d-none" data-lang="kn">ವೈಯಕ್ತಿಕಗೊಳಿಸಿದ ಕ್ಯಾನ್ಸರ್ ಆರೈಕೆ ಮತ್ತು ಚಿಕಿತ್ಸಾ ಮಾರ್ಗದರ್ಶನಕ್ಕಾಗಿ ಡಾ. ರಾಚನ್ ಶೆಟ್ಟಿ ಕೆಎಸ್ ಅವರೊಂದಿಗೆ ಸಮಾಲೋಚನೆಯನ್ನು ನಿಗದಿಪಡಿಸಿ.</p>
                 </div>
-                <div class="col-lg-4 text-lg-end" data-aos="fade-left">
-                    <a href="contact.html#appointment" class="btn btn-light btn-lg">Book Consultation</a>
+                <div class="col-lg-4 text-lg-end mt-3 mt-lg-0" data-aos="fade-left">
+                    <a href="contact.html#appointment" class="btn btn-light btn-lg" data-lang="en">Book Consultation</a>
+                    <a href="contact.html#appointment" class="btn btn-light btn-lg d-none" data-lang="kn">ಸಮಾಲೋಚನೆ ಬುಕ್ ಮಾಡಿ</a>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
                     <h4 class="mb-3"><i class="fas fa-hand-holding-heart me-2"></i>Sanjeevini Cancer Centre</h4>
-                    <p>Compassionate Cancer Care, Guided by Expertise. We believe in providing personalized, evidence-based, and compassionate cancer care.</p>
+                    <p data-lang="en">Compassionate Cancer Care, Guided by Expertise. We believe in providing personalized, evidence-based, and compassionate cancer care.</p>
+                    <p class="d-none" data-lang="kn">ಕನಿಕರದ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣೆ, ನಿಪುಣತೆಯ ಮಾರ್ಗದರ್ಶನದೊಂದಿಗೆ. ನಾವು ವೈಯಕ್ತಿಕಗೊಳಿಸಿದ, ಪುರಾವೆ-ಆಧಾರಿತ ಮತ್ತು ಕರುಣಾಮಯಿ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣೆಯನ್ನು ನೀಡುವಲ್ಲಿ ನಂಬಿಕೆ ಇಡುತ್ತೇವೆ.</p>
                     <div class="social-icons mt-4">
                         <a href="#"><i class="fab fa-facebook-f"></i></a>
                         <a href="#"><i class="fab fa-twitter"></i></a>
@@ -804,36 +690,39 @@
                 </div>
                 <div class="col-lg-2 col-md-6 mb-4">
                     <div class="footer-links">
-                        <h5>Quick Links</h5>
+                        <h5 data-lang="en">Quick Links</h5>
+                        <h5 class="d-none" data-lang="kn">ತ್ವರಿತ ಲಿಂಕ್ಗಳು</h5>
                         <ul>
-                            <li><a href="index.html">Home</a></li>
-                            <li><a href="about.html">About</a></li>
-                            <li><a href="services.html">Services</a></li>
-                            <li><a href="patient-care.html">Patient Care</a></li>
-                            <li><a href="contact.html">Contact</a></li>
+                            <li><a href="index.html" data-lang="en">Home</a><a href="index.html" class="d-none" data-lang="kn">ಮುಖಪುಟ</a></li>
+                            <li><a href="about.html" data-lang="en">About</a><a href="about.html" class="d-none" data-lang="kn">ಬಗ್ಗೆ</a></li>
+                            <li><a href="services.html" data-lang="en">Services</a><a href="services.html" class="d-none" data-lang="kn">ಸೇವೆಗಳು</a></li>
+                            <li><a href="patient-care.html" data-lang="en">Patient Care</a><a href="patient-care.html" class="d-none" data-lang="kn">ರೋಗಿ ಸಂರಕ್ಷಣೆ</a></li>
+                            <li><a href="contact.html" data-lang="en">Contact</a><a href="contact.html" class="d-none" data-lang="kn">ಸಂಪರ್ಕಿಸಿ</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
                     <div class="footer-links">
-                        <h5>Our Services</h5>
+                        <h5 data-lang="en">Our Services</h5>
+                        <h5 class="d-none" data-lang="kn">ನಮ್ಮ ಸೇವೆಗಳು</h5>
                         <ul>
-                            <li><a href="services.html">Cancer Screening</a></li>
-                            <li><a href="services.html">Chemotherapy</a></li>
-                            <li><a href="services.html">Immunotherapy</a></li>
-                            <li><a href="services.html">Targeted Therapy</a></li>
-                            <li><a href="services.html">Palliative Care</a></li>
+                            <li><a href="services.html" data-lang="en">Cancer Screening</a><a href="services.html" class="d-none" data-lang="kn">ಕ್ಯಾನ್ಸರ್ ತಪಾಸಣೆ</a></li>
+                            <li><a href="services.html" data-lang="en">Chemotherapy</a><a href="services.html" class="d-none" data-lang="kn">ಕೀಮೋಥೆರಪಿ</a></li>
+                            <li><a href="services.html" data-lang="en">Immunotherapy</a><a href="services.html" class="d-none" data-lang="kn">ಇಮ್ಯೂನೋಥೆರಪಿ</a></li>
+                            <li><a href="services.html" data-lang="en">Targeted Therapy</a><a href="services.html" class="d-none" data-lang="kn">ಟಾರ್ಗೆಟೆಡ್ ಥೆರಪಿ</a></li>
+                            <li><a href="services.html" data-lang="en">Palliative Care</a><a href="services.html" class="d-none" data-lang="kn">ಪಾಲಿಯೇಟಿವ್ ಸಂರಕ್ಷಣೆ</a></li>
                         </ul>
                     </div>
                 </div>
                 <div class="col-lg-3 mb-4">
                     <div class="footer-links">
-                        <h5>Contact Us</h5>
+                        <h5 data-lang="en">Contact Us</h5>
+                        <h5 class="d-none" data-lang="kn">ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ</h5>
                         <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> Sanjeevini Cancer Centre, Mangalore</li>
-                            <li class="mb-2"><i class="fas fa-phone me-2"></i> (Insert phone number)</li>
-                            <li class="mb-2"><i class="fas fa-envelope me-2"></i> (Insert email)</li>
-                            <li class="mb-2"><i class="fas fa-globe me-2"></i> sanjeevinicancercentre.com</li>
+                            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> <span data-lang="en">Sanjeevini Cancer Centre, Mangalore</span><span class="d-none" data-lang="kn">ಸಂಜೀವಿನಿ ಕ್ಯಾನ್ಸರ್ ಸೆಂಟರ್, ಮಂಗಳೂರು</span></li>
+                            <li class="mb-2"><i class="fas fa-phone me-2"></i> <span data-lang="en">(Insert phone number)</span><span class="d-none" data-lang="kn">(ಫೋನ್ ನಂಬರ್ ಸೇರಿಸಿ)</span></li>
+                            <li class="mb-2"><i class="fas fa-envelope me-2"></i> <span data-lang="en">(Insert email)</span><span class="d-none" data-lang="kn">(ಇಮೇಲ್ ಸೇರಿಸಿ)</span></li>
+                            <li class="mb-2"><i class="fas fa-globe me-2"></i> <span>sanjeevinicancercentre.com</span></li>
                         </ul>
                     </div>
                 </div>
@@ -845,14 +734,20 @@
         </div>
     </footer>
 
-    <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- AOS JS -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <!-- GSAP -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
-    <!-- Custom JS -->
     <script>
+        // Page loader
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loader = document.getElementById('page-loader');
+                loader.style.opacity = '0';
+                setTimeout(function() {
+                    loader.style.display = 'none';
+                }, 500);
+            }, 0); // Reduced loader time
+        });
+        
         // Initialize AOS
         AOS.init({
             duration: 1000,
@@ -869,42 +764,62 @@
             }
         });
         
-        // Fade in animation on scroll
-        const fadeElements = document.querySelectorAll('.fade-in');
+        // Language switching functionality
+        let currentLanguage = 'en';
         
-        const fadeInObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
+        function switchLanguage(lang) {
+            currentLanguage = lang;
+            
+            // Hide all elements for both languages
+            document.querySelectorAll('[data-lang="en"], [data-lang="kn"]').forEach(el => {
+                el.classList.add('d-none');
             });
-        }, { threshold: 0.1 });
+            
+            // Show elements for selected language
+            document.querySelectorAll(`[data-lang="${lang}"]`).forEach(el => {
+                el.classList.remove('d-none');
+            });
+            
+            // Update language button text
+            const languageBtn = document.getElementById('languageToggle');
+            if (lang === 'en') {
+                languageBtn.innerHTML = '<i class="fas fa-language me-1"></i> ಕನ್ನಡ';
+            } else {
+                languageBtn.innerHTML = '<i class="fas fa-language me-1"></i> English';
+            }
+        }
         
-        fadeElements.forEach(element => {
-            fadeInObserver.observe(element);
+        // Add event listener for language switching
+        document.getElementById('languageToggle').addEventListener('click', function() {
+            switchLanguage(currentLanguage === 'en' ? 'kn' : 'en');
         });
-        
-        // Simple animation for stats counter
+
+        // Stats counter animation
         const statsElements = document.querySelectorAll('.stats-number');
         
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const target = parseInt(entry.target.textContent);
+                    const el = entry.target;
+                    const targetText = el.textContent;
+                    const target = parseInt(targetText.replace(/\D/g, ''));
+                    const suffix = targetText.replace(/\d/g, '');
                     let current = 0;
-                    const increment = target / 50;
                     
-                    const timer = setInterval(() => {
+                    const updateCount = () => {
+                        const increment = Math.ceil(target / 100);
                         current += increment;
-                        if (current >= target) {
-                            entry.target.textContent = target + (entry.target.textContent.includes('+') ? '+' : '');
-                            clearInterval(timer);
+                        
+                        if (current < target) {
+                            el.textContent = current + suffix;
+                            requestAnimationFrame(updateCount);
                         } else {
-                            entry.target.textContent = Math.floor(current) + (entry.target.textContent.includes('+') ? '+' : '');
+                            el.textContent = target + suffix;
                         }
-                    }, 30);
+                    };
                     
-                    statsObserver.unobserve(entry.target);
+                    requestAnimationFrame(updateCount);
+                    statsObserver.unobserve(el);
                 }
             });
         }, { threshold: 0.5 });
