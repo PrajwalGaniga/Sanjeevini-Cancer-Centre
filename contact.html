@@ -245,7 +245,9 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
-        .section { padding: 60px 0; }
+        .section { 
+            padding: 60px 0; 
+        }
         
         .section-title {
             text-align: center;
@@ -274,6 +276,9 @@
             overflow: hidden;
             background: white;
             border: 1px solid rgba(0, 123, 255, 0.1);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
         }
         
         .contact-card:hover {
@@ -382,6 +387,10 @@
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             transition: all 0.3s ease;
             border: 1px solid rgba(0, 123, 255, 0.1);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
         }
         
         .stats-box:hover {
@@ -634,8 +643,8 @@
                             <h4 class="card-title d-none" data-lang="kn">ಫೋನ್ ನಂಬರ್</h4>
                             <p class="card-text" data-lang="en">(Insert phone number)</p>
                             <p class="card-text d-none" data-lang="kn">(ಫೋನ್ ನಂಬರ್ ಸೇರಿಸಿ)</p>
-                            <a href="tel:(Insert phone number)" class="btn btn-outline-primary" data-lang="en">Call Now</a>
-                            <a href="tel:(Insert phone number)" class="btn btn-outline-primary d-none" data-lang="kn">ಈಗ ಕರೆ ಮಾಡಿ</a>
+                            <a href="tel:(Insert phone number)" class="btn btn-outline-primary mt-3" data-lang="en">Call Now</a>
+                            <a href="tel:(Insert phone number)" class="btn btn-outline-primary mt-3 d-none" data-lang="kn">ಈಗ ಕರೆ ಮಾಡಿ</a>
                         </div>
                     </div>
                 </div>
@@ -648,8 +657,8 @@
                             <h4 class="card-title d-none" data-lang="kn">ಇಮೇಲ್ ವಿಳಾಸ</h4>
                             <p class="card-text" data-lang="en">(Insert email)</p>
                             <p class="card-text d-none" data-lang="kn">(ಇಮೇಲ್ ಸೇರಿಸಿ)</p>
-                            <a href="mailto:(Insert email)" class="btn btn-outline-primary" data-lang="en">Send Email</a>
-                            <a href="mailto:(Insert email)" class="btn btn-outline-primary d-none" data-lang="kn">ಇಮೇಲ್ ಕಳುಹಿಸಿ</a>
+                            <a href="mailto:(Insert email)" class="btn btn-outline-primary mt-3" data-lang="en">Send Email</a>
+                            <a href="mailto:(Insert email)" class="btn btn-outline-primary mt-3 d-none" data-lang="kn">ಇಮೇಲ್ ಕಳುಹಿಸಿ</a>
                         </div>
                     </div>
                 </div>
@@ -806,7 +815,7 @@
                 </div>
                 <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="400">
                     <div class="stats-box">
-                        <div class="stats-number">24x7</div>
+                        <div class="stats-number" style="font-size: 3rem; font-weight: 700; color: var(--primary); margin-bottom: 10px;">24x7</div>
                         <p data-lang="en">Support Available</p>
                         <p class="d-none" data-lang="kn">ಲಭ್ಯವಿರುವ ಬೆಂಬಲ</p>
                     </div>
@@ -883,7 +892,7 @@
     <!-- Custom JS -->
     <script>
         // Page loader
-        
+   
         
         // Initialize AOS
         AOS.init({
@@ -1041,17 +1050,24 @@
         const statsObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    const target = parseInt(entry.target.textContent);
+                    const targetText = entry.target.textContent;
+                    
+                    // Skip animation for "24x7" stat
+                    if (targetText.includes('x')) {
+                        return;
+                    }
+                    
+                    const target = parseInt(targetText.replace(/\D/g, ''));
+                    const suffix = targetText.replace(/\d/g, '');
                     let current = 0;
-                    const increment = target / 50;
                     
                     const timer = setInterval(() => {
-                        current += increment;
+                        current += Math.ceil(target / 50);
                         if (current >= target) {
-                            entry.target.textContent = target + (entry.target.textContent.includes('+') ? '+' : '');
+                            entry.target.textContent = target + suffix;
                             clearInterval(timer);
                         } else {
-                            entry.target.textContent = Math.floor(current) + (entry.target.textContent.includes('+') ? '+' : '');
+                            entry.target.textContent = Math.floor(current) + suffix;
                         }
                     }, 30);
                     
