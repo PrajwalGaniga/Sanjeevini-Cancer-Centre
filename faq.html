@@ -741,41 +741,40 @@
         </div>
     </section>
 
-    <!-- Stats Section -->
-    <section class="section bg-light">
-        <div class="container">
-            <div class="row text-center">
-                <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="100">
-                    <div class="stats-box">
-                        <div class="stats-number">1000+</div>
-                        <p data-lang="en">Patients Treated</p>
-                        <p class="d-none" data-lang="kn">ಚಿಕಿತ್ಸೆ ಪಡೆದ ರೋಗಿಗಳು</p>
-                    </div>
+<section class="section stats-section">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                <div class="stats-box">
+                    <div class="stats-number">1000+</div>
+                    <p data-lang="en">Patients Treated</p>
+                    <p class="d-none" data-lang="kn">ಚಿಕಿತ್ಸೆ ಪಡೆದ ರೋಗಿಗಳು</p>
                 </div>
-                <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="200">
-                    <div class="stats-box">
-                        <div class="stats-number">15+</div>
-                        <p data-lang="en">Years of Experience</p>
-                        <p class="d-none" data-lang="kn">ವರ್ಷಗಳ ಅನುಭವ</p>
-                    </div>
+            </div>
+            <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="stats-box">
+                    <div class="stats-number">15+</div>
+                    <p data-lang="en">Years of Experience</p>
+                    <p class="d-none" data-lang="kn">ವರ್ಷಗಳ ಅನುಭವ</p>
                 </div>
-                <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="300">
-                    <div class="stats-box">
-                        <div class="stats-number">98%</div>
-                        <p data-lang="en">Patient Satisfaction</p>
-                        <p class="d-none" data-lang="kn">ರೋಗಿ ತೃಪ್ತಿ</p>
-                    </div>
+            </div>
+            <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                <div class="stats-box">
+                    <div class="stats-number">98%</div>
+                    <p data-lang="en">Patient Satisfaction</p>
+                    <p class="d-none" data-lang="kn">ರೋಗಿ ತೃಪ್ತಿ</p>
                 </div>
-                <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="stats-box">
-                        <div class="stats-number">24/7</div>
-                        <p data-lang="en">Support Available</p>
-                        <p class="d-none" data-lang="kn">ಲಭ್ಯವಿರುವ ಬೆಂಬಲ</p>
-                    </div>
+            </div>
+            <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                <div class="stats-box">
+                    <div class="stats-number" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 10px;">24x7</div>
+                    <p data-lang="en">Support Available</p>
+                    <p class="d-none" data-lang="kn">ಲಭ್ಯವಿರುವ ಬೆಂಬಲ</p>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Contact Section -->
     <section class="section">
@@ -908,34 +907,47 @@
             switchLanguage(currentLanguage === 'en' ? 'kn' : 'en');
         });
         
-        // Simple animation for stats counter
-        const statsElements = document.querySelectorAll('.stats-number');
         
-        const statsObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    const target = parseInt(entry.target.textContent);
-                    let current = 0;
-                    const increment = target / 50;
-                    
-                    const timer = setInterval(() => {
-                        current += increment;
-                        if (current >= target) {
-                            entry.target.textContent = target + (entry.target.textContent.includes('+') ? '+' : '');
-                            clearInterval(timer);
-                        } else {
-                            entry.target.textContent = Math.floor(current) + (entry.target.textContent.includes('+') ? '+' : '');
-                        }
-                    }, 30);
-                    
-                    statsObserver.unobserve(entry.target);
+
+        // Stats counter animation
+const statsElements = document.querySelectorAll('.stats-number');
+
+const statsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const el = entry.target;
+            const targetText = el.textContent;
+            
+            // Skip animation for "24x7" stat
+            if (targetText.includes('x')) {
+                return;
+            }
+            
+            const target = parseInt(targetText.replace(/\D/g, ''));
+            const suffix = targetText.replace(/\d/g, '');
+            let current = 0;
+            
+            const updateCount = () => {
+                const increment = Math.ceil(target / 100);
+                current += increment;
+                
+                if (current < target) {
+                    el.textContent = current + suffix;
+                    requestAnimationFrame(updateCount);
+                } else {
+                    el.textContent = target + suffix;
                 }
-            });
-        }, { threshold: 0.5 });
-        
-        statsElements.forEach(element => {
-            statsObserver.observe(element);
-        });
+            };
+            
+            requestAnimationFrame(updateCount);
+            statsObserver.unobserve(el);
+        }
+    });
+}, { threshold: 0.5 });
+
+statsElements.forEach(element => {
+    statsObserver.observe(element);
+});
     </script>
 </body>
 </html>
