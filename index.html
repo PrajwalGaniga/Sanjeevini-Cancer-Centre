@@ -506,24 +506,62 @@
             .doctor-img { width: 120px; height: 120px; }
             .appointment-form { padding: 20px; }
         }
+        .navbar-logo {
+    height: 40px;
+    max-width: 100%;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.brand-text {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--primary) !important;
+}
+
+/* For smaller screens */
+@media (max-width: 768px) {
+    .navbar-logo {
+        height: 35px;
+    }
+    .brand-text {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-logo {
+        height: 30px;
+    }
+    .brand-text {
+        font-size: 1.1rem;
+    }
+}
     </style>
 </head>
 <body>
-    <div id="page-loader">
-        <div class="loader-content">
-            <div class="loader-logo">
-                <i class="fas fa-hand-holding-heart me-2"></i>Sanjeevini
-            </div>
-            <div class="loader-spinner"></div>
-            <div class="loader-text">Loading Compassionate Care...</div>
+    <!-- Page Loader -->
+<div id="page-loader">
+    <div class="loader-content">
+        <div class="loader-logo-container">
+            <img src="Loader.png" alt="Sanjeevini Cancer Centre" class="loader-logo">
+        </div>
+        <div class="loader-spinner"></div>
+        <div class="loader-text-container">
+            <h3 class="loader-title" data-lang="en">Sanjeevini Cancer Centre</h3>
+            <h3 class="loader-title d-none" data-lang="kn">ಸಂಜೀವಿನಿ ಕ್ಯಾನ್ಸರ್ ಸೆಂಟರ್</h3>
+            <p class="loader-subtitle" data-lang="en">Loading Compassionate Care...</p>
+            <p class="loader-subtitle d-none" data-lang="kn">ಕರುಣಾಮಯಿ ಸಂರಕ್ಷಣೆಯನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ...</p>
         </div>
     </div>
+</div>
 
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <i class="fas fa-hand-holding-heart me-2"></i>Sanjeevini Cancer Centre
-            </a>
+           <a class="navbar-brand d-flex align-items-center" href="index.html">
+    <img src="logo.jpg" alt="Sanjeevini Cancer Centre" class="navbar-logo" style="height: 40px; max-width: 100%; margin-right: 10px;">
+    <span class="brand-text">Sanjeevini Cancer Centre</span>
+</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>

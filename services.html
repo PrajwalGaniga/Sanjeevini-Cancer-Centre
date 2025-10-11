@@ -563,6 +563,37 @@
                 font-size: 2.5rem;
             }
         }
+        .navbar-logo {
+    height: 40px;
+    max-width: 100%;
+    margin-right: 10px;
+    transition: all 0.3s ease;
+}
+
+.brand-text {
+    font-weight: 700;
+    font-size: 1.5rem;
+    color: var(--primary) !important;
+}
+
+/* For smaller screens */
+@media (max-width: 768px) {
+    .navbar-logo {
+        height: 35px;
+    }
+    .brand-text {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-logo {
+        height: 30px;
+    }
+    .brand-text {
+        font-size: 1.1rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -572,9 +603,10 @@
     <!-- Header & Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand" href="index.html">
-                <i class="fas fa-hand-holding-heart me-2"></i>Sanjeevini Cancer Centre
-            </a>
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+    <img src="logo.jpg" alt="Sanjeevini Cancer Centre" class="navbar-logo" style="height: 40px; max-width: 100%; margin-right: 10px;">
+    <span class="brand-text">Sanjeevini Cancer Centre</span>
+</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
