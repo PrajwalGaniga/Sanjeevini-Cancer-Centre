@@ -581,6 +581,41 @@
         font-size: 1.1rem;
     }
 }
+/* Designer Link Styles */
+.designer-link {
+    color: #adb5bd;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    position: relative;
+}
+
+.designer-link:hover {
+    color: var(--primary-light);
+    padding-left: 5px;
+}
+
+.designer-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--primary-light);
+    transition: width 0.3s ease;
+}
+
+.designer-link:hover:after {
+    width: 100%;
+}
+
+/* Responsive adjustments for the designer link */
+@media (max-width: 576px) {
+    .designer-link {
+        font-size: 0.9rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -976,15 +1011,15 @@
                             <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> <span data-lang="en">Mangalore Cancer Care, Mangalore</span><span class="d-none" data-lang="kn">ಮಂಗಳೂರು ಕ್ಯಾನ್ಸರ್ ಕೇರ್
 , ಮಂಗಳೂರು</span></li>
                             <li class="mb-2"><i class="fas fa-phone me-2"></i> <span data-lang="en">9008753317</span><span class="d-none" data-lang="kn">9008753317</span></li>
-                       <li class="mb-2"><i class="fas fa-envelope me-2"></i> <span data-lang="en">rachanshetty1982@yahoo.co.in</span><span class="d-none" data-lang="kn">drrachanshetty.medoncology@gmail.com</span></li>
+                       <li class="mb-2"><i class="fas fa-envelope me-2"></i> <span data-lang="en">rachanshetty1982@yahoo.co.in</span><span class="d-none" data-lang="kn">rachanshetty1982@yahoo.co.in</span></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025 <br> All rights reserved.</p>
-                <p class="small">Website Designed by: Space for Website</p>
-            </div>
+<div class="copyright">
+    <p>&copy; 2025 <br> All rights reserved.</p>
+    <p class="small">Website Designed by: <a href="https://spaceforwebsite.in" target="_blank" class="designer-link">Space for Website</a></p>
+</div>
         </div>
     </footer>
 

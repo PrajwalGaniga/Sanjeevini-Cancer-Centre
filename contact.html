@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact Us - Manglore Cancer Care</title>
+    <title>Contact Us - Mangalore Cancer Care</title>
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <!-- Bootstrap -->
@@ -585,6 +585,41 @@
         font-size: 1.1rem;
     }
 }
+/* Designer Link Styles */
+.designer-link {
+    color: #adb5bd;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    position: relative;
+}
+
+.designer-link:hover {
+    color: var(--primary-light);
+    padding-left: 5px;
+}
+
+.designer-link:after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 1px;
+    bottom: -2px;
+    left: 0;
+    background-color: var(--primary-light);
+    transition: width 0.3s ease;
+}
+
+.designer-link:hover:after {
+    width: 100%;
+}
+
+/* Responsive adjustments for the designer link */
+@media (max-width: 576px) {
+    .designer-link {
+        font-size: 0.9rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -595,15 +630,15 @@
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
            <a class="navbar-brand d-flex align-items-center" href="index.html">
-    <img src="logo1.png" alt="Manglore Cancer Care" class="navbar-logo" style="height: 40px; max-width: 100%; margin-right: 10px;">
-    <span class="brand-text">Manglore Cancer Care</span>
+    <img src="logo1.png" alt="Mangalore Cancer Care" class="navbar-logo" style="height: 40px; max-width: 100%; margin-right: 10px;">
+    <span class="brand-text">Mangalore Cancer Care</span>
 </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Manglore</h5>
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Mangalore</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
@@ -737,7 +772,7 @@
                         <div>
                             <h4 data-lang="en">Website</h4>
                             <h4 class="d-none" data-lang="kn">ವೆಬ್ಸೈಟ್</h4>
-                            <p class="mb-0">ManglorecancerCare.com</p>
+                            <p class="mb-0">MangalorecancerCare.com</p>
                             <a href="https://mangalorecancercare.com" class="btn btn-outline-primary btn-sm mt-2" data-lang="en">Visit Website</a>
                             <a href="https://mangalorecancercare.com" class="btn btn-outline-primary btn-sm mt-2 d-none" data-lang="kn">ವೆಬ್ಸೈಟ್ ಭೇಟಿ ಮಾಡಿ</a>
                         </div>
@@ -820,8 +855,7 @@
                             </div>
                             
                             <div class="text-center">
-                                <button type="submit" class="btn btn-primary btn-lg me-3" data-lang="en">Submit Appointment Request</button>
-                                <button type="submit" class="btn btn-primary btn-lg me-3 d-none" data-lang="kn">ಆಪಾಯಿಂಟ್ಮೆಂಟ್ ವಿನಂತಿಯನ್ನು ಸಲ್ಲಿಸಿ</button>
+                                
                                 <button type="button" id="whatsapp-btn" class="btn btn-success btn-lg">
                                     <i class="fab fa-whatsapp me-2"></i><span data-lang="en">Contact via WhatsApp</span><span class="d-none" data-lang="kn">ವಾಟ್ಸಾಪ್ ಮೂಲಕ ಸಂಪರ್ಕಿಸಿ</span>
                                 </button>
@@ -878,7 +912,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <h4 class="mb-3"><i class="fas fa-hand-holding-heart me-2"></i>Manglore Cancer Care</h4>
+                    <h4 class="mb-3"><i class="fas fa-hand-holding-heart me-2"></i>Mangalore Cancer Care</h4>
                     <p data-lang="en">Compassionate Cancer Care, Guided by Expertise. We believe in providing personalized, evidence-based, and compassionate cancer care.</p>
                     <p class="d-none" data-lang="kn">ಕನಿಕರದ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣೆ, ನಿಪುಣತೆಯ ಮಾರ್ಗದರ್ಶನದೊಂದಿಗೆ. ನಾವು ವೈಯಕ್ತಿಕಗೊಳಿಸಿದ, ಪುರಾವೆ-ಆಧಾರಿತ ಮತ್ತು ಕರುಣಾಮಯಿ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣೆಯನ್ನು ನೀಡುವಲ್ಲಿ ನಂಬಿಕೆ ಇಡುತ್ತೇವೆ.</p>
                     <div class="social-icons mt-4">
@@ -919,18 +953,18 @@
                         <h5 data-lang="en">Contact Us</h5>
                         <h5 class="d-none" data-lang="kn">ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ</h5>
                         <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> <span data-lang="en">Manglore Cancer Care, Mangalore</span><span class="d-none" data-lang="kn">ಮಂಗಳೂರು ಕ್ಯಾನ್ಸರ್ ಕೇರ್
+                            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> <span data-lang="en">Mangalore Cancer Care, Mangalore</span><span class="d-none" data-lang="kn">ಮಂಗಳೂರು ಕ್ಯಾನ್ಸರ್ ಕೇರ್
 , ಮಂಗಳೂರು</span></li>
                             <li class="mb-2"><i class="fas fa-phone me-2"></i> <span data-lang="en">9008753317</span><span class="d-none" data-lang="kn">9008753317</span></li>
-                            <li class="mb-2"><i class="fas fa-envelope me-2"></i> <span data-lang="en">rachanshetty1982@yahoo.co.in</span><span class="d-none" data-lang="kn">drrachanshetty.medoncology@gmail.com</span></li>
+                            <li class="mb-2"><i class="fas fa-envelope me-2"></i> <span data-lang="en">rachanshetty1982@yahoo.co.in</span><span class="d-none" data-lang="kn">rachanshetty1982@yahoo.co.in</span></li>
                         </ul>
                     </div>
                 </div>
             </div>
-            <div class="copyright">
-                <p>&copy; 2025  <br> All rights reserved.</p>
-                <p class="small">Website Designed by: Space for Website</p>
-            </div>
+<div class="copyright">
+    <p>&copy; 2025 <br> All rights reserved.</p>
+    <p class="small">Website Designed by: <a href="https://spaceforwebsite.in" target="_blank" class="designer-link">Space for Website</a></p>
+</div>
         </div>
     </footer>
 
@@ -1072,7 +1106,7 @@
             const doctorPhone = '919008753317'; // Example: 91 for India, followed by phone number
             
             let whatsappMessage = currentLanguage === 'en' 
-                ? `Hello, I would like to book an appointment at Manglore Cancer Care.%0A%0A` 
+                ? `Hello, I would like to book an appointment at Mangalore Cancer Care.%0A%0A` 
                 : `ನಮಸ್ತೆ, ನಾನು ಮಂಗಳೂರು ಕ್ಯಾನ್ಸರ್ ಕೇರ್
 ನಲ್ಲಿ ಆಪಾಯಿಂಟ್ಮೆಂಟ್ ಬುಕ್ ಮಾಡಲು ಬಯಸುತ್ತೇನೆ.%0A%0A`;
             
