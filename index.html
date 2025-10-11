@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sanjeevini Cancer Centre - Best Cancer Care in Mangalore</title>
+    <title>Manglore Cancer Care - Best Cancer Care in Mangalore</title>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -66,10 +66,16 @@
             color: white;
         }
         
+        .loader-logo-container {
+            margin-bottom: 25px;
+        }
+        
         .loader-logo {
-            font-size: 2.5rem;
-            margin-bottom: 20px;
-            font-weight: 700;
+            height: 70px;
+            width: auto;
+            max-width: 350px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
         }
         
         .loader-spinner {
@@ -79,16 +85,31 @@
             border-radius: 50%;
             border-top-color: white;
             animation: spin 1s ease-in-out infinite;
-            margin: 0 auto 20px;
+            margin: 0 auto 25px;
         }
         
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
         
-        .loader-text {
-            font-size: 1.2rem;
-            font-weight: 500;
+        .loader-text-container {
+            margin-top: 15px;
+        }
+        
+        .loader-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .loader-subtitle {
+            font-size: 1.1rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 0;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
         }
         
         .navbar {
@@ -472,6 +493,20 @@
             transform: translateY(0);
         }
         
+        /* Header Logo */
+        .navbar-logo {
+            height: 50px; /* Increased from 40px */
+            max-width: 100%;
+            margin-right: 12px;
+            transition: all 0.3s ease;
+        }
+        
+        .brand-text {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary) !important;
+        }
+        
         /* Responsive */
         @media (max-width: 991.98px) {
             .offcanvas-body .nav-link {
@@ -498,6 +533,31 @@
                 padding: 10px 20px;
                 font-size: 0.9rem;
             }
+            
+            /* Responsive header logo */
+            .navbar-logo {
+                height: 42px;
+            }
+            .brand-text {
+                font-size: 1.3rem;
+            }
+            
+            /* Responsive loader */
+            .loader-logo {
+                height: 60px;
+                max-width: 130px;
+            }
+            .loader-title {
+                font-size: 1.6rem;
+            }
+            .loader-subtitle {
+                font-size: 1rem;
+            }
+            .loader-spinner {
+                width: 45px;
+                height: 45px;
+                border-width: 4px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -505,69 +565,63 @@
             .section-title { font-size: 1.6rem; }
             .doctor-img { width: 120px; height: 120px; }
             .appointment-form { padding: 20px; }
+            
+            /* Responsive header logo */
+            .navbar-logo {
+                height: 38px;
+            }
+            .brand-text {
+                font-size: 1.1rem;
+            }
+            
+            /* Responsive loader */
+            .loader-logo {
+                height: 50px;
+                max-width: 120px;
+            }
+            .loader-title {
+                font-size: 1.4rem;
+            }
+            .loader-subtitle {
+                font-size: 0.9rem;
+            }
+            .loader-spinner {
+                width: 40px;
+                height: 40px;
+                border-width: 3px;
+            }
         }
-        .navbar-logo {
-    height: 40px;
-    max-width: 100%;
-    margin-right: 10px;
-    transition: all 0.3s ease;
-}
-
-.brand-text {
-    font-weight: 700;
-    font-size: 1.5rem;
-    color: var(--primary) !important;
-}
-
-/* For smaller screens */
-@media (max-width: 768px) {
-    .navbar-logo {
-        height: 35px;
-    }
-    .brand-text {
-        font-size: 1.3rem;
-    }
-}
-
-@media (max-width: 576px) {
-    .navbar-logo {
-        height: 30px;
-    }
-    .brand-text {
-        font-size: 1.1rem;
-    }
-}
     </style>
 </head>
 <body>
     <!-- Page Loader -->
-<div id="page-loader">
-    <div class="loader-content">
-        <div class="loader-logo-container">
-            <img src="Loader.png" alt="Sanjeevini Cancer Centre" class="loader-logo">
-        </div>
-        <div class="loader-spinner"></div>
-        <div class="loader-text-container">
-            <h3 class="loader-title" data-lang="en">Sanjeevini Cancer Centre</h3>
-            <h3 class="loader-title d-none" data-lang="kn">ಸಂಜೀವಿನಿ ಕ್ಯಾನ್ಸರ್ ಸೆಂಟರ್</h3>
-            <p class="loader-subtitle" data-lang="en">Loading Compassionate Care...</p>
-            <p class="loader-subtitle d-none" data-lang="kn">ಕರುಣಾಮಯಿ ಸಂರಕ್ಷಣೆಯನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ...</p>
+    <div id="page-loader">
+        <div class="loader-content">
+            <div class="loader-logo-container">
+                <img src="new.png" alt="Manglore Cancer Care" class="loader-logo">
+            </div>
+            <div class="loader-spinner"></div>
+            <div class="loader-text-container">
+                <h3 class="loader-title" data-lang="en">Mangalore Cancer Care</h3>
+                <h3 class="loader-title d-none" data-lang="kn">ಮಂಗಳೂರು ಕ್ಯಾನ್ಸರ್ ಕೇರ್</h3>
+                <p class="loader-subtitle" data-lang="en">Loading Compassionate Care...</p>
+                <p class="loader-subtitle d-none" data-lang="kn">ಕರುಣಾಮಯಿ ಸಂರಕ್ಷಣೆಯನ್ನು ಲೋಡ್ ಮಾಡಲಾಗುತ್ತಿದೆ...</p>
+            </div>
         </div>
     </div>
-</div>
 
     <nav class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-           <a class="navbar-brand d-flex align-items-center" href="index.html">
-    <img src="logo.jpg" alt="Sanjeevini Cancer Centre" class="navbar-logo" style="height: 40px; max-width: 100%; margin-right: 10px;">
-    <span class="brand-text">Sanjeevini Cancer Centre</span>
-</a>
+            <a class="navbar-brand d-flex align-items-center" href="index.html">
+                <img src="logo1.png" alt="Manglore Cancer Care" class="navbar-logo">
+                <span class="brand-text">Manglore Cancer Care</span>
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
                 <div class="offcanvas-header">
-                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Sanjeevini</h5>
+                    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Mangalore</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
                 </div>
                 <div class="offcanvas-body">
@@ -584,7 +638,6 @@
                         <button class="language-btn mb-3 mb-lg-0 me-lg-3" id="languageToggle">
                             <i class="fas fa-language me-1"></i> ಕನ್ನಡ
                         </button>
-                        
                     </div>
                 </div>
             </div>
@@ -598,7 +651,7 @@
                     <h1 class="animate__animated animate__fadeInDown" data-lang="en">Compassionate Cancer Care, Guided by Expertise</h1>
                     <h1 class="animate__animated animate__fadeInDown d-none" data-lang="kn">ಕನಿಕರದ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣೆ, ನಿಪುಣತೆಯ ಮಾರ್ಗದರ್ಶನದೊಂದಿಗೆ</h1>
                     
-                    <p class="animate__animated animate__fadeIn animate__delay-1s" data-lang="en">At Sanjeevini Cancer Centre, we believe in providing personalized, evidence-based, and compassionate cancer care. Led by Dr. Rachan Shetty KS, Medical Oncologist, our mission is to offer advanced treatments while supporting patients and their families every step of the way.</p>
+                    <p class="animate__animated animate__fadeIn animate__delay-1s" data-lang="en">At Manglore Cancer Care, we believe in providing personalized, evidence-based, and compassionate cancer care. Led by Dr. Rachan Shetty KS, Medical Oncologist, our mission is to offer advanced treatments while supporting patients and their families every step of the way.</p>
                     <p class="animate__animated animate__fadeIn animate__delay-1s d-none" data-lang="kn">ಸಂಜೀವಿನಿ ಕ್ಯಾನ್ಸರ್ ಸೆಂಟರ್ನಲ್ಲಿ, ನಾವು ವೈಯಕ್ತಿಕಗೊಳಿಸಿದ, ಪುರಾವೆ-ಆಧಾರಿತ ಮತ್ತು ಕರುಣಾಮಯಿ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣೆಯನ್ನು ನೀಡುವಲ್ಲಿ ನಂಬಿಕೆ ಇಡುತ್ತೇವೆ. ವೈದ್ಯಕೀಯ ಒಂಕೋಲಜಿಸ್ಟ್ ಡಾ. ರಾಚನ್ ಶೆಟ್ಟಿ ಕೆಎಸ್ ಅವರ ನೇತೃತ್ವದಲ್ಲಿ, ರೋಗಿಗಳು ಮತ್ತು ಅವರ ಕುಟುಂಬಗಳನ್ನು ಪ್ರತಿ ಹಂತದಲ್ಲೂ ಬೆಂಬಲಿಸುವಾಗ ಅತ್ಯಾಧುನಿಕ ಚಿಕಿತ್ಸೆಗಳನ್ನು ನೀಡುವುದು ನಮ್ಮ ಧ್ಯೇಯವಾಗಿದೆ.</p>
                     
                     <div class="mt-4 animate__animated animate__fadeInUp animate__delay-2s">
@@ -614,7 +667,7 @@
 
     <section class="section bg-light">
         <div class="container">
-            <h2 class="section-title" data-aos="fade-up" data-lang="en">Why Choose Sanjeevini Cancer Centre?</h2>
+            <h2 class="section-title" data-aos="fade-up" data-lang="en">Why Choose Manglore Cancer Care?</h2>
             <h2 class="section-title d-none" data-aos="fade-up" data-lang="kn">ಏಕೆ ಸಂಜೀವಿನಿ ಕ್ಯಾನ್ಸರ್ ಸೆಂಟರ್ ಅನ್ನು ಆರಿಸಬೇಕು?</h2>
             <div class="row">
                 <div class="col-md-6 col-lg-3 mb-4" data-aos="fade-up" data-aos-delay="100">
@@ -780,40 +833,40 @@
         </div>
     </section>
 
-<section class="section stats-section">
-    <div class="container">
-        <div class="row text-center">
-            <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="100">
-                <div class="stats-box">
-                    <div class="stats-number">5000+</div>
-                    <p data-lang="en">Patients Treated</p>
-                    <p class="d-none" data-lang="kn">ಚಿಕಿತ್ಸೆ ಪಡೆದ ರೋಗಿಗಳು</p>
+    <section class="section stats-section">
+        <div class="container">
+            <div class="row text-center">
+                <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="stats-box">
+                        <div class="stats-number">5000+</div>
+                        <p data-lang="en">Patients Treated</p>
+                        <p class="d-none" data-lang="kn">ಚಿಕಿತ್ಸೆ ಪಡೆದ ರೋಗಿಗಳು</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="stats-box">
-                    <div class="stats-number">15+</div>
-                    <p data-lang="en">Years of Experience</p>
-                    <p class="d-none" data-lang="kn">ವರ್ಷಗಳ ಅನುಭವ</p>
+                <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="stats-box">
+                        <div class="stats-number">15+</div>
+                        <p data-lang="en">Years of Experience</p>
+                        <p class="d-none" data-lang="kn">ವರ್ಷಗಳ ಅನುಭವ</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="300">
-                <div class="stats-box">
-                    <div class="stats-number">100%</div>
-                    <p data-lang="en">Patient Satisfaction</p>
-                    <p class="d-none" data-lang="kn">ರೋಗಿ ತೃಪ್ತಿ</p>
+                <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="stats-box">
+                        <div class="stats-number">100%</div>
+                        <p data-lang="en">Patient Satisfaction</p>
+                        <p class="d-none" data-lang="kn">ರೋಗಿ ತೃಪ್ತಿ</p>
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="400">
-                <div class="stats-box">
-                    <div class="stats-number" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 10px;">24x7</div>
-                    <p data-lang="en">Support Available</p>
-                    <p class="d-none" data-lang="kn">ಲಭ್ಯವಿರುವ ಬೆಂಬಲ</p>
+                <div class="col-md-3 col-6 mb-4" data-aos="fade-up" data-aos-delay="400">
+                    <div class="stats-box">
+                        <div class="stats-number" style="font-size: 2.5rem; font-weight: 700; margin-bottom: 10px;">24x7</div>
+                        <p data-lang="en">Support Available</p>
+                        <p class="d-none" data-lang="kn">ಲಭ್ಯವಿರುವ ಬೆಂಬಲ</p>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
     <section class="section">
         <div class="container">
@@ -845,7 +898,7 @@
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
                                 <div class="accordion-body">
-                                    <span data-lang="en">Diagnosis involves a combination of tests such as blood work, imaging (CT, MRI, PET scans), and biopsy. At Sanjeevini Cancer Centre, we provide access to advanced diagnostic facilities for accurate detection.</span>
+                                    <span data-lang="en">Diagnosis involves a combination of tests such as blood work, imaging (CT, MRI, PET scans), and biopsy. At Manglore Cancer Care, we provide access to advanced diagnostic facilities for accurate detection.</span>
                                     <span class="d-none" data-lang="kn">ರೋಗನಿರ್ಣಯವು ರಕ್ತ ಪರೀಕ್ಷೆ, ಇಮೇಜಿಂಗ್ (ಸಿಟಿ, ಎಂಆರ್ಐ, ಪಿಇಟಿ ಸ್ಕ್ಯಾನ್ಗಳು) ಮತ್ತು ಬಯೋಪ್ಸಿ ಮುಂತಾದ ಪರೀಕ್ಷೆಗಳ ಸಂಯೋಜನೆಯನ್ನು ಒಳಗೊಂಡಿರುತ್ತದೆ. ಸಂಜೀವಿನಿ ಕ್ಯಾನ್ಸರ್ ಸೆಂಟರ್ನಲ್ಲಿ, ನಿಖರವಾದ ಪತ್ತೆಗಾಗಿ ನಾವು ಅತ್ಯಾಧುನಿಕ ರೋಗನಿರ್ಣಯ ಸೌಲಭ್ಯಗಳಿಗೆ ಪ್ರವೇಶವನ್ನು ಒದಗಿಸುತ್ತೇವೆ.</span>
                                 </div>
                             </div>
@@ -944,7 +997,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
-                    <h4 class="mb-3"><i class="fas fa-hand-holding-heart me-2"></i>Sanjeevini Cancer Centre</h4>
+                    <h4 class="mb-3"><i class="fas fa-hand-holding-heart me-2"></i>Manglore Cancer Care</h4>
                     <p data-lang="en">Compassionate Cancer Care, Guided by Expertise. We believe in providing personalized, evidence-based, and compassionate cancer care.</p>
                     <p class="d-none" data-lang="kn">ಕನಿಕರದ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣೆ, ನಿಪುಣತೆಯ ಮಾರ್ಗದರ್ಶನದೊಂದಿಗೆ. ನಾವು ವೈಯಕ್ತಿಕಗೊಳಿಸಿದ, ಪುರಾವೆ-ಆಧಾರಿತ ಮತ್ತು ಕರುಣಾಮಯಿ ಕ್ಯಾನ್ಸರ್ ಸಂರಕ್ಷಣೆಯನ್ನು ನೀಡುವಲ್ಲಿ ನಂಬಿಕೆ ಇಡುತ್ತೇವೆ.</p>
                     <div class="social-icons mt-4">
@@ -985,9 +1038,9 @@
                         <h5 data-lang="en">Contact Us</h5>
                         <h5 class="d-none" data-lang="kn">ನಮ್ಮನ್ನು ಸಂಪರ್ಕಿಸಿ</h5>
                         <ul class="list-unstyled">
-                            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> <span data-lang="en">Sanjeevini Cancer Centre, Mangalore</span><span class="d-none" data-lang="kn">ಸಂಜೀವಿನಿ ಕ್ಯಾನ್ಸರ್ ಸೆಂಟರ್, ಮಂಗಳೂರು</span></li>
+                            <li class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> <span data-lang="en">Manglore Cancer Care, Mangalore</span><span class="d-none" data-lang="kn">ಸಂಜೀವಿನಿ ಕ್ಯಾನ್ಸರ್ ಸೆಂಟರ್, ಮಂಗಳೂರು</span></li>
                             <li class="mb-2"><i class="fas fa-phone me-2"></i> <span data-lang="en">9008753317</span><span class="d-none" data-lang="kn">9008753317</span></li>
-                           
+                            <li class="mb-2"><i class="fas fa-envelope me-2"></i> <span data-lang="en">drrachanshetty.medoncology@gmail.com</span><span class="d-none" data-lang="kn">drrachanshetty.medoncology@gmail.com</span></li>
                         </ul>
                     </div>
                 </div>
@@ -1077,44 +1130,44 @@
         
        
         // Stats counter animation
-const statsElements = document.querySelectorAll('.stats-number');
+        const statsElements = document.querySelectorAll('.stats-number');
 
-const statsObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-        if (entry.isIntersecting) {
-            const el = entry.target;
-            const targetText = el.textContent;
-            
-            // Skip animation for "24x7" stat
-            if (targetText.includes('x')) {
-                return;
-            }
-            
-            const target = parseInt(targetText.replace(/\D/g, ''));
-            const suffix = targetText.replace(/\d/g, '');
-            let current = 0;
-            
-            const updateCount = () => {
-                const increment = Math.ceil(target / 100);
-                current += increment;
-                
-                if (current < target) {
-                    el.textContent = current + suffix;
+        const statsObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const targetText = el.textContent;
+                    
+                    // Skip animation for "24x7" stat
+                    if (targetText.includes('x')) {
+                        return;
+                    }
+                    
+                    const target = parseInt(targetText.replace(/\D/g, ''));
+                    const suffix = targetText.replace(/\d/g, '');
+                    let current = 0;
+                    
+                    const updateCount = () => {
+                        const increment = Math.ceil(target / 100);
+                        current += increment;
+                        
+                        if (current < target) {
+                            el.textContent = current + suffix;
+                            requestAnimationFrame(updateCount);
+                        } else {
+                            el.textContent = target + suffix;
+                        }
+                    };
+                    
                     requestAnimationFrame(updateCount);
-                } else {
-                    el.textContent = target + suffix;
+                    statsObserver.unobserve(el);
                 }
-            };
-            
-            requestAnimationFrame(updateCount);
-            statsObserver.unobserve(el);
-        }
-    });
-}, { threshold: 0.5 });
+            });
+        }, { threshold: 0.5 });
 
-statsElements.forEach(element => {
-    statsObserver.observe(element);
-});
+        statsElements.forEach(element => {
+            statsObserver.observe(element);
+        });
     </script>
 </body>
 </html>
